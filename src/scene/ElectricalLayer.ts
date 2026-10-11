@@ -1,11 +1,13 @@
 import * as THREE from 'three';
 import type { HomeState, UIState } from '../types';
 import { ELECTRICAL_POINTS, ELECTRICAL_ROUTES, LIGHT_GROUPS, type ElectricalPoint, type Vec3 } from '../electrical/plan';
+import { electricalGroupRooms } from '../electrical/state';
 
 const vector=(p:Vec3)=>new THREE.Vector3(...p);
 const colors={socket:'#b67b51',switch:'#877399',light:'#b89942',ethernet:'#4c87a7',sensor:'#548c7f',panel:'#526f65',load:'#b67b51',curtain:'#877399',emergency:'#548c7f'};
 const routeColors={power:'#ba7649',lighting:'#c8a242',signal:'#9b72b7',ethernet:'#438ec0',rs485:'#419e91'};
 const existingFixtures=new Set(['L07','L08','L13']);
+const MAX_POINT_LIGHTS=6;
 
 export function createElectricalLayer(){
   const root=new THREE.Group();root.name='electrical-design';
@@ -15,7 +17,13 @@ export function createElectricalLayer(){
   const blue=new THREE.MeshStandardMaterial({color:'#3b6476',roughness:.8});
   const pointGroups=new Map<string,THREE.Group>();
   const labels=new Map<string,THREE.Sprite>();
-  const lamps=new Map<string,{light:THREE.PointLight;surface:THREE.MeshStandardMaterial}>();
+  const lamps=new Map<string,{position:THREE.Vector3;distance:number;power:number;surface:THREE.MeshStandardMaterial}>();
+  // Zero-intensity visible lights still enlarge Three's fragment shader loop.
+  // Reuse a small pool; all fourteen fixtures retain their independent emissive state.
+  const lightPool=Array.from({length:MAX_POINT_LIGHTS},(_,index)=>{
+    const light=new THREE.PointLight('#ffe0af',0,5.5,2);
+    light.name=`electrical-light-${index}`;light.visible=false;root.add(light);return light;
+  });
   const routeLines=new Map<string,THREE.Line>();
   const pickTargets:THREE.Object3D[]=[];
   const warm=new THREE.Color();
@@ -60,7 +68,8 @@ export function createElectricalLayer(){
           if(['L08','L11','L14'].includes(point.id)){addBox(face,charcoal,0,0,0,.48,.035,.025);addBox(face,material,0,0,.017,.46,.02,.006);}
           else{addDisc(face,charcoal,0,0,0,point.id==='L06'?.18:.125,.035);addDisc(face,material,0,0,.024,point.id==='L06'?.168:.114,.008);}
         }
-        const lamp=new THREE.PointLight('#ffe0af',0,point.id==='L12'||point.id==='L13'?8:5.5,2);lamp.position.copy(vector(point.position)).addScaledVector(normal,.15);root.add(lamp);lamps.set(point.lightGroup??point.id,{light:lamp,surface:material});
+        const id=point.lightGroup??point.id;
+        lamps.set(id,{position:vector(point.position).addScaledVector(normal,.15),distance:id==='L12'||id==='L13'?8:5.5,power:id==='L14'?1.5:id==='L06'?30:id==='L07'?22:id==='L08'?8:id==='L12'||id==='L13'?20:14,surface:material});
       }else if(point.kind==='sensor'){
         addBox(face,white,0,0,.018,.071,.071,.035);addBox(face,charcoal,0,.003,.037,.033,.023,.002);addDisc(face,blue,0,-.02,.039,.003,.001);
       }else if(point.kind==='emergency'){
@@ -84,8 +93,11 @@ export function createElectricalLayer(){
   }
   return {
     root,pickTargets,
-    update(state:HomeState,ui:UIState,asset:string){
+    get activePointLights(){return lightPool.filter(light=>light.visible).length;},
+    update(state:HomeState,ui:UIState,asset:string,pointLightBudget=MAX_POINT_LIGHTS){
       const e=ui.electrical,mode=Boolean(e?.enabled);
+      const selected=ELECTRICAL_POINTS.find(p=>p.id===e?.selectedId);
+      const focusedGroups=new Set(mode&&selected?[selected.lightGroup??selected.id,...(selected.controls??[]),...(selected.keys??[]).flatMap(key=>key.targets)]:[]);
       warm.setRGB(1,THREE.MathUtils.lerp(.64,.93,(state.devices.lighting.kelvin-2700)/3800),THREE.MathUtils.lerp(.34,1,(state.devices.lighting.kelvin-2700)/3800));
       for(const p of ELECTRICAL_POINTS){
         const g=pointGroups.get(p.id);if(!g)continue;
@@ -95,13 +107,23 @@ export function createElectricalLayer(){
         const hit=g.children.find(c=>c.name==='electrical-hit');if(hit)hit.visible=mode&&visible;
         const sprite=labels.get(p.id);if(sprite)sprite.visible=visible&&mode&&Boolean(e?.labels)&&(ui.room!=='all'||e?.layer!=='all'||e?.selectedId===p.id);
       }
+      const candidates:{id:string;lamp:NonNullable<ReturnType<typeof lamps.get>>;intensity:number;priority:number}[]=[];
       for(const group of LIGHT_GROUPS){
         const lamp=lamps.get(group.id);if(!lamp)continue;
-        const value=state.electrical.lights[group.id]??0;
-        lamp.light.visible=asset==='house'||group.room==='living';
-        lamp.light.color.copy(warm);lamp.surface.emissive.copy(warm);
-        lamp.light.intensity=value*(group.id==='L14'?1.5:group.id==='L06'?30:group.id==='L07'?22:group.id==='L08'?8:group.id==='L12'||group.id==='L13'?20:14);
+        const rooms=electricalGroupRooms(group.id),included=state.config.systems.lighting&&rooms.some(room=>state.config.rooms.includes(room));
+        const raw=state.electrical.lights[group.id]??0;
+        const value=included&&Number.isFinite(raw)?THREE.MathUtils.clamp(raw,0,1):0;
+        lamp.surface.emissive.copy(warm);
         lamp.surface.emissiveIntensity=value*1.5;
+        if(value>0&&(asset==='house'||group.room==='living'))candidates.push({id:group.id,lamp,intensity:value*lamp.power,priority:focusedGroups.has(group.id)?2:ui.room!=='all'&&rooms.includes(ui.room)?1:0});
+      }
+      candidates.sort((a,b)=>b.priority-a.priority||b.intensity-a.intensity||a.id.localeCompare(b.id));
+      const budget=Number.isFinite(pointLightBudget)?THREE.MathUtils.clamp(Math.floor(pointLightBudget),0,MAX_POINT_LIGHTS):0;
+      for(let index=0;index<lightPool.length;index++){
+        const light=lightPool[index],candidate=index<budget?candidates[index]:undefined;
+        light.visible=Boolean(candidate);light.intensity=candidate?.intensity??0;
+        light.userData.lightGroup=candidate?.id??null;
+        if(candidate){light.position.copy(candidate.lamp.position);light.distance=candidate.lamp.distance;light.color.copy(warm);}
       }
       for(const route of ELECTRICAL_ROUTES){
         const line=routeLines.get(route.id)!;
@@ -109,7 +131,6 @@ export function createElectricalLayer(){
         const layerMatch=!e||e.layer==='all'||e.layer==='routes'||e.layer==='network'&&route.kind==='ethernet'||e.layer==='lighting'&&route.kind==='lighting'||e.layer==='switches'&&route.kind==='signal'||e.layer==='sockets'&&route.kind==='power'||e.layer==='sensors'&&['signal','rs485'].includes(route.kind);
         line.visible=mode&&Boolean(e?.routes||e?.layer==='routes')&&relevant&&layerMatch&&(!e?.circuit||route.circuits.includes(e.circuit))&&(!e?.selectedId||route.pointIds.includes(e.selectedId));
       }
-      const selected=ELECTRICAL_POINTS.find(p=>p.id===e?.selectedId);
       halo.visible=mode&&Boolean(selected?.position);if(selected?.position){halo.position.copy(vector(selected.position)).addScaledVector(vector(selected.normal),.035);halo.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),vector(selected.normal).normalize());}
     },
     focus(id:string){

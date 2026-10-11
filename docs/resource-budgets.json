@@ -17,5 +17,28 @@
     }
   ],
   "textureCompression": "Embedded small PNG textures; no external texture/decoder requests. Meshopt decoder bundled in application.",
-  "note": "FPS and load-time budgets require device measurements; file sizes alone do not prove performance."
+  "note": "FPS and load-time budgets require device measurements; file sizes alone do not prove performance.",
+  "mobileProfiles": [
+    {
+      "name": "first-room-mobile",
+      "bytes": 4601208,
+      "sourceBytes": 6948928,
+      "triangles": 138130,
+      "nodes": 68,
+      "textureMaxDimension": 512,
+      "estimatedImageRGBA8MipBytes": 5941920,
+      "geometryUnchanged": true
+    },
+    {
+      "name": "house-mobile",
+      "bytes": 6464044,
+      "sourceBytes": 8811760,
+      "triangles": 199873,
+      "nodes": 82,
+      "textureMaxDimension": 512,
+      "estimatedImageRGBA8MipBytes": 6291444,
+      "geometryUnchanged": true
+    }
+  ],
+  "mobileAudit": "mobile-model-audit.json"
 }

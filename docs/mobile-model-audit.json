@@ -1,0 +1,515 @@
+{
+  "created": "2026-10-11T14:59:47.971Z",
+  "passed": true,
+  "textureMaxDimension": 512,
+  "textureEncoding": "Embedded PNG, same material color factors, Lanczos3 downsampling only; no new decoder/extension.",
+  "geometryPolicy": "No simplification, quantization or material merging; original compressed bytes and decoded accessors retained exactly.",
+  "assumptions": [
+    "RGBA8 textures with full mip chain, one GPU image per glTF texture, excluding browser decode copies and sampler variants.",
+    "Geometry attribute byte counts sum referenced accessors; driver padding, sharing, shader programs, render targets and runtime procedural geometry are not included.",
+    "Three.js morph positions/normals use RGBA32F array textures; minimum estimate excludes row padding to GPU maxTextureSize.",
+    "Texture memory reduction does not establish the cause or resolution of device context loss; physical Pixel verification remains required."
+  ],
+  "reports": [
+    {
+      "name": "first-room",
+      "source": "public/models/first-room.glb",
+      "mobile": "public/models/first-room-mobile.glb",
+      "sourceSha256": "301df0ba43683a2831211d666865cba5e48f5b4e64198b16efb6e9104a5c6cd3",
+      "mobileSha256": "92c14e8386fd32cac2bd93e0fad382b3cae1b6aad3b569847e3a0354c52513d1",
+      "sourceBytes": 6948928,
+      "mobileBytes": 4601208,
+      "textureCount": 8,
+      "imageBytesBefore": 14330528,
+      "imageBytesMobile": 5941920,
+      "imageReductionPercent": 58.54,
+      "textures": [
+        {
+          "index": 0,
+          "name": "Fabric_linen",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1885,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1885,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        },
+        {
+          "index": 1,
+          "name": "Fabric_milk_linen",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1880,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1880,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        },
+        {
+          "index": 2,
+          "name": "Lining_whitewash_web",
+          "mime": "image/png",
+          "before": {
+            "width": 1024,
+            "height": 1024,
+            "encodedBytes": 1226337,
+            "rgba8WithMipmapsBytes": 5592404
+          },
+          "mobile": {
+            "width": 512,
+            "height": 512,
+            "encodedBytes": 271197,
+            "rgba8WithMipmapsBytes": 1398100
+          },
+          "resized": true
+        },
+        {
+          "index": 3,
+          "name": "Oak_natural",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 28966,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 28966,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        },
+        {
+          "index": 4,
+          "name": "Tile_smart_gris_web",
+          "mime": "image/png",
+          "before": {
+            "width": 512,
+            "height": 512,
+            "encodedBytes": 476843,
+            "rgba8WithMipmapsBytes": 1398100
+          },
+          "mobile": {
+            "width": 512,
+            "height": 512,
+            "encodedBytes": 476843,
+            "rgba8WithMipmapsBytes": 1398100
+          },
+          "resized": false
+        },
+        {
+          "index": 5,
+          "name": "Floor_oak_aya_web",
+          "mime": "image/png",
+          "before": {
+            "width": 1024,
+            "height": 1024,
+            "encodedBytes": 1894504,
+            "rgba8WithMipmapsBytes": 5592404
+          },
+          "mobile": {
+            "width": 512,
+            "height": 512,
+            "encodedBytes": 501931,
+            "rgba8WithMipmapsBytes": 1398100
+          },
+          "resized": true
+        },
+        {
+          "index": 6,
+          "name": "Exterior_timber_smoked_brown",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 21663,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 21663,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        },
+        {
+          "index": 7,
+          "name": "Fabric_warm_grey",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1869,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1869,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        }
+      ],
+      "geometry": {
+        "nodes": 68,
+        "meshes": 68,
+        "materials": 31,
+        "triangles": 138130,
+        "primitives": 131,
+        "geometryAttributeBytes": 5124172,
+        "morphVertexCount": 38832,
+        "morphFloatBytesMin": 1242624,
+        "morphs": [
+          {
+            "name": "curtains_bedroom_east_left",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_bedroom_east_right",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_bedroom_west_left",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_bedroom_west_right",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_living_left",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_living_panorama_left",
+            "vertices": 9034,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 289088
+          },
+          {
+            "name": "curtains_living_panorama_right",
+            "vertices": 18518,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 592576
+          },
+          {
+            "name": "curtains_living_right",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          }
+        ]
+      },
+      "validation": {
+        "allDecodedAccessorsIdentical": true,
+        "meshoptPayloadsIdentical": true,
+        "nodesMaterialsAnimationsAndMorphMetadataIdentical": true,
+        "desktopSourceUnchanged": true
+      }
+    },
+    {
+      "name": "house",
+      "source": "public/models/house.glb",
+      "mobile": "public/models/house-mobile.glb",
+      "sourceSha256": "5d1786e6d72c4453a2c78e694fb3609717f33098d546e44772bf8728c2208f4c",
+      "mobileSha256": "9eb8c75393d9d9ff2e325a94ee6ca784dc340b63be28e0e458f72e08e31850ed",
+      "sourceBytes": 8811760,
+      "mobileBytes": 6464044,
+      "textureCount": 9,
+      "imageBytesBefore": 14680052,
+      "imageBytesMobile": 6291444,
+      "imageReductionPercent": 57.14,
+      "textures": [
+        {
+          "index": 0,
+          "name": "Fabric_linen",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1885,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1885,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        },
+        {
+          "index": 1,
+          "name": "Fabric_milk_linen",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1880,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1880,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        },
+        {
+          "index": 2,
+          "name": "Lining_whitewash_web",
+          "mime": "image/png",
+          "before": {
+            "width": 1024,
+            "height": 1024,
+            "encodedBytes": 1226337,
+            "rgba8WithMipmapsBytes": 5592404
+          },
+          "mobile": {
+            "width": 512,
+            "height": 512,
+            "encodedBytes": 271197,
+            "rgba8WithMipmapsBytes": 1398100
+          },
+          "resized": true
+        },
+        {
+          "index": 3,
+          "name": "Oak_natural",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 28966,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 28966,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        },
+        {
+          "index": 4,
+          "name": "Tile_smart_gris_web",
+          "mime": "image/png",
+          "before": {
+            "width": 512,
+            "height": 512,
+            "encodedBytes": 476843,
+            "rgba8WithMipmapsBytes": 1398100
+          },
+          "mobile": {
+            "width": 512,
+            "height": 512,
+            "encodedBytes": 476843,
+            "rgba8WithMipmapsBytes": 1398100
+          },
+          "resized": false
+        },
+        {
+          "index": 5,
+          "name": "Floor_oak_aya_web",
+          "mime": "image/png",
+          "before": {
+            "width": 1024,
+            "height": 1024,
+            "encodedBytes": 1894504,
+            "rgba8WithMipmapsBytes": 5592404
+          },
+          "mobile": {
+            "width": 512,
+            "height": 512,
+            "encodedBytes": 501931,
+            "rgba8WithMipmapsBytes": 1398100
+          },
+          "resized": true
+        },
+        {
+          "index": 6,
+          "name": "Exterior_timber_smoked_brown",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 21663,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 21663,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        },
+        {
+          "index": 7,
+          "name": "Fabric_warm_grey",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1869,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 1869,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        },
+        {
+          "index": 8,
+          "name": "Oak_pale",
+          "mime": "image/png",
+          "before": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 36517,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "mobile": {
+            "width": 256,
+            "height": 256,
+            "encodedBytes": 36517,
+            "rgba8WithMipmapsBytes": 349524
+          },
+          "resized": false
+        }
+      ],
+      "geometry": {
+        "nodes": 82,
+        "meshes": 82,
+        "materials": 34,
+        "triangles": 199873,
+        "primitives": 166,
+        "geometryAttributeBytes": 8404402,
+        "morphVertexCount": 38832,
+        "morphFloatBytesMin": 1242624,
+        "morphs": [
+          {
+            "name": "curtains_bedroom_east_left",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_bedroom_east_right",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_bedroom_west_left",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_bedroom_west_right",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_living_left",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          },
+          {
+            "name": "curtains_living_panorama_left",
+            "vertices": 9034,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 289088
+          },
+          {
+            "name": "curtains_living_panorama_right",
+            "vertices": 18518,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 592576
+          },
+          {
+            "name": "curtains_living_right",
+            "vertices": 1880,
+            "targets": [
+              "Open"
+            ],
+            "minRGBA32FBytes": 60160
+          }
+        ]
+      },
+      "validation": {
+        "allDecodedAccessorsIdentical": true,
+        "meshoptPayloadsIdentical": true,
+        "nodesMaterialsAnimationsAndMorphMetadataIdentical": true,
+        "desktopSourceUnchanged": true
+      }
+    }
+  ]
+}
