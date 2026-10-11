@@ -1,0 +1,606 @@
+{
+  "passed": true,
+  "created": "2026-10-11T13:53:38.431Z",
+  "reports": [
+    {
+      "name": "first-room",
+      "bytes": 6948928,
+      "nodes": 68,
+      "triangles": 138130,
+      "animations": [
+        "Curtains_Open_bedroom_east_Left",
+        "Curtains_Open_bedroom_east_Right",
+        "Curtains_Open_bedroom_west_Left",
+        "Curtains_Open_bedroom_west_Right",
+        "Curtains_Open_Left",
+        "Curtains_Open_living_panorama_Left",
+        "Curtains_Open_living_panorama_Right",
+        "Curtains_Open_Right"
+      ],
+      "deviceReferences": "valid",
+      "morphs": "valid",
+      "finiteGeometry": true,
+      "rainChainSegmentsVisible": 0,
+      "curtainMorphs": [
+        {
+          "name": "curtains_living_left",
+          "room": "living",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3LW4j9F4L69fEmTEJ$NU7j"
+          ],
+          "closedBounds": {
+            "min": [
+              3.5048544282904768,
+              0.04599569260548364,
+              1.4427508972356684
+            ],
+            "max": [
+              3.596829891204834,
+              2.3550199123960818,
+              2.3227293419329347
+            ]
+          },
+          "openBounds": {
+            "min": [
+              3.477835591516725,
+              0.04599569260548364,
+              2.132761850389653
+            ],
+            "max": [
+              3.623848727978585,
+              2.3550199123960818,
+              2.3227293419329347
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_living_right",
+          "room": "living",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3LW4j9F4L69fEmTEJ$NU7j"
+          ],
+          "closedBounds": {
+            "min": [
+              3.5048544282904768,
+              0.04599569260548364,
+              0.5627169238675899
+            ],
+            "max": [
+              3.596829891204834,
+              2.3550199123960818,
+              1.4427510775066577
+            ]
+          },
+          "openBounds": {
+            "min": [
+              3.477835591516725,
+              0.04599569260548364,
+              0.5627169238675899
+            ],
+            "max": [
+              3.623848727978585,
+              2.3550199123960818,
+              0.7527401243526731
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_living_panorama_left",
+          "room": "living",
+          "curtainMechanism": "fixed-header-tieback",
+          "sourceWindowGuids": [
+            "3mOQE0kq1ADAzxhHE4vXrq",
+            "1YQoK7NXH6e984YHSYZLUz"
+          ],
+          "closedBounds": {
+            "min": [
+              -1.3921493224404673,
+              0.04897681090830819,
+              2.958752637889295
+            ],
+            "max": [
+              -0.002983080277376038,
+              3.379031181335449,
+              3.0527134990147884
+            ]
+          },
+          "openBounds": {
+            "min": [
+              -1.3921493224404673,
+              0.055027541284191406,
+              2.848384988629196
+            ],
+            "max": [
+              -0.002983080277376038,
+              3.379031181335449,
+              3.065687661263076
+            ]
+          },
+          "movingVertices": 8578
+        },
+        {
+          "name": "curtains_living_panorama_right",
+          "room": "living",
+          "curtainMechanism": "fixed-header-tieback",
+          "sourceWindowGuids": [
+            "3mOQE0kq1ADAzxhHE4vXrq",
+            "1YQoK7NXH6e984YHSYZLUz"
+          ],
+          "closedBounds": {
+            "min": [
+              0.0030299886544056243,
+              0.04928056123502844,
+              2.9587521953374956
+            ],
+            "max": [
+              3.7278263862253738,
+              3.379029127691948,
+              3.052681843624068
+            ]
+          },
+          "openBounds": {
+            "min": [
+              0.0030299886544056243,
+              0.050325384908961324,
+              2.852389145331121
+            ],
+            "max": [
+              3.7278263862253738,
+              3.379029127691948,
+              3.0656376571808366
+            ]
+          },
+          "movingVertices": 17598
+        },
+        {
+          "name": "curtains_bedroom_west_left",
+          "room": "bedroom_west",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3C1Yl09FP1U8mcKdtFO4gl"
+          ],
+          "closedBounds": {
+            "min": [
+              -3.585170030593872,
+              0.04599992526833785,
+              -1.747281952531431
+            ],
+            "max": [
+              -3.4931551287665874,
+              2.3549797792082816,
+              -0.8772774462380902
+            ]
+          },
+          "openBounds": {
+            "min": [
+              -3.6121581068087547,
+              0.04599992526833785,
+              -1.067304600162633
+            ],
+            "max": [
+              -3.466167052551705,
+              2.3549797792082816,
+              -0.8772774462380902
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_bedroom_west_right",
+          "room": "bedroom_west",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3C1Yl09FP1U8mcKdtFO4gl"
+          ],
+          "closedBounds": {
+            "min": [
+              -3.585170030593872,
+              0.04599992526833785,
+              -2.6172790377308925
+            ],
+            "max": [
+              -3.4931551287665874,
+              2.3549797792082816,
+              -1.747274531437552
+            ]
+          },
+          "openBounds": {
+            "min": [
+              -3.6121581068087547,
+              0.04599992526833785,
+              -2.6172790377308925
+            ],
+            "max": [
+              -3.466167052551705,
+              2.3549797792082816,
+              -2.42725188380635
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_bedroom_east_left",
+          "room": "bedroom_east",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3hikcRWh92FRxXp1pYl2RM"
+          ],
+          "closedBounds": {
+            "min": [
+              3.5048544282904768,
+              0.04599569260548364,
+              -1.7472460154436817
+            ],
+            "max": [
+              3.596829891204834,
+              2.3550199123960818,
+              -0.8772951802706942
+            ]
+          },
+          "openBounds": {
+            "min": [
+              3.477835591516725,
+              0.04599569260548364,
+              -1.067262671813976
+            ],
+            "max": [
+              3.623848727978585,
+              2.3550199123960818,
+              -0.8772951802706942
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_bedroom_east_right",
+          "room": "bedroom_east",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3hikcRWh92FRxXp1pYl2RM"
+          ],
+          "closedBounds": {
+            "min": [
+              3.5048544282904768,
+              0.04599569260548364,
+              -2.6172937482743697
+            ],
+            "max": [
+              3.596829891204834,
+              2.3550199123960818,
+              -1.7472872041595806
+            ]
+          },
+          "openBounds": {
+            "min": [
+              3.477835591516725,
+              0.04599569260548364,
+              -2.6172937482743697
+            ],
+            "max": [
+              3.623848727978585,
+              2.3550199123960818,
+              -2.4272705477892864
+            ]
+          },
+          "movingVertices": 1880
+        }
+      ],
+      "ceilingRooms": [
+        "bathroom",
+        "bedroom_east",
+        "bedroom_west",
+        "entry",
+        "living"
+      ],
+      "embeddedTextures": 8,
+      "extensions": [
+        "EXT_meshopt_compression",
+        "KHR_mesh_quantization"
+      ]
+    },
+    {
+      "name": "house",
+      "bytes": 8811760,
+      "nodes": 82,
+      "triangles": 199873,
+      "animations": [
+        "Curtains_Open_bedroom_east_Left",
+        "Curtains_Open_bedroom_east_Right",
+        "Curtains_Open_bedroom_west_Left",
+        "Curtains_Open_bedroom_west_Right",
+        "Curtains_Open_Left",
+        "Curtains_Open_living_panorama_Left",
+        "Curtains_Open_living_panorama_Right",
+        "Curtains_Open_Right"
+      ],
+      "deviceReferences": "valid",
+      "morphs": "valid",
+      "finiteGeometry": true,
+      "rainChainSegmentsVisible": 0,
+      "curtainMorphs": [
+        {
+          "name": "curtains_living_left",
+          "room": "living",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3LW4j9F4L69fEmTEJ$NU7j"
+          ],
+          "closedBounds": {
+            "min": [
+              3.5048544282904768,
+              0.04599569260548364,
+              1.4427508972356684
+            ],
+            "max": [
+              3.596829891204834,
+              2.3550199123960818,
+              2.3227293419329347
+            ]
+          },
+          "openBounds": {
+            "min": [
+              3.477835591516725,
+              0.04599569260548364,
+              2.132761850389653
+            ],
+            "max": [
+              3.623848727978585,
+              2.3550199123960818,
+              2.3227293419329347
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_living_right",
+          "room": "living",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3LW4j9F4L69fEmTEJ$NU7j"
+          ],
+          "closedBounds": {
+            "min": [
+              3.5048544282904768,
+              0.04599569260548364,
+              0.5627169238675899
+            ],
+            "max": [
+              3.596829891204834,
+              2.3550199123960818,
+              1.4427510775066577
+            ]
+          },
+          "openBounds": {
+            "min": [
+              3.477835591516725,
+              0.04599569260548364,
+              0.5627169238675899
+            ],
+            "max": [
+              3.623848727978585,
+              2.3550199123960818,
+              0.7527401243526731
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_living_panorama_left",
+          "room": "living",
+          "curtainMechanism": "fixed-header-tieback",
+          "sourceWindowGuids": [
+            "3mOQE0kq1ADAzxhHE4vXrq",
+            "1YQoK7NXH6e984YHSYZLUz"
+          ],
+          "closedBounds": {
+            "min": [
+              -1.3921493224404673,
+              0.04897681090830819,
+              2.958752637889295
+            ],
+            "max": [
+              -0.002983080277376038,
+              3.379031181335449,
+              3.0527134990147884
+            ]
+          },
+          "openBounds": {
+            "min": [
+              -1.3921493224404673,
+              0.055027541284191406,
+              2.848384988629196
+            ],
+            "max": [
+              -0.002983080277376038,
+              3.379031181335449,
+              3.065687661263076
+            ]
+          },
+          "movingVertices": 8578
+        },
+        {
+          "name": "curtains_living_panorama_right",
+          "room": "living",
+          "curtainMechanism": "fixed-header-tieback",
+          "sourceWindowGuids": [
+            "3mOQE0kq1ADAzxhHE4vXrq",
+            "1YQoK7NXH6e984YHSYZLUz"
+          ],
+          "closedBounds": {
+            "min": [
+              0.0030299886544056243,
+              0.04928056123502844,
+              2.9587521953374956
+            ],
+            "max": [
+              3.7278263862253738,
+              3.379029127691948,
+              3.052681843624068
+            ]
+          },
+          "openBounds": {
+            "min": [
+              0.0030299886544056243,
+              0.050325384908961324,
+              2.852389145331121
+            ],
+            "max": [
+              3.7278263862253738,
+              3.379029127691948,
+              3.0656376571808366
+            ]
+          },
+          "movingVertices": 17598
+        },
+        {
+          "name": "curtains_bedroom_west_left",
+          "room": "bedroom_west",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3C1Yl09FP1U8mcKdtFO4gl"
+          ],
+          "closedBounds": {
+            "min": [
+              -3.585170030593872,
+              0.04599992526833785,
+              -1.747281952531431
+            ],
+            "max": [
+              -3.4931551287665874,
+              2.3549797792082816,
+              -0.8772774462380902
+            ]
+          },
+          "openBounds": {
+            "min": [
+              -3.6121581068087547,
+              0.04599992526833785,
+              -1.067304600162633
+            ],
+            "max": [
+              -3.466167052551705,
+              2.3549797792082816,
+              -0.8772774462380902
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_bedroom_west_right",
+          "room": "bedroom_west",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3C1Yl09FP1U8mcKdtFO4gl"
+          ],
+          "closedBounds": {
+            "min": [
+              -3.585170030593872,
+              0.04599992526833785,
+              -2.6172790377308925
+            ],
+            "max": [
+              -3.4931551287665874,
+              2.3549797792082816,
+              -1.747274531437552
+            ]
+          },
+          "openBounds": {
+            "min": [
+              -3.6121581068087547,
+              0.04599992526833785,
+              -2.6172790377308925
+            ],
+            "max": [
+              -3.466167052551705,
+              2.3549797792082816,
+              -2.42725188380635
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_bedroom_east_left",
+          "room": "bedroom_east",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3hikcRWh92FRxXp1pYl2RM"
+          ],
+          "closedBounds": {
+            "min": [
+              3.5048544282904768,
+              0.04599569260548364,
+              -1.7472460154436817
+            ],
+            "max": [
+              3.596829891204834,
+              2.3550199123960818,
+              -0.8772951802706942
+            ]
+          },
+          "openBounds": {
+            "min": [
+              3.477835591516725,
+              0.04599569260548364,
+              -1.067262671813976
+            ],
+            "max": [
+              3.623848727978585,
+              2.3550199123960818,
+              -0.8772951802706942
+            ]
+          },
+          "movingVertices": 1880
+        },
+        {
+          "name": "curtains_bedroom_east_right",
+          "room": "bedroom_east",
+          "curtainMechanism": "lateral-draw",
+          "sourceWindowGuids": [
+            "3hikcRWh92FRxXp1pYl2RM"
+          ],
+          "closedBounds": {
+            "min": [
+              3.5048544282904768,
+              0.04599569260548364,
+              -2.6172937482743697
+            ],
+            "max": [
+              3.596829891204834,
+              2.3550199123960818,
+              -1.7472872041595806
+            ]
+          },
+          "openBounds": {
+            "min": [
+              3.477835591516725,
+              0.04599569260548364,
+              -2.6172937482743697
+            ],
+            "max": [
+              3.623848727978585,
+              2.3550199123960818,
+              -2.4272705477892864
+            ]
+          },
+          "movingVertices": 1880
+        }
+      ],
+      "ceilingRooms": [
+        "bathroom",
+        "bedroom_east",
+        "bedroom_west",
+        "entry",
+        "living"
+      ],
+      "embeddedTextures": 9,
+      "extensions": [
+        "EXT_meshopt_compression",
+        "KHR_mesh_quantization"
+      ]
+    }
+  ]
+}

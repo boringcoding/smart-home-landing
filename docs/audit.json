@@ -1,0 +1,295 @@
+{
+  "source": "first.ifc",
+  "sha256": "673317e4e4cc254a6f21e7e1336a80b5901b50a0d821d8cdde29f1164a2ef748",
+  "ifcSchema": "IFC2X3",
+  "software": {
+    "python": "3.13.11",
+    "ifcopenshell": "0.9.0",
+    "blender": "5.2.0 LTS (fbe6228777e7)",
+    "shapely": "2.2.0",
+    "GEOS": "3.14.1"
+  },
+  "unitScaleToMetres": 0.001,
+  "sourceTextureReferences": 0,
+  "sourceSpaces": 0,
+  "storeys": [
+    {
+      "guid": "2hCIFQDZb3qP5aCEN$PFIl",
+      "label": "1-й этаж",
+      "elevationM": 0.0,
+      "directProducts": 203,
+      "types": {
+        "IfcBeam": 75,
+        "IfcBuildingElementProxy": 47,
+        "IfcColumn": 44,
+        "IfcSlab": 9,
+        "IfcFurnishingElement": 7,
+        "IfcFlowTerminal": 1,
+        "IfcCurtainWall": 1,
+        "IfcWall": 8,
+        "IfcWindow": 6,
+        "IfcDoor": 5
+      }
+    },
+    {
+      "guid": "1pACqVbgDCVgjQlLTVM5vo",
+      "label": "2-й этаж",
+      "elevationM": 3.0,
+      "directProducts": 11,
+      "types": {
+        "IfcRoof": 1,
+        "IfcBuildingElementProxy": 10
+      }
+    }
+  ],
+  "productsByType": {
+    "IfcBeam": 75,
+    "IfcBuildingElementPart": 49,
+    "IfcBuildingElementProxy": 417,
+    "IfcColumn": 44,
+    "IfcCurtainWall": 1,
+    "IfcDoor": 5,
+    "IfcRoof": 1,
+    "IfcSlab": 9,
+    "IfcWall": 8,
+    "IfcWindow": 6,
+    "IfcFlowTerminal": 1,
+    "IfcOpeningElement": 11,
+    "IfcFurnishingElement": 7,
+    "IfcBuilding": 1,
+    "IfcBuildingStorey": 2,
+    "IfcSite": 1
+  },
+  "meshedProducts": 611,
+  "triangles": 1044713,
+  "axisOnlyContainers": [
+    {
+      "guid": "3eMDnMx_z0gBrL2RMj3RjT",
+      "name": "СН-8а",
+      "type": "IfcWall"
+    },
+    {
+      "guid": "2egOLontD1PgChqtxVWyWB",
+      "name": "СН-4",
+      "type": "IfcWall"
+    },
+    {
+      "guid": "1vdcwjbKv5SOwK6sxc$DiS",
+      "name": "СТВ-3",
+      "type": "IfcWall"
+    },
+    {
+      "guid": "3PktFLsizFWeh6LYARqkZv",
+      "name": "СВ-7",
+      "type": "IfcWall"
+    },
+    {
+      "guid": "10AXy6aFT9w90BTdEeaFnP",
+      "name": "СВ-7",
+      "type": "IfcWall"
+    },
+    {
+      "guid": "3J5ZgD1jn26RvbFd$RsMKr",
+      "name": "СН-2",
+      "type": "IfcWall"
+    },
+    {
+      "guid": "1DDq5AE454Xu_X4ILzKp00",
+      "name": "СН-7",
+      "type": "IfcWall"
+    },
+    {
+      "guid": "0Q$Sm8BZn6bBIswv0klg6j",
+      "name": "СВ-1",
+      "type": "IfcWall"
+    }
+  ],
+  "errors": [],
+  "elapsedSeconds": 82.26,
+  "geometryArchive": "ifc-geometry.json.gz",
+  "route": "IFC → IfcOpenShell 0.9.0 triangulation with openings → editable Blender → GLB",
+  "excludedFromVisualExport": [
+    "IfcSite terrain (separate source terrain extending to y=-31.98 m)",
+    "IfcOpeningElement void solids (openings are already applied)",
+    "axis-only aggregation containers (all solid child parts preserved)"
+  ],
+  "limitations": [
+    "No PLN/PLA, plans, room schedule, equipment bill or existing website provided. A user photograph was later supplied for exterior color guidance.",
+    "Room names are inferred from walls and existing furnishings; no IfcSpace in source.",
+    "Second storey label at 3 m represents upper/roof elements, not proof of a second occupied floor.",
+    "Added controls, fixtures, radiator, sensors, pipe and valve are design proposals, not as-built engineering.",
+    "All original geometry is preserved in the editable master except separate site/voids; web static meshes are joined by material and visibility category."
+  ],
+  "webExportBeforeCompression": {
+    "houseTriangles": 199873,
+    "housePrimitives": 166,
+    "houseMeshes": 82,
+    "embeddedTextures": 9,
+    "firstRoomTextures": 8,
+    "sourceGeometryPreservedInMaster": true,
+    "firstRoomTriangles": 138130,
+    "firstRoomPrimitives": 131,
+    "firstRoomNodes": 68
+  },
+  "controlDimensionsMetres": {
+    "wallsXY": [
+      8.110483708657403,
+      6.610001899439912
+    ],
+    "floorAndTerraceXY": [
+      8.002002277416093,
+      9.500001918303473
+    ],
+    "entryDoorNominal": [
+      1,
+      2.1
+    ],
+    "entryDoorWithFrame": [
+      1.074,
+      2.137
+    ],
+    "sideWindowNominal": [
+      1.4,
+      1.3
+    ],
+    "sideWindowWithFrame": [
+      1.45,
+      1.35
+    ]
+  },
+  "meshRepairs": {
+    "invalidDuplicateFacesRemoved": 54,
+    "vertexMovement": false,
+    "details": "mesh-repairs.json"
+  },
+  "classificationRepairs": [
+    {
+      "guid": "2D5BbWvjPEau_itFOOQ9x9",
+      "category": "wall",
+      "facade": "west",
+      "reason": "Unnamed 18mm exterior cladding proxy; preserve facade visibility group"
+    },
+    {
+      "guid": "2nc5hhqqn68924vVLi3j15",
+      "category": "wall",
+      "facade": "north",
+      "reason": "Unnamed 18mm exterior cladding proxy; preserve facade visibility group"
+    },
+    {
+      "guid": "0mclhuryX3qPYq9SOkz5mZ",
+      "category": "wall",
+      "facade": "east",
+      "reason": "Unnamed 18mm exterior cladding proxy; preserve facade visibility group"
+    },
+    {
+      "guid": "1$GYiiH852XxGiiSIx$$db",
+      "category": "wall",
+      "facade": "south",
+      "reason": "Unnamed 18mm exterior cladding proxy; preserve facade visibility group"
+    }
+  ],
+  "roofEnvelopeRepair": {
+    "affectedWallParts": 8,
+    "report": "roof-envelope-repairs.json",
+    "sourcePreserved": true,
+    "reversibleMasterCollections": [
+      "Source_Untrimmed",
+      "Repaired_Architecture"
+    ],
+    "afterBoundaryEdges": 0,
+    "afterNonmanifoldEdges": 0,
+    "maxAboveRoofToleranceM": 3.29e-07,
+    "reason": "Source CSG wall layers protrude above existing roof. Six exact solid intersections; two nonmanifold layers restored from original projected triangle coverage, preserving openings, at original thickness.",
+    "subsequentFinishReplacements": "Some repaired lining layers are subsequently replaced by vertical boards; the intermediate source layers are preserved in Source_Finishes, described in interior-finishes.json."
+  },
+  "optimizedResourceBytes": {
+    "firstRoom": 6948928,
+    "house": 8811760
+  },
+  "exteriorFinish": {
+    "report": "exterior-materials.json",
+    "reference": "assets/reference/house-colors.png",
+    "material": "Exterior timber | smoked brown",
+    "nominalSRGB": "#756858",
+    "ifcAssignments": 83,
+    "embeddedTextureCount": 9,
+    "scope": "Exterior facade, terrace, stairs and skirt boards; interior materials unchanged",
+    "gpuTextureBaselineNote": "Current geometry has nine house and eight first-room embedded textures. Historical performance measurements refer to earlier geometry; see current browser QA separately.",
+    "workingGeometryReport": "exterior-materials.json#workingGeometryChanges"
+  },
+  "interiorFinish": {
+    "report": "interior-finishes.json",
+    "masterValidation": "master-validation.json",
+    "liningLayers": 12,
+    "liningBoardSegments": 520,
+    "liningPitchM": 0.14,
+    "liningGrooveM": 0.002,
+    "floorBathModuleM": [
+      0.6,
+      0.6
+    ],
+    "floorOtherRoomsModuleM": [
+      0.18,
+      1.2
+    ],
+    "ceilingRooms": 5,
+    "curtainWindows": 5,
+    "curtainPanels": 8,
+    "curtainRooms": 3,
+    "curtainEndpointValidation": true,
+    "sourceFinishArchiveObjects": 463,
+    "hiddenPileObjects": 24,
+    "deckRealGapM": 0.01,
+    "groundY": -0.914,
+    "graphiteStructuralObjects": 26,
+    "flatRoomCeilingHeightM": 2.38,
+    "livingCeilingPeakM": 3.42983503,
+    "livingRoofDropM": 0.1,
+    "shapedCellularFields": 0,
+    "sourceArchiveObjects": 471,
+    "showerSourceMosaicPanelsArchived": 360,
+    "floorGrainMapScaleM": [
+      0.78,
+      2.1
+    ],
+    "floorUniqueUVFragments": 244,
+    "lightenedInteriorDoors": [
+      "2$bw6uuFTAE8MhuFU1l8aQ",
+      "07RAZSyfnEDfBOP6QLZMkt",
+      "1z3Dyx$HT9qPwpwjB_0Rnn",
+      "0icqSuupz7whtymDbEN2TL"
+    ],
+    "recessedSkirtSections": 4,
+    "panoramaFeasibility": "Visual manual-tieback concept for a stationary angled curtain heading; no electric-drive or cellular-blind claim.",
+    "bathroomPrivacyGlass": true,
+    "bathroomCurtains": false,
+    "terraceBoards": 20,
+    "terraceGrainDirection": "IFC X",
+    "terraceJoistDirection": "IFC Y",
+    "distinctStairTreads": 5,
+    "boardsPerStairTread": 2,
+    "stairBoardGapM": 0.01,
+    "eastCladdingOuterFaceIFCX": 12.370172,
+    "eastCoursePitchM": 0.15,
+    "eastUnchangedWindowAndRearVertices": 464,
+    "eastSourcePlinthBattens": 6,
+    "eastSourcePlinthHeightM": 0.05,
+    "eastSourcePlinthRecessM": 0.032992,
+    "eastOpenTerraceFramingBand": false,
+    "eastBaseCorrectionReport": "east-base-correction.json",
+    "eastLowerEdgeStepRemoved": true,
+    "eastContinuousLowerEdgeM": -0.43,
+    "rainChainSegmentsArchived": 8,
+    "rainChainSegmentsVisible": 0,
+    "terraceFasciaBoards": 12,
+    "plinthBattensCleanUV": 24,
+    "terraceFasciaReport": "terrace-fascia-chains.json",
+    "manualTiebackPanels": 2,
+    "removedLivingDecorObjects": 30,
+    "whiteDiningObjects": 5,
+    "singleTVScreenUV": true,
+    "valveInsideSinkCabinet": true,
+    "livingRefreshReport": "living-refresh.json"
+  },
+  "sourceUnchangedVerifiedAfterFinalInteriorExport": true
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "guid": "0gv6PjQXoDfwbH4JDoU1x0",
+    "beforeTriangles": 188,
+    "afterTriangles": 152,
+    "repair": "Blender mesh.validate removed invalid/duplicate faces; no vertex movement"
+  },
+  {
+    "guid": "0gJejn2IvM$B2ENjGqnIAU",
+    "beforeTriangles": 156,
+    "afterTriangles": 138,
+    "repair": "Blender mesh.validate removed invalid/duplicate faces; no vertex movement"
+  }
+]

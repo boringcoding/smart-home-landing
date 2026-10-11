@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "id": "9274608c-ed2e-41a9-806a-abd51abe8a08",
+  "createdAt": "2026-10-11T10:35:00.081Z",
+  "stored": "local",
+  "status": "local-only-not-sent-to-sales",
+  "contact": {
+    "name": "Тест локальной заявки",
+    "channel": "qa@example.test",
+    "comment": "Проверка интерфейса. Тестовые данные, не отправлять внешним получателям."
+  },
+  "configuration": {
+    "schemaVersion": 1,
+    "project": "Smart House · first.ifc",
+    "status": "Локальная демонстрация. Оборудование и расстановка — проектное предложение.",
+    "sourceModel": "first.ifc",
+    "selectedRooms": [
+      {
+        "id": "living",
+        "name": "Гостиная и кухня"
+      },
+      {
+        "id": "bedroom_west",
+        "name": "Западная спальня"
+      },
+      {
+        "id": "bedroom_east",
+        "name": "Восточная спальня"
+      },
+      {
+        "id": "bathroom",
+        "name": "Санузел"
+      },
+      {
+        "id": "entry",
+        "name": "Прихожая"
+      }
+    ],
+    "systems": [
+      {
+        "id": "lighting",
+        "name": "Освещение",
+        "status": "Проектное предложение",
+        "activeRooms": [
+          {
+            "id": "living",
+            "name": "Гостиная и кухня"
+          },
+          {
+            "id": "entry",
+            "name": "Прихожая"
+          }
+        ]
+      },
+      {
+        "id": "curtains",
+        "name": "Шторы",
+        "status": "Проектное предложение",
+        "activeRooms": [
+          {
+            "id": "living",
+            "name": "Гостиная и кухня"
+          }
+        ]
+      },
+      {
+        "id": "climate",
+        "name": "Отопление",
+        "status": "Проектное предложение",
+        "activeRooms": [
+          {
+            "id": "living",
+            "name": "Гостиная и кухня"
+          }
+        ]
+      },
+      {
+        "id": "water",
+        "name": "Защита от протечки",
+        "status": "Проектное предложение",
+        "activeRooms": [
+          {
+            "id": "living",
+            "name": "Гостиная и кухня"
+          }
+        ]
+      },
+      {
+        "id": "security",
+        "name": "Охрана",
+        "status": "Проектное предложение",
+        "activeRooms": [
+          {
+            "id": "living",
+            "name": "Гостиная и кухня"
+          },
+          {
+            "id": "entry",
+            "name": "Прихожая"
+          }
+        ]
+      },
+      {
+        "id": "media",
+        "name": "Мультимедиа",
+        "status": "Проектное предложение",
+        "activeRooms": [
+          {
+            "id": "living",
+            "name": "Гостиная и кухня"
+          }
+        ]
+      }
+    ],
+    "closeWaterOnAway": false,
+    "lastScenario": {
+      "id": "cinema",
+      "name": "Кино"
+    },
+    "lastActions": [
+      "Основной свет: 5%.",
+      "Локальный свет: 0%.",
+      "Декоративная подсветка: 30%.",
+      "Температура света: 2700 K.",
+      "Шторы: задано 100% закрытия.",
+      "Экран: воспроизведение."
+    ],
+    "demonstration": {
+      "waterEmergencyLatched": false,
+      "waterValveFault": false,
+      "waterValveCurrent": 1,
+      "temperatureC": 21.9,
+      "heatingSetpointC": 22
+    },
+    "commercialTerms": "Состав оборудования и стоимость уточняются после обследования. Телевизор, акустика и подписки не включены автоматически.",
+    "delivery": "Сводка сохранена локально. Заявка не отправлена; сервер и реальные устройства не подключены."
+  }
+}

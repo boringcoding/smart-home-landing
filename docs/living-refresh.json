@@ -1,0 +1,343 @@
+{
+  "sourceSha256": "673317e4e4cc254a6f21e7e1336a80b5901b50a0d821d8cdde29f1164a2ef748",
+  "sourceIFCUnchanged": true,
+  "panorama": {
+    "nodes": [
+      "curtains_living_panorama_left",
+      "curtains_living_panorama_right"
+    ],
+    "mechanism": "fixed-header-tieback",
+    "sourceWindowGuids": [
+      "3mOQE0kq1ADAzxhHE4vXrq",
+      "1YQoK7NXH6e984YHSYZLUz"
+    ],
+    "material": "Fabric | milk linen",
+    "motion": "Heading fixed along both roof slopes; soft vertically folded cloth gathers toward outer sides, producing diagonal draped swags.",
+    "ridgeIFCX": 8.292172,
+    "fieldWidthsM": [
+      1.3891720000000003,
+      3.7248279999999987
+    ],
+    "manualTieback": true,
+    "automated": false,
+    "supplierReference": "https://www.voilavoile.com/ie/explore/112/how-to-hang-curtains-on-apex-and-angled-windows",
+    "feasibility": "Visual manual-tieback concept for a stationary angled curtain heading; no electric-drive or cellular-blind claim."
+  },
+  "living": {
+    "removedAuthoredObjects": [
+      "lamp_base",
+      "lamp_stem",
+      "sofa_cushion_rust",
+      "sofa_cushion_linen",
+      "plant_pot",
+      "plant_stem_0",
+      "plant_leaf_0",
+      "plant_stem_1",
+      "plant_leaf_1",
+      "plant_stem_2",
+      "plant_leaf_2",
+      "plant_stem_3",
+      "plant_leaf_3",
+      "plant_stem_4",
+      "plant_leaf_4",
+      "plant_stem_5",
+      "plant_leaf_5",
+      "plant_stem_6",
+      "plant_leaf_6",
+      "plant_stem_7",
+      "plant_leaf_7",
+      "plant_stem_8",
+      "plant_leaf_8",
+      "plant_stem_9",
+      "plant_leaf_9",
+      "plant_stem_10",
+      "plant_leaf_10",
+      "plant_stem_11",
+      "plant_leaf_11",
+      "light_local_fixture"
+    ],
+    "archiveCollection": "Source_Finishes",
+    "whiteDiningGuids": [
+      "0fhoMwjQv59uPaJu5ROJjU",
+      "0u0bikwRbClvpYRYH4DhBI",
+      "1KfkQkgZr9WPPaQo7FuBPn",
+      "2gaHY96Wb2gfeR2BpxszgM",
+      "3UsO_92GHFPgWILzk_wBSr"
+    ],
+    "diningMaterial": "Dining | matte white",
+    "archivedTVGuid": "02xbQZE_z8FPwixh9A7SfF",
+    "tvScreen": "Single +IFC-X front plane, 1.190 x 0.669375 m, explicit 0..1 UVs",
+    "kitchenLocalFixtureIFC": [
+      9.85217,
+      -3.69,
+      1.486
+    ],
+    "kitchenDecorFixtureIFC": [
+      10.75217,
+      -3.69,
+      1.486
+    ],
+    "sinkCabinetGuid": "3OH04FBhjEXfO99XVpmnLy",
+    "waterValveBodyIFC": [
+      9.95,
+      -3.42,
+      0.36
+    ],
+    "waterValveHandleIFC": [
+      9.95,
+      -3.42,
+      0.427
+    ],
+    "leakJointIFC": [
+      9.95,
+      -3.42,
+      0.28
+    ],
+    "puddleOriginIFC": [
+      9.85217,
+      -3.92,
+      0.022
+    ],
+    "sensorIFC": [
+      9.69,
+      -4.19,
+      0.035
+    ],
+    "puddleBaseRadiusM": 1.0,
+    "waterRouting": "Supply and valve inside the actual sink cabinet; downstream hose loops below valve then rises to sink. Floor egress is at toe kick. Proposed routing, not an as-built installation."
+  },
+  "leakRegistry": {
+    "id": "leak",
+    "type": "leak",
+    "system": "water",
+    "room": "living",
+    "nodes": [
+      "leak_water",
+      "leak_source",
+      "leak_sensor",
+      "leak_sensor_indicator"
+    ],
+    "position": [
+      1.56,
+      0.022,
+      0.19273
+    ],
+    "commands": [
+      "simulateLeak",
+      "reset"
+    ],
+    "range": [
+      0,
+      1
+    ],
+    "clips": [],
+    "proposal": true,
+    "sourcePosition": [
+      1.65783,
+      0.28,
+      -0.30727
+    ],
+    "streamBottomPosition": [
+      1.65783,
+      0.028,
+      -0.30727
+    ],
+    "puddlePosition": [
+      1.56,
+      0.022,
+      0.19273
+    ],
+    "egressPosition": [
+      1.56,
+      0.022,
+      0.19273
+    ],
+    "sensorPosition": [
+      1.39783,
+      0.035,
+      0.46273
+    ],
+    "sensorRadiusM": 0.068,
+    "puddleBaseRadiusM": 1.0,
+    "cabinetSourceGuids": [
+      "3OH04FBhjEXfO99XVpmnLy"
+    ],
+    "cabinetNodes": [
+      "ifc_3OH04FBhjEXfO99XVpmnLy"
+    ],
+    "inspectionBounds": {
+      "min": [
+        1.26,
+        0,
+        -0.42517
+      ],
+      "max": [
+        1.86,
+        1.14,
+        0.17483
+      ]
+    }
+  },
+  "valveRegistry": {
+    "id": "water_valve",
+    "type": "valve",
+    "system": "water",
+    "room": "living",
+    "nodes": [
+      "water_valve_handle",
+      "water_valve_body",
+      "water_valve_stem",
+      "water_supply_pipe",
+      "water_downstream_hose"
+    ],
+    "position": [
+      1.65783,
+      0.36,
+      -0.30727
+    ],
+    "commands": [
+      "close",
+      "reset",
+      "simulateFailure"
+    ],
+    "range": [
+      0,
+      1
+    ],
+    "clips": [],
+    "proposal": true,
+    "axis": "Y",
+    "closedRotation": 1.5707963267948966
+  },
+  "lightingRegistry": [
+    {
+      "id": "light_local",
+      "type": "light",
+      "system": "lighting",
+      "room": "living",
+      "nodes": [
+        "light_local_fixture"
+      ],
+      "position": [
+        1.56,
+        1.4,
+        0.06273
+      ],
+      "commands": [
+        "brightness"
+      ],
+      "range": [
+        0,
+        1
+      ],
+      "clips": [],
+      "proposal": true,
+      "light": {
+        "kind": "point",
+        "color": "#ffca8d",
+        "maxIntensity": 7,
+        "distance": 4,
+        "decay": 2
+      }
+    },
+    {
+      "id": "light_decor",
+      "type": "light",
+      "system": "lighting",
+      "room": "living",
+      "nodes": [
+        "light_decor_fixture"
+      ],
+      "position": [
+        2.46,
+        1.4,
+        0.06273
+      ],
+      "commands": [
+        "brightness"
+      ],
+      "range": [
+        0,
+        1
+      ],
+      "clips": [],
+      "proposal": true,
+      "light": {
+        "kind": "point",
+        "color": "#ffe0b9",
+        "maxIntensity": 5,
+        "distance": 3,
+        "decay": 2
+      }
+    }
+  ],
+  "verification": {
+    "master": {
+      "passed": true,
+      "curtainPanels": 8,
+      "shapedLiftFields": 0,
+      "manualTiebackPanels": 2,
+      "ceilingRooms": [
+        "bathroom",
+        "bedroom_east",
+        "bedroom_west",
+        "entry",
+        "living"
+      ],
+      "livingCeilingPeakM": 3.42983503,
+      "hiddenPileObjects": 24,
+      "sourceArchiveObjects": 471,
+      "archivedShowerMosaicPanels": 360,
+      "lightExteriorRoom": "entry",
+      "floorBoards": 244,
+      "uniqueFloorUVFragments": 244,
+      "lightenedInteriorDoors": [
+        "2$bw6uuFTAE8MhuFU1l8aQ",
+        "07RAZSyfnEDfBOP6QLZMkt",
+        "1z3Dyx$HT9qPwpwjB_0Rnn",
+        "0icqSuupz7whtymDbEN2TL"
+      ],
+      "recessedSkirtSections": 4,
+      "terraceBoards": 20,
+      "terraceGrainDirection": "IFC X",
+      "actualDeckGapM": 0.01,
+      "distinctStairTreads": 5,
+      "stairBoards": 10,
+      "actualStairBoardGapM": 0.01,
+      "bathroomPrivacyGlass": true,
+      "eastCladdingExtendedEndVertices": 160,
+      "removedLivingDecorObjects": 30,
+      "whiteDiningObjects": 5,
+      "singleTVScreenUV": true,
+      "valveInsideSinkCabinet": true,
+      "eastUnchangedWindowAndRearVertices": 464,
+      "eastSourcePlinthBattens": 6,
+      "eastSourcePlinthHeightM": 0.05,
+      "eastSourcePlinthRecessM": 0.032992,
+      "eastOpenTerraceFramingBand": false,
+      "eastLowerEdgeStepRemoved": true,
+      "eastTerraceCladdingLowerEdgeM": -0.4300000071525574,
+      "eastCladdingNonmanifoldEdges": 0,
+      "rainChainSegmentsArchived": 8,
+      "rainChainSegmentsVisible": 0,
+      "plinthBattensCleanUV": 24,
+      "terraceFasciaBoards": 12,
+      "terraceFasciaStairOpeningClear": true
+    },
+    "GLBModels": [
+      {
+        "name": "first-room",
+        "bytes": 6948928,
+        "nodes": 68,
+        "triangles": 138130
+      },
+      {
+        "name": "house",
+        "bytes": 8811760,
+        "nodes": 82,
+        "triangles": 199873
+      }
+    ]
+  },
+  "textureNote": "New milk-linen cloth map replaces removed rust-cushion usage in visible model. Embedded texture counts remain house9/first-room8."
+}

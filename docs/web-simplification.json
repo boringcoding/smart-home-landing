@@ -1,0 +1,44 @@
+[
+  {
+    "guid": "0QEu2ygLrCCeDudX343feu",
+    "name": "БАК-100L",
+    "beforeTriangles": 7974,
+    "afterTriangles": 5999
+  },
+  {
+    "guid": "1f4HIrqxjC4AQLfI2l1vQl",
+    "name": "Б7",
+    "beforeTriangles": 13358,
+    "afterTriangles": 6000
+  },
+  {
+    "guid": "3MniZMMC9BK9fxhg8vJIZn",
+    "name": "Стропило 200х76",
+    "beforeTriangles": 6890,
+    "afterTriangles": 6000
+  },
+  {
+    "guid": "37$vVPD09DOh_gINeHAoKV",
+    "name": "котел",
+    "beforeTriangles": 11152,
+    "afterTriangles": 5999
+  },
+  {
+    "guid": "2kt80CssvAa8R5U8PO$mAY",
+    "name": "Б7",
+    "beforeTriangles": 6726,
+    "afterTriangles": 6000
+  },
+  {
+    "guid": "3xGoJ_hbT6DAx7eP$94Y7C",
+    "name": "ОБ-0003",
+    "beforeTriangles": 9360,
+    "afterTriangles": 6000
+  },
+  {
+    "guid": "0n0EOvUpn338tfmqGq2h_M",
+    "name": "ОБ-0003",
+    "beforeTriangles": 9360,
+    "afterTriangles": 6000
+  }
+]

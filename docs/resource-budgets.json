@@ -1,0 +1,21 @@
+{
+  "created": "2026-10-11T13:53:05.145Z",
+  "models": [
+    {
+      "name": "first-room",
+      "bytes": 6948928,
+      "originalBytes": 12673008,
+      "compression": "EXT_meshopt_compression",
+      "nodes": 68
+    },
+    {
+      "name": "house",
+      "bytes": 8811760,
+      "originalBytes": 17790168,
+      "compression": "EXT_meshopt_compression",
+      "nodes": 82
+    }
+  ],
+  "textureCompression": "Embedded small PNG textures; no external texture/decoder requests. Meshopt decoder bundled in application.",
+  "note": "FPS and load-time budgets require device measurements; file sizes alone do not prove performance."
+}

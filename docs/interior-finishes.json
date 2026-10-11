@@ -1,0 +1,2891 @@
+{
+  "sourceSha256": "673317e4e4cc254a6f21e7e1336a80b5901b50a0d821d8cdde29f1164a2ef748",
+  "sourceArchiveCollection": "Source_Finishes",
+  "archivedSourceObjects": [
+    {
+      "guid": "0qrTDCe4f9Bh6dhQSqVa7x",
+      "archiveObject": "source_finish_0qrTDCe4f9Bh6dhQSqVa7x",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "3$A5IfpA9AtRrJvNcF_wGP",
+      "archiveObject": "source_finish_3$A5IfpA9AtRrJvNcF_wGP",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "1DR46asWH3RgqkKG0qhdQa",
+      "archiveObject": "source_finish_1DR46asWH3RgqkKG0qhdQa",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "00ZcXPc7T2gwTlRAruvjoy",
+      "archiveObject": "source_finish_00ZcXPc7T2gwTlRAruvjoy",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "1BvoLk6nb29Ry73JxfCvKv",
+      "archiveObject": "source_finish_1BvoLk6nb29Ry73JxfCvKv",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "0DjMnsW6vAAuh5lFw0mTGk",
+      "archiveObject": "source_finish_0DjMnsW6vAAuh5lFw0mTGk",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "3rDVwN619AWuMtk14WPhwh",
+      "archiveObject": "source_finish_3rDVwN619AWuMtk14WPhwh",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "2Fpt5tOxP1q9rVOqugB0kn",
+      "archiveObject": "source_finish_2Fpt5tOxP1q9rVOqugB0kn",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "25iQmgDCP1uuVZ9EWjKPiX",
+      "archiveObject": "source_finish_25iQmgDCP1uuVZ9EWjKPiX",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "3l8COviGvFn8mL8tDzVYb9",
+      "archiveObject": "source_finish_3l8COviGvFn8mL8tDzVYb9",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "0lJdO4LOLAb8VxHNiyrWE_",
+      "archiveObject": "source_finish_0lJdO4LOLAb8VxHNiyrWE_",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "3mz9wovJTDjhJuq$w3v0EO",
+      "archiveObject": "source_finish_3mz9wovJTDjhJuq$w3v0EO",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "1mgoV3UwfD9AUc4rDyrzXd",
+      "archiveObject": "source_finish_1mgoV3UwfD9AUc4rDyrzXd",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "24MHeXB2zEhvjXfS4q0zsh",
+      "archiveObject": "source_finish_24MHeXB2zEhvjXfS4q0zsh",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "3GsxwEIlr1PfGg_UqPtEbC",
+      "archiveObject": "source_finish_3GsxwEIlr1PfGg_UqPtEbC",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "0CjDX53nr9RA2wOJsaHtVP",
+      "archiveObject": "source_finish_0CjDX53nr9RA2wOJsaHtVP",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "0M9$UNO4XDthjjWOno$bGY",
+      "archiveObject": "source_finish_0M9$UNO4XDthjjWOno$bGY",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "1Yy5QoTtT5mAVYAnLCEAWl",
+      "archiveObject": "source_finish_1Yy5QoTtT5mAVYAnLCEAWl",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "0xAIewE7TElxqGIsJ4DlIm",
+      "archiveObject": "source_finish_0xAIewE7TElxqGIsJ4DlIm",
+      "reason": "East screen/plinth unified with house siding profile, plane and 150 mm horizontal courses"
+    },
+    {
+      "guid": "3h4EbeYStEOXJUh6pwlyeH",
+      "archiveObject": "source_finish_3h4EbeYStEOXJUh6pwlyeH",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "3vG4z9GkSGLJ5adLYqv63M",
+      "archiveObject": "source_finish_3vG4z9GkSGLJ5adLYqv63M",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "0gv6PjQXoDfwbH4JDoU1x0",
+      "archiveObject": "source_finish_0gv6PjQXoDfwbH4JDoU1x0",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "3wvobZ9r3Q27XFT5WPH4g6",
+      "archiveObject": "source_finish_3wvobZ9r3Q27XFT5WPH4g6",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "19s4CPEUIgIxcyKU$r8nuW",
+      "archiveObject": "source_finish_19s4CPEUIgIxcyKU$r8nuW",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "2cvJAW6ktcl$js0rCMkQ1H",
+      "archiveObject": "source_finish_2cvJAW6ktcl$js0rCMkQ1H",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "0p8uNCl_K3JgmOfv5kgko1",
+      "archiveObject": "source_finish_0p8uNCl_K3JgmOfv5kgko1",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "0lfmX0Mo1Bpylsi_EM$NBm",
+      "archiveObject": "source_finish_0lfmX0Mo1Bpylsi_EM$NBm",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "3wUtvvA7gLF_K7MAydrs3y",
+      "archiveObject": "source_finish_3wUtvvA7gLF_K7MAydrs3y",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "09T9NGgnIUNttB4awyUCUN",
+      "archiveObject": "source_finish_09T9NGgnIUNttB4awyUCUN",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "2vmOGrSVVvZxpBslwaw5US",
+      "archiveObject": "source_finish_2vmOGrSVVvZxpBslwaw5US",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "0ROa_t$TXCHA7DAdFHOaAU",
+      "archiveObject": "source_finish_0ROa_t$TXCHA7DAdFHOaAU",
+      "reason": "Interior wall finish replaced by 140 mm vertical lining, preserving source-profile openings"
+    },
+    {
+      "guid": "1c_S73KU5DZOyIMbwiOKWJ",
+      "archiveObject": "source_finish_1c_S73KU5DZOyIMbwiOKWJ",
+      "reason": "Source solid wooden treads replaced by two boards per distinct level; dark stringers retained"
+    },
+    {
+      "guid": "3Zge$Yn8v8GOtybn40ABLZ",
+      "archiveObject": "source_finish_3Zge$Yn8v8GOtybn40ABLZ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3LHWvfOdnF2fc8$55_6Nsx",
+      "archiveObject": "source_finish_3LHWvfOdnF2fc8$55_6Nsx",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0WbOfm3kD7MhjocDsH8mq0",
+      "archiveObject": "source_finish_0WbOfm3kD7MhjocDsH8mq0",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1svuK5ehnEhAC3y6ypo30c",
+      "archiveObject": "source_finish_1svuK5ehnEhAC3y6ypo30c",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0PMdQ6Iwv9gQiaz0AzXYey",
+      "archiveObject": "source_finish_0PMdQ6Iwv9gQiaz0AzXYey",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1n$aO7ZanAmOb3fpo2gaDq",
+      "archiveObject": "source_finish_1n$aO7ZanAmOb3fpo2gaDq",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3GC2P3xbXFOAqLJxFjumv$",
+      "archiveObject": "source_finish_3GC2P3xbXFOAqLJxFjumv$",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "09O0kuFAL6W8aiJQUi5W97",
+      "archiveObject": "source_finish_09O0kuFAL6W8aiJQUi5W97",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0yb6lKYx9ALPVbOUzhDF9R",
+      "archiveObject": "source_finish_0yb6lKYx9ALPVbOUzhDF9R",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "05IRjrd$nBOeey$jJtzWqN",
+      "archiveObject": "source_finish_05IRjrd$nBOeey$jJtzWqN",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0qtMLbc9DARe3GpAAIAHGA",
+      "archiveObject": "source_finish_0qtMLbc9DARe3GpAAIAHGA",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3hP2VZvLf4fRlpPIDjhbEG",
+      "archiveObject": "source_finish_3hP2VZvLf4fRlpPIDjhbEG",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3ChnfZi7n2ZxgBdXlN8A8M",
+      "archiveObject": "source_finish_3ChnfZi7n2ZxgBdXlN8A8M",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1Mtb$5znP7tht9VM86eFDS",
+      "archiveObject": "source_finish_1Mtb$5znP7tht9VM86eFDS",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1DspE9AC58rBF85Y4QhAv9",
+      "archiveObject": "source_finish_1DspE9AC58rBF85Y4QhAv9",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2AS7JJTor3$hxJY1wuUYzb",
+      "archiveObject": "source_finish_2AS7JJTor3$hxJY1wuUYzb",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3BSsDWu9590AxU4uLXs7E7",
+      "archiveObject": "source_finish_3BSsDWu9590AxU4uLXs7E7",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3oUx65R8v8TOEZJJD$NBFb",
+      "archiveObject": "source_finish_3oUx65R8v8TOEZJJD$NBFb",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "27sbzxqCf2Xe$kZnEPEpYv",
+      "archiveObject": "source_finish_27sbzxqCf2Xe$kZnEPEpYv",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2xge0BnYP3dhNMuarT3c1W",
+      "archiveObject": "source_finish_2xge0BnYP3dhNMuarT3c1W",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "20zO_o7GvD9wRXXkXykE2n",
+      "archiveObject": "source_finish_20zO_o7GvD9wRXXkXykE2n",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2C4owFKyDCSRxtnDIy2sg_",
+      "archiveObject": "source_finish_2C4owFKyDCSRxtnDIy2sg_",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1ZQE0pkDXAY9cukYa2it6N",
+      "archiveObject": "source_finish_1ZQE0pkDXAY9cukYa2it6N",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1aMk8w_6z1IhgTs0uMG0av",
+      "archiveObject": "source_finish_1aMk8w_6z1IhgTs0uMG0av",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3AH9r3mGT4RAXb_AM6lH2s",
+      "archiveObject": "source_finish_3AH9r3mGT4RAXb_AM6lH2s",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2mNl9s7094G8AgJ0WVJ34Q",
+      "archiveObject": "source_finish_2mNl9s7094G8AgJ0WVJ34Q",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2dCxNSG1LFcfcB39_52pat",
+      "archiveObject": "source_finish_2dCxNSG1LFcfcB39_52pat",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3cBspYA3jCpPNquk7$JXok",
+      "archiveObject": "source_finish_3cBspYA3jCpPNquk7$JXok",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1oZJ42l7XFwOAZZbBoxZoV",
+      "archiveObject": "source_finish_1oZJ42l7XFwOAZZbBoxZoV",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1_T30jJIz21x9jIMeO2l5q",
+      "archiveObject": "source_finish_1_T30jJIz21x9jIMeO2l5q",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3iNtjUorP4sAHfotqUBawh",
+      "archiveObject": "source_finish_3iNtjUorP4sAHfotqUBawh",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1e2ceZ8s56ceufnEfL9d13",
+      "archiveObject": "source_finish_1e2ceZ8s56ceufnEfL9d13",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3Vt8bH9Kz7lhIGkso9iwJO",
+      "archiveObject": "source_finish_3Vt8bH9Kz7lhIGkso9iwJO",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2HSYxQSFD3zPWQTDmeAR9h",
+      "archiveObject": "source_finish_2HSYxQSFD3zPWQTDmeAR9h",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1lY0sy6rH3thGdjsGrAffd",
+      "archiveObject": "source_finish_1lY0sy6rH3thGdjsGrAffd",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "14L0xfhH54SglniWSsGK77",
+      "archiveObject": "source_finish_14L0xfhH54SglniWSsGK77",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3XZU3BLa5DsuarzuBnN52h",
+      "archiveObject": "source_finish_3XZU3BLa5DsuarzuBnN52h",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3E1E3a1VXEZu3M4Hooi7Ii",
+      "archiveObject": "source_finish_3E1E3a1VXEZu3M4Hooi7Ii",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "09ZCtHzuPFF8gF8mqcVu0i",
+      "archiveObject": "source_finish_09ZCtHzuPFF8gF8mqcVu0i",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2xSb50OlHDf9XEZrqtzRFQ",
+      "archiveObject": "source_finish_2xSb50OlHDf9XEZrqtzRFQ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1jGwml7WzFTwk0aqY2a6YO",
+      "archiveObject": "source_finish_1jGwml7WzFTwk0aqY2a6YO",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1xn1wq9dTFgwdzDhzhxBts",
+      "archiveObject": "source_finish_1xn1wq9dTFgwdzDhzhxBts",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0TlbgcUqX76xkuB7eU_8ld",
+      "archiveObject": "source_finish_0TlbgcUqX76xkuB7eU_8ld",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3Ks$Lkqsf4K80j0RIKHiJT",
+      "archiveObject": "source_finish_3Ks$Lkqsf4K80j0RIKHiJT",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0uRAv4bND27eeJP_6Dn1aP",
+      "archiveObject": "source_finish_0uRAv4bND27eeJP_6Dn1aP",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3TULfrPLbBWQd5o$GcaanX",
+      "archiveObject": "source_finish_3TULfrPLbBWQd5o$GcaanX",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2TC7$qLxn449K0C2t5Lica",
+      "archiveObject": "source_finish_2TC7$qLxn449K0C2t5Lica",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1MQGTlzDz34vu3JZJn2FuY",
+      "archiveObject": "source_finish_1MQGTlzDz34vu3JZJn2FuY",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3ZLBxNV5TCE8xgBa0wjxak",
+      "archiveObject": "source_finish_3ZLBxNV5TCE8xgBa0wjxak",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "35YUIjAvD2Z80RWlC8gJLZ",
+      "archiveObject": "source_finish_35YUIjAvD2Z80RWlC8gJLZ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0e_4bmzs5ADgtaaoLWrCGQ",
+      "archiveObject": "source_finish_0e_4bmzs5ADgtaaoLWrCGQ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1QZQGrMfXFxQhXMuBV8rAi",
+      "archiveObject": "source_finish_1QZQGrMfXFxQhXMuBV8rAi",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2l0psSkjj3wwAS0iO40WnA",
+      "archiveObject": "source_finish_2l0psSkjj3wwAS0iO40WnA",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0MnTtbuB92o8csSt4pya7V",
+      "archiveObject": "source_finish_0MnTtbuB92o8csSt4pya7V",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1T7tQo3Eb6EwcV2ol6nMID",
+      "archiveObject": "source_finish_1T7tQo3Eb6EwcV2ol6nMID",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3rWKtqh0n80vPctQpXc0E5",
+      "archiveObject": "source_finish_3rWKtqh0n80vPctQpXc0E5",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0kI9i7ui1CSP02eQBpHFXe",
+      "archiveObject": "source_finish_0kI9i7ui1CSP02eQBpHFXe",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3lREux3eP8OAlgT0ow7ZVV",
+      "archiveObject": "source_finish_3lREux3eP8OAlgT0ow7ZVV",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0HibdqiGP3$Oh57OxgJ5LG",
+      "archiveObject": "source_finish_0HibdqiGP3$Oh57OxgJ5LG",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2biFDQlwL6sw5TfMWGVd63",
+      "archiveObject": "source_finish_2biFDQlwL6sw5TfMWGVd63",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0lt34Xkpr8ZOAY3xDkaOHZ",
+      "archiveObject": "source_finish_0lt34Xkpr8ZOAY3xDkaOHZ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0g1FAtbTr3G8fe2sWJjL$l",
+      "archiveObject": "source_finish_0g1FAtbTr3G8fe2sWJjL$l",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3aDg6Z7bf9Ve4jrXHyUImN",
+      "archiveObject": "source_finish_3aDg6Z7bf9Ve4jrXHyUImN",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "01JF7pYij7HOjPPKC3$5UH",
+      "archiveObject": "source_finish_01JF7pYij7HOjPPKC3$5UH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3iR8Bq_jr30AUFgrnCQ$qf",
+      "archiveObject": "source_finish_3iR8Bq_jr30AUFgrnCQ$qf",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2QNMscyhTCoegsQ3fPjTBl",
+      "archiveObject": "source_finish_2QNMscyhTCoegsQ3fPjTBl",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2DY5r1khX5s8CueK2gktcz",
+      "archiveObject": "source_finish_2DY5r1khX5s8CueK2gktcz",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2dx7_6xG97nOBXIWT9Qk2a",
+      "archiveObject": "source_finish_2dx7_6xG97nOBXIWT9Qk2a",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2reYkciu52JewlJkUjw6p0",
+      "archiveObject": "source_finish_2reYkciu52JewlJkUjw6p0",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0nqMAij$P1ePJJeKFz1RRS",
+      "archiveObject": "source_finish_0nqMAij$P1ePJJeKFz1RRS",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1qbXeIp9v15BipTGOp93sx",
+      "archiveObject": "source_finish_1qbXeIp9v15BipTGOp93sx",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2fmf8fTsr3K84ZZrnrYo8Q",
+      "archiveObject": "source_finish_2fmf8fTsr3K84ZZrnrYo8Q",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0hTJAEgNbAC8Nb9RWsO9DO",
+      "archiveObject": "source_finish_0hTJAEgNbAC8Nb9RWsO9DO",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3_rixmdYnFl8c3EwYvSSzi",
+      "archiveObject": "source_finish_3_rixmdYnFl8c3EwYvSSzi",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "077B6CGlLAdBvBWFNQfNfZ",
+      "archiveObject": "source_finish_077B6CGlLAdBvBWFNQfNfZ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0hTXBSw396E9EHQrp_z34z",
+      "archiveObject": "source_finish_0hTXBSw396E9EHQrp_z34z",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "23kZH_95v2rveaC_XuRBkG",
+      "archiveObject": "source_finish_23kZH_95v2rveaC_XuRBkG",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3d1SqQvrL8EgdRx0IQrdY5",
+      "archiveObject": "source_finish_3d1SqQvrL8EgdRx0IQrdY5",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3OzixXZ2PDJgKvG39sWEJB",
+      "archiveObject": "source_finish_3OzixXZ2PDJgKvG39sWEJB",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2FfLXe0xzES81bL6Jwti0S",
+      "archiveObject": "source_finish_2FfLXe0xzES81bL6Jwti0S",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0GYwDhxHvFXeFz0Msa11sA",
+      "archiveObject": "source_finish_0GYwDhxHvFXeFz0Msa11sA",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3YzYoFz$z1wOYqUzEU3XHg",
+      "archiveObject": "source_finish_3YzYoFz$z1wOYqUzEU3XHg",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3iC94$MRTBIhhZ5lm2m25i",
+      "archiveObject": "source_finish_3iC94$MRTBIhhZ5lm2m25i",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "25UxTHgx92mRYzogVTGfCR",
+      "archiveObject": "source_finish_25UxTHgx92mRYzogVTGfCR",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0wkJ9ovK58jA94FLs7VIaG",
+      "archiveObject": "source_finish_0wkJ9ovK58jA94FLs7VIaG",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1496yo6jb0YuY6aJVDD5mU",
+      "archiveObject": "source_finish_1496yo6jb0YuY6aJVDD5mU",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "36eRR31Y99fR7TzlE2WSqN",
+      "archiveObject": "source_finish_36eRR31Y99fR7TzlE2WSqN",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0ym_Ax1_r7wglAYI5H_7Gb",
+      "archiveObject": "source_finish_0ym_Ax1_r7wglAYI5H_7Gb",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0SLtwt8lv6tADCmDFhURYH",
+      "archiveObject": "source_finish_0SLtwt8lv6tADCmDFhURYH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "33AnfpY1f4dRGdIL1xoOAz",
+      "archiveObject": "source_finish_33AnfpY1f4dRGdIL1xoOAz",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1nchAHXCjBDOJzMvWTxMcH",
+      "archiveObject": "source_finish_1nchAHXCjBDOJzMvWTxMcH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2q1ABHKN56SulgRzHlqrpd",
+      "archiveObject": "source_finish_2q1ABHKN56SulgRzHlqrpd",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1eTXP_Ldf9vx5M$hMxxcyt",
+      "archiveObject": "source_finish_1eTXP_Ldf9vx5M$hMxxcyt",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0L$Odd2g98nP5_QwnW300L",
+      "archiveObject": "source_finish_0L$Odd2g98nP5_QwnW300L",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0MAcJW2_b1ogwXEpu1s3SY",
+      "archiveObject": "source_finish_0MAcJW2_b1ogwXEpu1s3SY",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "18hs6TpXvA5vrGz$5QDhdI",
+      "archiveObject": "source_finish_18hs6TpXvA5vrGz$5QDhdI",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0N2YnThQzFKRy4VuXCMz$5",
+      "archiveObject": "source_finish_0N2YnThQzFKRy4VuXCMz$5",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2IYKtnKH96H87yLQbYLX6h",
+      "archiveObject": "source_finish_2IYKtnKH96H87yLQbYLX6h",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3iRhVGpW9ELgAXr0bCGwgc",
+      "archiveObject": "source_finish_3iRhVGpW9ELgAXr0bCGwgc",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "24c9l$gvX66R0g7AmPKEMi",
+      "archiveObject": "source_finish_24c9l$gvX66R0g7AmPKEMi",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1YCyPeXZfDCgX88LH5hgMJ",
+      "archiveObject": "source_finish_1YCyPeXZfDCgX88LH5hgMJ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3LPhe_$jzDsRkrMedZR3Wd",
+      "archiveObject": "source_finish_3LPhe_$jzDsRkrMedZR3Wd",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2H896nJGz3axeOKaGPsJnr",
+      "archiveObject": "source_finish_2H896nJGz3axeOKaGPsJnr",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0Qg9KSUJj5RxQ0u$di3Ps0",
+      "archiveObject": "source_finish_0Qg9KSUJj5RxQ0u$di3Ps0",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "12ifjhTtLErQrCHPtESMI8",
+      "archiveObject": "source_finish_12ifjhTtLErQrCHPtESMI8",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0m8zFT8sn7pvdQpyawjM_z",
+      "archiveObject": "source_finish_0m8zFT8sn7pvdQpyawjM_z",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2dtVP$C0HB6P_VtF36V2kG",
+      "archiveObject": "source_finish_2dtVP$C0HB6P_VtF36V2kG",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2a2BJXeBP4TxPLXodt1ypF",
+      "archiveObject": "source_finish_2a2BJXeBP4TxPLXodt1ypF",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1kU7HP2cD6Kwp96F291rj8",
+      "archiveObject": "source_finish_1kU7HP2cD6Kwp96F291rj8",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "027j1kMtLB68OPC$ufH_X1",
+      "archiveObject": "source_finish_027j1kMtLB68OPC$ufH_X1",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2TzGllPdT3ygsLM$LYiOHk",
+      "archiveObject": "source_finish_2TzGllPdT3ygsLM$LYiOHk",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "19HTVEiIvBkQ71l5jyYMZA",
+      "archiveObject": "source_finish_19HTVEiIvBkQ71l5jyYMZA",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "38QUknaWz6Jxd5YAEMHAW6",
+      "archiveObject": "source_finish_38QUknaWz6Jxd5YAEMHAW6",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1$t11QkKvCfOTt51mImmKd",
+      "archiveObject": "source_finish_1$t11QkKvCfOTt51mImmKd",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1nafMOY9H5n9kXRArqiuyd",
+      "archiveObject": "source_finish_1nafMOY9H5n9kXRArqiuyd",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1vU$Ba05516xxquoJzYWrU",
+      "archiveObject": "source_finish_1vU$Ba05516xxquoJzYWrU",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0Nl$ntMU1EBvlzJN1Lzdzt",
+      "archiveObject": "source_finish_0Nl$ntMU1EBvlzJN1Lzdzt",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1E2zpCwYPClxNCCCWSIF8E",
+      "archiveObject": "source_finish_1E2zpCwYPClxNCCCWSIF8E",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3jVw5o_2zEIfFDRJl3fDr0",
+      "archiveObject": "source_finish_3jVw5o_2zEIfFDRJl3fDr0",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "22pVDRGLnBKPOoCpGL4mRa",
+      "archiveObject": "source_finish_22pVDRGLnBKPOoCpGL4mRa",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2hhnv0RoL5w93ymCpbd5tl",
+      "archiveObject": "source_finish_2hhnv0RoL5w93ymCpbd5tl",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3AJBOx1fXAFu4FnBpiRXuW",
+      "archiveObject": "source_finish_3AJBOx1fXAFu4FnBpiRXuW",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "06vGlHqJH9neUV2_pvwBsc",
+      "archiveObject": "source_finish_06vGlHqJH9neUV2_pvwBsc",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3jM5iiC51BUgSn2ZyDqRfG",
+      "archiveObject": "source_finish_3jM5iiC51BUgSn2ZyDqRfG",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0ufFWjU0vDjBKke0RzCeIJ",
+      "archiveObject": "source_finish_0ufFWjU0vDjBKke0RzCeIJ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3Bqn1hNQb65Ow31WWfdzEi",
+      "archiveObject": "source_finish_3Bqn1hNQb65Ow31WWfdzEi",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0PsnE$KRH6je3qG1pPuqTs",
+      "archiveObject": "source_finish_0PsnE$KRH6je3qG1pPuqTs",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "00vSG69ZL4IvBM$7cbLQdU",
+      "archiveObject": "source_finish_00vSG69ZL4IvBM$7cbLQdU",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2sZZqQyx1BjOUmlvwU4s0T",
+      "archiveObject": "source_finish_2sZZqQyx1BjOUmlvwU4s0T",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1fP$i3R2nBQRXF1byrM9xx",
+      "archiveObject": "source_finish_1fP$i3R2nBQRXF1byrM9xx",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0vn3mfPMn1tRGgtqsywOGa",
+      "archiveObject": "source_finish_0vn3mfPMn1tRGgtqsywOGa",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1w5NBBa6fCyvTHbzgz9IjA",
+      "archiveObject": "source_finish_1w5NBBa6fCyvTHbzgz9IjA",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2gpMifT5j8Bx4nJTx_3BEk",
+      "archiveObject": "source_finish_2gpMifT5j8Bx4nJTx_3BEk",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0SH6RZDBz87RySisAXfNAc",
+      "archiveObject": "source_finish_0SH6RZDBz87RySisAXfNAc",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2LlJghHJn7QeLK9KpdQOSX",
+      "archiveObject": "source_finish_2LlJghHJn7QeLK9KpdQOSX",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3wnU82g5nE2RG72wY0U59D",
+      "archiveObject": "source_finish_3wnU82g5nE2RG72wY0U59D",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0FX_57Rjn0vOEhs8ZephpV",
+      "archiveObject": "source_finish_0FX_57Rjn0vOEhs8ZephpV",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2nRjp1QK95XQ9noujBsMKt",
+      "archiveObject": "source_finish_2nRjp1QK95XQ9noujBsMKt",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0gUBnOwfj0G8NfF$73o9Ju",
+      "archiveObject": "source_finish_0gUBnOwfj0G8NfF$73o9Ju",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "37Ym$3Ui996xF$zxZ3se9j",
+      "archiveObject": "source_finish_37Ym$3Ui996xF$zxZ3se9j",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3hzpWtDofCFOxVjoIyJHjR",
+      "archiveObject": "source_finish_3hzpWtDofCFOxVjoIyJHjR",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3zrz9vvJT7VhqkuRc$P80M",
+      "archiveObject": "source_finish_3zrz9vvJT7VhqkuRc$P80M",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "01IJlKPaz1NhCeIWLt$fmt",
+      "archiveObject": "source_finish_01IJlKPaz1NhCeIWLt$fmt",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "31oy4O7LH75vHbalgp5ONG",
+      "archiveObject": "source_finish_31oy4O7LH75vHbalgp5ONG",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "08NW$p_SHDYviiJk$1L5Vx",
+      "archiveObject": "source_finish_08NW$p_SHDYviiJk$1L5Vx",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3m4p$ij1T78fie_qxqE31e",
+      "archiveObject": "source_finish_3m4p$ij1T78fie_qxqE31e",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3_iilcJIf4mQX4ReWIynLE",
+      "archiveObject": "source_finish_3_iilcJIf4mQX4ReWIynLE",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "10q_hm4$HE4BCCVsFg4SyW",
+      "archiveObject": "source_finish_10q_hm4$HE4BCCVsFg4SyW",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "32d4ylBRf1pxF9JRgvIhSQ",
+      "archiveObject": "source_finish_32d4ylBRf1pxF9JRgvIhSQ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "06oiF2vfn6guXxvLFn_gXK",
+      "archiveObject": "source_finish_06oiF2vfn6guXxvLFn_gXK",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2xD1kExGfFJxRzhHJWYIYl",
+      "archiveObject": "source_finish_2xD1kExGfFJxRzhHJWYIYl",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1FBJ5smE165xDrqu14PtAa",
+      "archiveObject": "source_finish_1FBJ5smE165xDrqu14PtAa",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2tgYE_HR51k84gZNtiEclp",
+      "archiveObject": "source_finish_2tgYE_HR51k84gZNtiEclp",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3fW07xkF5FQfoknqJCfETv",
+      "archiveObject": "source_finish_3fW07xkF5FQfoknqJCfETv",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "141b3lIYj0Dg2e5PnUn9TU",
+      "archiveObject": "source_finish_141b3lIYj0Dg2e5PnUn9TU",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1yTV18V2LCKfZ58ghdCIoH",
+      "archiveObject": "source_finish_1yTV18V2LCKfZ58ghdCIoH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "087vYUycT6VRx1NhBWHiEo",
+      "archiveObject": "source_finish_087vYUycT6VRx1NhBWHiEo",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0jcM7PRmbDOx94ICqp7zYy",
+      "archiveObject": "source_finish_0jcM7PRmbDOx94ICqp7zYy",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2jub2rhxXA9fYxWwn5q552",
+      "archiveObject": "source_finish_2jub2rhxXA9fYxWwn5q552",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "08NSLws2197wrjc5rW4ezu",
+      "archiveObject": "source_finish_08NSLws2197wrjc5rW4ezu",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3lTZHXodjAi9X1cX8TzwVr",
+      "archiveObject": "source_finish_3lTZHXodjAi9X1cX8TzwVr",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2FGnJeFvL5V8q_YQRotZra",
+      "archiveObject": "source_finish_2FGnJeFvL5V8q_YQRotZra",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0liZkUCjj8mvYf9z1QK024",
+      "archiveObject": "source_finish_0liZkUCjj8mvYf9z1QK024",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3nbjMd1SjBbRtNWaAq49Kg",
+      "archiveObject": "source_finish_3nbjMd1SjBbRtNWaAq49Kg",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2_4ukvsu10txiTQD5uTqQO",
+      "archiveObject": "source_finish_2_4ukvsu10txiTQD5uTqQO",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2OXguDTZ9B8AP$LZQqJazJ",
+      "archiveObject": "source_finish_2OXguDTZ9B8AP$LZQqJazJ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0xRcXiMOzFDgkXy2VXk375",
+      "archiveObject": "source_finish_0xRcXiMOzFDgkXy2VXk375",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2cfwSG_vn8ev1BBdJPvDvK",
+      "archiveObject": "source_finish_2cfwSG_vn8ev1BBdJPvDvK",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0ixQ1JyYrEHARxymXmSBQV",
+      "archiveObject": "source_finish_0ixQ1JyYrEHARxymXmSBQV",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1Hccs8E4v0t9Oxr0Q8d_n5",
+      "archiveObject": "source_finish_1Hccs8E4v0t9Oxr0Q8d_n5",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3gwZjJxyb0bxy25PiI3yY_",
+      "archiveObject": "source_finish_3gwZjJxyb0bxy25PiI3yY_",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2s1iqAndHFivh83DyQ85Nj",
+      "archiveObject": "source_finish_2s1iqAndHFivh83DyQ85Nj",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1CXO4Zk0fFQR1yNT8Qh7oS",
+      "archiveObject": "source_finish_1CXO4Zk0fFQR1yNT8Qh7oS",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0uzPE_GQDCmeKKKIBZgR3t",
+      "archiveObject": "source_finish_0uzPE_GQDCmeKKKIBZgR3t",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0YdDdN_xv3fujG3HQaRQWs",
+      "archiveObject": "source_finish_0YdDdN_xv3fujG3HQaRQWs",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2pkbLUdEL2veLX9jp9Y4t8",
+      "archiveObject": "source_finish_2pkbLUdEL2veLX9jp9Y4t8",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0wRHh4oirBZQNnh9M_hof6",
+      "archiveObject": "source_finish_0wRHh4oirBZQNnh9M_hof6",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2zsi6Ener4yPZxVVJbkTBP",
+      "archiveObject": "source_finish_2zsi6Ener4yPZxVVJbkTBP",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0yQJrhm45CaQp8ZvJNtTO8",
+      "archiveObject": "source_finish_0yQJrhm45CaQp8ZvJNtTO8",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2tV1FDgbf8_w4mN8PVBeDD",
+      "archiveObject": "source_finish_2tV1FDgbf8_w4mN8PVBeDD",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1azFQt$mf289MFhZfe6y4e",
+      "archiveObject": "source_finish_1azFQt$mf289MFhZfe6y4e",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0GzSSKA7L69eRanAKpkfeG",
+      "archiveObject": "source_finish_0GzSSKA7L69eRanAKpkfeG",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1fDWxPxhz0lBULUW$0qZGG",
+      "archiveObject": "source_finish_1fDWxPxhz0lBULUW$0qZGG",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2A1Y39Js15VRISUwDNYaaC",
+      "archiveObject": "source_finish_2A1Y39Js15VRISUwDNYaaC",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "327gQSc4r6nQqNgQVdVYFY",
+      "archiveObject": "source_finish_327gQSc4r6nQqNgQVdVYFY",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2EQOz4vJL4IgFjo6pF4ylC",
+      "archiveObject": "source_finish_2EQOz4vJL4IgFjo6pF4ylC",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1ROy$5yzP6bvSFoaL0x6bJ",
+      "archiveObject": "source_finish_1ROy$5yzP6bvSFoaL0x6bJ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0ehIWQMHf3mvvfWEePKo3w",
+      "archiveObject": "source_finish_0ehIWQMHf3mvvfWEePKo3w",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3eGRzSWa93Ru6TND44kU1l",
+      "archiveObject": "source_finish_3eGRzSWa93Ru6TND44kU1l",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0kpll7APr4AAyurrUdTIDH",
+      "archiveObject": "source_finish_0kpll7APr4AAyurrUdTIDH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1mDT9$4NnE9v9pJiJq37Yb",
+      "archiveObject": "source_finish_1mDT9$4NnE9v9pJiJq37Yb",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1134JCctvEegGf8BjX2lbt",
+      "archiveObject": "source_finish_1134JCctvEegGf8BjX2lbt",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "29OqAc4_j3p90KKJzBuNXo",
+      "archiveObject": "source_finish_29OqAc4_j3p90KKJzBuNXo",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1YM66N2df9RxPcX4gHa18r",
+      "archiveObject": "source_finish_1YM66N2df9RxPcX4gHa18r",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2lJ1M8ACP0aQ8MQ8s$1gqS",
+      "archiveObject": "source_finish_2lJ1M8ACP0aQ8MQ8s$1gqS",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0rw7TXB9j0tgxTCJEnivgH",
+      "archiveObject": "source_finish_0rw7TXB9j0tgxTCJEnivgH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "17Crlkn7D2HO9IvcnIPTs2",
+      "archiveObject": "source_finish_17Crlkn7D2HO9IvcnIPTs2",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2xgRxOidf5UvhL3doyLF50",
+      "archiveObject": "source_finish_2xgRxOidf5UvhL3doyLF50",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "16ynYEGij0efFXB8yLdpKw",
+      "archiveObject": "source_finish_16ynYEGij0efFXB8yLdpKw",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0oD9ShOxr0WAYc4IKqDs1I",
+      "archiveObject": "source_finish_0oD9ShOxr0WAYc4IKqDs1I",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3N98yKnLn7sxd4d2utjV1q",
+      "archiveObject": "source_finish_3N98yKnLn7sxd4d2utjV1q",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3bq37qa4rBrxg6OF0x6Axm",
+      "archiveObject": "source_finish_3bq37qa4rBrxg6OF0x6Axm",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2v6FpZCMr8I9UwhWg7g0ap",
+      "archiveObject": "source_finish_2v6FpZCMr8I9UwhWg7g0ap",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2UtuCldSX4BxwRugzGGOnN",
+      "archiveObject": "source_finish_2UtuCldSX4BxwRugzGGOnN",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0dM1USm2DCGAWZm0UBWv3c",
+      "archiveObject": "source_finish_0dM1USm2DCGAWZm0UBWv3c",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1BIloXig9ESgZzoTgADWet",
+      "archiveObject": "source_finish_1BIloXig9ESgZzoTgADWet",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0gSQBJ0tP5Uu0wrp3fTvq5",
+      "archiveObject": "source_finish_0gSQBJ0tP5Uu0wrp3fTvq5",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1TZcog9iP2tPuVRB4VREAl",
+      "archiveObject": "source_finish_1TZcog9iP2tPuVRB4VREAl",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2MJJjVXxnBR9oz54eT2OuV",
+      "archiveObject": "source_finish_2MJJjVXxnBR9oz54eT2OuV",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "17OHhqYd56nfjo8u0ROS5U",
+      "archiveObject": "source_finish_17OHhqYd56nfjo8u0ROS5U",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "15nhM71f9ACebT1Bkzcyma",
+      "archiveObject": "source_finish_15nhM71f9ACebT1Bkzcyma",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1dOyAZPSDCURHX9mwjsSlJ",
+      "archiveObject": "source_finish_1dOyAZPSDCURHX9mwjsSlJ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2g7Z2TTff83Ra44teEqR1V",
+      "archiveObject": "source_finish_2g7Z2TTff83Ra44teEqR1V",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1CRONRWcr5BgvVCeQqX7aW",
+      "archiveObject": "source_finish_1CRONRWcr5BgvVCeQqX7aW",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3cCVQye_rBggoOhv_wbqMY",
+      "archiveObject": "source_finish_3cCVQye_rBggoOhv_wbqMY",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2AWfxEOP5F_xMOMHAILFSe",
+      "archiveObject": "source_finish_2AWfxEOP5F_xMOMHAILFSe",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1dptvHKjj53Q5T3snCFg6R",
+      "archiveObject": "source_finish_1dptvHKjj53Q5T3snCFg6R",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3IMTHmAvjAo8Vilm7JGFpD",
+      "archiveObject": "source_finish_3IMTHmAvjAo8Vilm7JGFpD",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "18yJpSMPbFiOWahX8V7dia",
+      "archiveObject": "source_finish_18yJpSMPbFiOWahX8V7dia",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3$Dhwn_UjDw8$Jr269apw$",
+      "archiveObject": "source_finish_3$Dhwn_UjDw8$Jr269apw$",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2CseZj2On7mhEXvYftzShO",
+      "archiveObject": "source_finish_2CseZj2On7mhEXvYftzShO",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "25P15aNo98pP6xSOGFjWQx",
+      "archiveObject": "source_finish_25P15aNo98pP6xSOGFjWQx",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1DZfCvhUL9lhp$uwWkI7MH",
+      "archiveObject": "source_finish_1DZfCvhUL9lhp$uwWkI7MH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "13JkU02KL6te86K5MLsuQr",
+      "archiveObject": "source_finish_13JkU02KL6te86K5MLsuQr",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0FnqZIY_X5YPZGu9ojwVOQ",
+      "archiveObject": "source_finish_0FnqZIY_X5YPZGu9ojwVOQ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0oxil9_sn3hfg93nq2h2BV",
+      "archiveObject": "source_finish_0oxil9_sn3hfg93nq2h2BV",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1cOavg_8jE5vQtxZCENwZk",
+      "archiveObject": "source_finish_1cOavg_8jE5vQtxZCENwZk",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3FgGvLI89EvvD8U$EqGKKF",
+      "archiveObject": "source_finish_3FgGvLI89EvvD8U$EqGKKF",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1V7EOGW_X3CPjQ5TdGESs4",
+      "archiveObject": "source_finish_1V7EOGW_X3CPjQ5TdGESs4",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2qCwjFWvTFh8idYjB7j5aK",
+      "archiveObject": "source_finish_2qCwjFWvTFh8idYjB7j5aK",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "26RqeAIBzFlxJ4gNSC1BOH",
+      "archiveObject": "source_finish_26RqeAIBzFlxJ4gNSC1BOH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2Ci0pvtBr6mxdSb0EyoPxH",
+      "archiveObject": "source_finish_2Ci0pvtBr6mxdSb0EyoPxH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3siRKjoufAk9CXrd2GJKD4",
+      "archiveObject": "source_finish_3siRKjoufAk9CXrd2GJKD4",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "24NVRzu_TCDuYRgaBAcJKu",
+      "archiveObject": "source_finish_24NVRzu_TCDuYRgaBAcJKu",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2JiTAjevj20eG7rlUpXAA7",
+      "archiveObject": "source_finish_2JiTAjevj20eG7rlUpXAA7",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2z1jpDFLP3w9KdY9ad5_Ux",
+      "archiveObject": "source_finish_2z1jpDFLP3w9KdY9ad5_Ux",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3UuwB3eCv1Q99UNiI$JOy_",
+      "archiveObject": "source_finish_3UuwB3eCv1Q99UNiI$JOy_",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "31LPy3NaPA1Qc5WzY$5aSD",
+      "archiveObject": "source_finish_31LPy3NaPA1Qc5WzY$5aSD",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3_beFTVxT19PotMq9zrRLg",
+      "archiveObject": "source_finish_3_beFTVxT19PotMq9zrRLg",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1hQKVZzCb31w4qxldKci23",
+      "archiveObject": "source_finish_1hQKVZzCb31w4qxldKci23",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2bCK1c$iD5WhaB2fqtdgoX",
+      "archiveObject": "source_finish_2bCK1c$iD5WhaB2fqtdgoX",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1p7owhaZf0$fdUKN6$4qaB",
+      "archiveObject": "source_finish_1p7owhaZf0$fdUKN6$4qaB",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "02GnURDvz7bg$9jicC3T7g",
+      "archiveObject": "source_finish_02GnURDvz7bg$9jicC3T7g",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3Xd6xYqQ16ZweOWM_vgt2L",
+      "archiveObject": "source_finish_3Xd6xYqQ16ZweOWM_vgt2L",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0UUpGthtPAiRfhDXp1Xxjp",
+      "archiveObject": "source_finish_0UUpGthtPAiRfhDXp1Xxjp",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2G2fqIh_D0S8C6KN4m92ql",
+      "archiveObject": "source_finish_2G2fqIh_D0S8C6KN4m92ql",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0QjoE$y$j4VeWoXX0FP7AY",
+      "archiveObject": "source_finish_0QjoE$y$j4VeWoXX0FP7AY",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3ojwyJFeb0bQeDo1_BenTR",
+      "archiveObject": "source_finish_3ojwyJFeb0bQeDo1_BenTR",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0Ic9Wv9jPEJfpOqnSJsLgb",
+      "archiveObject": "source_finish_0Ic9Wv9jPEJfpOqnSJsLgb",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1RQYH_611FjRs5RBOH_ekX",
+      "archiveObject": "source_finish_1RQYH_611FjRs5RBOH_ekX",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "09470l5NDFw8azxXLh4ipu",
+      "archiveObject": "source_finish_09470l5NDFw8azxXLh4ipu",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1bYh7iIl99gOcdYbg$PL_e",
+      "archiveObject": "source_finish_1bYh7iIl99gOcdYbg$PL_e",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0EWv8pO3b5i8GYlDYC0EqT",
+      "archiveObject": "source_finish_0EWv8pO3b5i8GYlDYC0EqT",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3y55V6CQv1bvcHFuewa2K5",
+      "archiveObject": "source_finish_3y55V6CQv1bvcHFuewa2K5",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0idE$1aID5GukwKAZ9iJW$",
+      "archiveObject": "source_finish_0idE$1aID5GukwKAZ9iJW$",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0Ugo1ygt58svHAfaCAfLtS",
+      "archiveObject": "source_finish_0Ugo1ygt58svHAfaCAfLtS",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1i4X7GwU53mwZl0P5K7m5w",
+      "archiveObject": "source_finish_1i4X7GwU53mwZl0P5K7m5w",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3lXY6gUVP3H80pg1WXeiKx",
+      "archiveObject": "source_finish_3lXY6gUVP3H80pg1WXeiKx",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0mosSawxDB5h2An5mKYW2w",
+      "archiveObject": "source_finish_0mosSawxDB5h2An5mKYW2w",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "05$IzQArXENxmNSEj$DRd4",
+      "archiveObject": "source_finish_05$IzQArXENxmNSEj$DRd4",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1aOEOYOAf4HvG0zT29g9aP",
+      "archiveObject": "source_finish_1aOEOYOAf4HvG0zT29g9aP",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0Vh4GfeCb1Wwuyj1ZGfy7f",
+      "archiveObject": "source_finish_0Vh4GfeCb1Wwuyj1ZGfy7f",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1v7CT4aZfF_u77XJxAZFbL",
+      "archiveObject": "source_finish_1v7CT4aZfF_u77XJxAZFbL",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1unBy5G_D7Sxh1CE1nMtHD",
+      "archiveObject": "source_finish_1unBy5G_D7Sxh1CE1nMtHD",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0azVPFHwT8jwjmKncHacDC",
+      "archiveObject": "source_finish_0azVPFHwT8jwjmKncHacDC",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1O$owaXsTFfwU1e5LSS4at",
+      "archiveObject": "source_finish_1O$owaXsTFfwU1e5LSS4at",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3vTBHbuTXDWPmsl_ieACbq",
+      "archiveObject": "source_finish_3vTBHbuTXDWPmsl_ieACbq",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3QGwO5GfL36gs3LnHCtcjT",
+      "archiveObject": "source_finish_3QGwO5GfL36gs3LnHCtcjT",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2TPULlfiL0jO8UCVltzjiK",
+      "archiveObject": "source_finish_2TPULlfiL0jO8UCVltzjiK",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2xb2GSa$9BVv616b5Lt80i",
+      "archiveObject": "source_finish_2xb2GSa$9BVv616b5Lt80i",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "10_G$dxPb6k9Ag1jQJY$9n",
+      "archiveObject": "source_finish_10_G$dxPb6k9Ag1jQJY$9n",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3YYmyHe41FHvK$tJrIWIyb",
+      "archiveObject": "source_finish_3YYmyHe41FHvK$tJrIWIyb",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3NeTH99c592eSmPrs5tL6s",
+      "archiveObject": "source_finish_3NeTH99c592eSmPrs5tL6s",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0cubcZkmb4tQj4KGdOyGL2",
+      "archiveObject": "source_finish_0cubcZkmb4tQj4KGdOyGL2",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3eCiu6BOD1AgmlhtdWapuP",
+      "archiveObject": "source_finish_3eCiu6BOD1AgmlhtdWapuP",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0Ficf2oBDBgeS$ARBOYDJ2",
+      "archiveObject": "source_finish_0Ficf2oBDBgeS$ARBOYDJ2",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0wcgaHQZL6ZuueU9GNNUEp",
+      "archiveObject": "source_finish_0wcgaHQZL6ZuueU9GNNUEp",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3V_NMFC4X2xQzVwJx2aXXu",
+      "archiveObject": "source_finish_3V_NMFC4X2xQzVwJx2aXXu",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3$7syQahz9ZvedePWIgNh9",
+      "archiveObject": "source_finish_3$7syQahz9ZvedePWIgNh9",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "30VkNZ_FvEiAuxxcfHFQTV",
+      "archiveObject": "source_finish_30VkNZ_FvEiAuxxcfHFQTV",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3DYIAKafrC6uJrbvhcCT8V",
+      "archiveObject": "source_finish_3DYIAKafrC6uJrbvhcCT8V",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0uOOb_fc10qxFIk$pnL4AN",
+      "archiveObject": "source_finish_0uOOb_fc10qxFIk$pnL4AN",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "26XQWZ9$n43wmXQa4tDv13",
+      "archiveObject": "source_finish_26XQWZ9$n43wmXQa4tDv13",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3LvEkiOm9FUw18UVbHUY6i",
+      "archiveObject": "source_finish_3LvEkiOm9FUw18UVbHUY6i",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0Huf_KVJbCp8J$n5Atg6nz",
+      "archiveObject": "source_finish_0Huf_KVJbCp8J$n5Atg6nz",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0mhMcHkKHF_Ak0Ep$C_1jb",
+      "archiveObject": "source_finish_0mhMcHkKHF_Ak0Ep$C_1jb",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3T9XoGUh91reeWrk3IVCtb",
+      "archiveObject": "source_finish_3T9XoGUh91reeWrk3IVCtb",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3qP7cXRU5COQv47oAPyPV4",
+      "archiveObject": "source_finish_3qP7cXRU5COQv47oAPyPV4",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "283nNqfO96SeE$5VkO1Y3J",
+      "archiveObject": "source_finish_283nNqfO96SeE$5VkO1Y3J",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0ehtan3Ib9Fx9Ol4dc6S7a",
+      "archiveObject": "source_finish_0ehtan3Ib9Fx9Ol4dc6S7a",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0tbiSKnpH1Vfk1UimFFTMZ",
+      "archiveObject": "source_finish_0tbiSKnpH1Vfk1UimFFTMZ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3ggbaMxOjE6A9_aUKDrwS4",
+      "archiveObject": "source_finish_3ggbaMxOjE6A9_aUKDrwS4",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0$_syu5SjA_BEM5az_Ehlt",
+      "archiveObject": "source_finish_0$_syu5SjA_BEM5az_Ehlt",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0maQGNIVD37w0vOeHHSAN0",
+      "archiveObject": "source_finish_0maQGNIVD37w0vOeHHSAN0",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "36CALqhPX3qekxwwK2$L0h",
+      "archiveObject": "source_finish_36CALqhPX3qekxwwK2$L0h",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2pZK8VS0LAMgUcT5szYJ73",
+      "archiveObject": "source_finish_2pZK8VS0LAMgUcT5szYJ73",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3K7tIpcq136w2G6QTUtnPj",
+      "archiveObject": "source_finish_3K7tIpcq136w2G6QTUtnPj",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0qiFsYHgHA3R9YarEaZNOF",
+      "archiveObject": "source_finish_0qiFsYHgHA3R9YarEaZNOF",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1CaB7WuzjB0x$cC6$hMO6L",
+      "archiveObject": "source_finish_1CaB7WuzjB0x$cC6$hMO6L",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "27dvJ8kXfC_RJqPhKzyGcW",
+      "archiveObject": "source_finish_27dvJ8kXfC_RJqPhKzyGcW",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0IAxgvtPjBcR$nkV_qCWuK",
+      "archiveObject": "source_finish_0IAxgvtPjBcR$nkV_qCWuK",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2mPN3aOvDBPQwQcVHgsGp5",
+      "archiveObject": "source_finish_2mPN3aOvDBPQwQcVHgsGp5",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3B1KQuWRL9nPmaVKkV_LO8",
+      "archiveObject": "source_finish_3B1KQuWRL9nPmaVKkV_LO8",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "39mkLphb1EM974ZzQF_ONW",
+      "archiveObject": "source_finish_39mkLphb1EM974ZzQF_ONW",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2uNtBRNA91jBsRu1hHGvCn",
+      "archiveObject": "source_finish_2uNtBRNA91jBsRu1hHGvCn",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3_YFQ7T5rBoQI3RD82jiRP",
+      "archiveObject": "source_finish_3_YFQ7T5rBoQI3RD82jiRP",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "37CW2Yk7b31hkkmMjn$Cad",
+      "archiveObject": "source_finish_37CW2Yk7b31hkkmMjn$Cad",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1zuMC_$UvCofisHgPtCcLr",
+      "archiveObject": "source_finish_1zuMC_$UvCofisHgPtCcLr",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2E58fDJ317TBQGjLoAZziy",
+      "archiveObject": "source_finish_2E58fDJ317TBQGjLoAZziy",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0iAIJuX_LA0gIXNB7kjjKr",
+      "archiveObject": "source_finish_0iAIJuX_LA0gIXNB7kjjKr",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3el0vBKMv7m99ngvCJI5WH",
+      "archiveObject": "source_finish_3el0vBKMv7m99ngvCJI5WH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "30nzz8njPDXeMYNq7qpnza",
+      "archiveObject": "source_finish_30nzz8njPDXeMYNq7qpnza",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0VD7jstHTClPAODl40TTaA",
+      "archiveObject": "source_finish_0VD7jstHTClPAODl40TTaA",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0umJrnWvz0FPjficwqrXYo",
+      "archiveObject": "source_finish_0umJrnWvz0FPjficwqrXYo",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2VLBHBcSX9lxPQ7C1mZXsi",
+      "archiveObject": "source_finish_2VLBHBcSX9lxPQ7C1mZXsi",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0CzNc017b6FxTGj5UZemMo",
+      "archiveObject": "source_finish_0CzNc017b6FxTGj5UZemMo",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2hTV8q1BD5mP0_xP8bgpIU",
+      "archiveObject": "source_finish_2hTV8q1BD5mP0_xP8bgpIU",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "03sZPjMFXE7QWhdPQcunQM",
+      "archiveObject": "source_finish_03sZPjMFXE7QWhdPQcunQM",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "017czuMhTAC9SoZqhdFQ8n",
+      "archiveObject": "source_finish_017czuMhTAC9SoZqhdFQ8n",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2V6Xlh4KL0uw0gwyNjHowO",
+      "archiveObject": "source_finish_2V6Xlh4KL0uw0gwyNjHowO",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3$AgkeSd50MhHm$1e37U3M",
+      "archiveObject": "source_finish_3$AgkeSd50MhHm$1e37U3M",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3qCgHqhB11UQpd2SevDww8",
+      "archiveObject": "source_finish_3qCgHqhB11UQpd2SevDww8",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0542Kas4L04vy8NbppZuTU",
+      "archiveObject": "source_finish_0542Kas4L04vy8NbppZuTU",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2z9y2CkNf52vKc555$ErPn",
+      "archiveObject": "source_finish_2z9y2CkNf52vKc555$ErPn",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2rEbCRfkb9xuVTTPK_3ABU",
+      "archiveObject": "source_finish_2rEbCRfkb9xuVTTPK_3ABU",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2S$Va43ZX4Lg$GHvsTSbo3",
+      "archiveObject": "source_finish_2S$Va43ZX4Lg$GHvsTSbo3",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1a$uF8y1j96BKEqRm_I0K1",
+      "archiveObject": "source_finish_1a$uF8y1j96BKEqRm_I0K1",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2FcIYoX214LfiylP6zj_Mp",
+      "archiveObject": "source_finish_2FcIYoX214LfiylP6zj_Mp",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3bvgktWerAN9lGHC6YOpDv",
+      "archiveObject": "source_finish_3bvgktWerAN9lGHC6YOpDv",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3kSkNVfbfCeBQFj1OdmXEo",
+      "archiveObject": "source_finish_3kSkNVfbfCeBQFj1OdmXEo",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3UbWC348n9lxiV7H0enN0n",
+      "archiveObject": "source_finish_3UbWC348n9lxiV7H0enN0n",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2zKESl5pf5gu383JWOr2xl",
+      "archiveObject": "source_finish_2zKESl5pf5gu383JWOr2xl",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0VUIsd2Kf9nubOQ8eiovmO",
+      "archiveObject": "source_finish_0VUIsd2Kf9nubOQ8eiovmO",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "25CEIegwX9t9Ql_XxYZ4Bl",
+      "archiveObject": "source_finish_25CEIegwX9t9Ql_XxYZ4Bl",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3vCpdWKD1BHAYn29UNgB6O",
+      "archiveObject": "source_finish_3vCpdWKD1BHAYn29UNgB6O",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "08FPH50Mr41Oz7yt0Y9ZOm",
+      "archiveObject": "source_finish_08FPH50Mr41Oz7yt0Y9ZOm",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0fv9ki04D1YR$iuvMr6V_K",
+      "archiveObject": "source_finish_0fv9ki04D1YR$iuvMr6V_K",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "35GDfGsnj2KenZm2VpvrIO",
+      "archiveObject": "source_finish_35GDfGsnj2KenZm2VpvrIO",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3VK18NT_z5y8HVT5v8wSJK",
+      "archiveObject": "source_finish_3VK18NT_z5y8HVT5v8wSJK",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2lOb9AMpv0ePPQLMtxP9fB",
+      "archiveObject": "source_finish_2lOb9AMpv0ePPQLMtxP9fB",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1hh08SZdD78ABszY4jw3RI",
+      "archiveObject": "source_finish_1hh08SZdD78ABszY4jw3RI",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "02mjrrOATBPOJlzW_u9JVQ",
+      "archiveObject": "source_finish_02mjrrOATBPOJlzW_u9JVQ",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2nDOu_EHHCNBihdN22$LZ7",
+      "archiveObject": "source_finish_2nDOu_EHHCNBihdN22$LZ7",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0ar2Fw$O51who2yWFEkpdH",
+      "archiveObject": "source_finish_0ar2Fw$O51who2yWFEkpdH",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "27z7YB7iz5nhz65uzGhwTC",
+      "archiveObject": "source_finish_27z7YB7iz5nhz65uzGhwTC",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0yqTWY$5TBgPSiBJQw9gjd",
+      "archiveObject": "source_finish_0yqTWY$5TBgPSiBJQw9gjd",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1ey$B_fpT8owZ60hKsqjA1",
+      "archiveObject": "source_finish_1ey$B_fpT8owZ60hKsqjA1",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "2U1ABEm3XDVAy9ONPxV4iD",
+      "archiveObject": "source_finish_2U1ABEm3XDVAy9ONPxV4iD",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3vNrB5fnH5FuiMGi5xNMU5",
+      "archiveObject": "source_finish_3vNrB5fnH5FuiMGi5xNMU5",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1pMO7JJ4z9IfJzxUU7xDM_",
+      "archiveObject": "source_finish_1pMO7JJ4z9IfJzxUU7xDM_",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3bWKDV221DE9XB8xTMKq7k",
+      "archiveObject": "source_finish_3bWKDV221DE9XB8xTMKq7k",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3puGjJ$hHDZux69Hq_pkXh",
+      "archiveObject": "source_finish_3puGjJ$hHDZux69Hq_pkXh",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "20EDxH5_9BkRPTJW7DljSx",
+      "archiveObject": "source_finish_20EDxH5_9BkRPTJW7DljSx",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3iVvUAECnDpeClNPkMN_ok",
+      "archiveObject": "source_finish_3iVvUAECnDpeClNPkMN_ok",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3_Ph5ErzLDGRyRL8kCXXt$",
+      "archiveObject": "source_finish_3_Ph5ErzLDGRyRL8kCXXt$",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0BzwrnOZT8yuC$1f7RKlA3",
+      "archiveObject": "source_finish_0BzwrnOZT8yuC$1f7RKlA3",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3bQ6rZqPrEkv6Wo9HxfaEz",
+      "archiveObject": "source_finish_3bQ6rZqPrEkv6Wo9HxfaEz",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "1K4tU6i0H2_8IUA0duraCy",
+      "archiveObject": "source_finish_1K4tU6i0H2_8IUA0duraCy",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "3RQ7HPueP9UuDK8F1Eqzvr",
+      "archiveObject": "source_finish_3RQ7HPueP9UuDK8F1Eqzvr",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0kBmq1C0fD2O_ZgJ5vShwz",
+      "archiveObject": "source_finish_0kBmq1C0fD2O_ZgJ5vShwz",
+      "reason": "Source shower mosaic replaced by 600 mm Smart Gris porcelain in the same wet zone"
+    },
+    {
+      "guid": "0mclhuryX3qPYq9SOkz5mZ",
+      "archiveObject": "source_finish_0mclhuryX3qPYq9SOkz5mZ",
+      "reason": "East siding end profile extended to terrace front; original windows and horizontal profile retained"
+    },
+    {
+      "guid": "3zg_LS_XXDmRW_q35N4zMg",
+      "archiveObject": "source_finish_3zg_LS_XXDmRW_q35N4zMg",
+      "reason": "Source solid wooden treads replaced by two boards per distinct level; dark stringers retained"
+    },
+    {
+      "guid": "0sX_Qwo9X1uR$8rmu8Ag2K",
+      "archiveObject": "source_finish_0sX_Qwo9X1uR$8rmu8Ag2K",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "2xeNNV6HrCvwwzBINR1ihF",
+      "archiveObject": "source_finish_2xeNNV6HrCvwwzBINR1ihF",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "1SR2DFvrnCeP3lHik6XH3C",
+      "archiveObject": "source_finish_1SR2DFvrnCeP3lHik6XH3C",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "2PV2$cnRv46hvKpYZw5OCx",
+      "archiveObject": "source_finish_2PV2$cnRv46hvKpYZw5OCx",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "3brw9VE$j2Qwd5IsWQIiCQ",
+      "archiveObject": "source_finish_3brw9VE$j2Qwd5IsWQIiCQ",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "3qXLYsb4D5e8r7jtD0hlIH",
+      "archiveObject": "source_finish_3qXLYsb4D5e8r7jtD0hlIH",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "1c9gfK6hD73eRBuzYI3c_h",
+      "archiveObject": "source_finish_1c9gfK6hD73eRBuzYI3c_h",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "1vL0fdbYDD9R8YVrtxgf_M",
+      "archiveObject": "source_finish_1vL0fdbYDD9R8YVrtxgf_M",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "012kkukgXFEwlJJDVj$wYB",
+      "archiveObject": "source_finish_012kkukgXFEwlJJDVj$wYB",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "17HbrA9Jv4ZfsTiMNabZE5",
+      "archiveObject": "source_finish_17HbrA9Jv4ZfsTiMNabZE5",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "1Ld5R0rTP9RgrRxW95Z8Hv",
+      "archiveObject": "source_finish_1Ld5R0rTP9RgrRxW95Z8Hv",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "3mNNpEHUv8Du4PQU$2Q2w_",
+      "archiveObject": "source_finish_3mNNpEHUv8Du4PQU$2Q2w_",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "1iiA38T0vD9hT7DwhHxy5E",
+      "archiveObject": "source_finish_1iiA38T0vD9hT7DwhHxy5E",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "1BBSnBY3z6Fu3WCv0TeZc0",
+      "archiveObject": "source_finish_1BBSnBY3z6Fu3WCv0TeZc0",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "09JPVju5LA3uUDkliayI1O",
+      "archiveObject": "source_finish_09JPVju5LA3uUDkliayI1O",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "3q_wbhMwv3O8xAv3V_PlvG",
+      "archiveObject": "source_finish_3q_wbhMwv3O8xAv3V_PlvG",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "2muIM4tHzD4Q_FNosntB5o",
+      "archiveObject": "source_finish_2muIM4tHzD4Q_FNosntB5o",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "3Wtk46KUD8xO2Z_Q9FboY1",
+      "archiveObject": "source_finish_3Wtk46KUD8xO2Z_Q9FboY1",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "2pvueUNT54qxhxXMWOZktW",
+      "archiveObject": "source_finish_2pvueUNT54qxhxXMWOZktW",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "1wNpWnoHPBsOPiqJCfk7p4",
+      "archiveObject": "source_finish_1wNpWnoHPBsOPiqJCfk7p4",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "3_EcXVEmD7BuMQT_EZ7iZt",
+      "archiveObject": "source_finish_3_EcXVEmD7BuMQT_EZ7iZt",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "33T8WWWIz21eOd8gP31B5v",
+      "archiveObject": "source_finish_33T8WWWIz21eOd8gP31B5v",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "1a6gg5tdXDWBa4KPBX91Aj",
+      "archiveObject": "source_finish_1a6gg5tdXDWBa4KPBX91Aj",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "3Ffs3auhPAUQrH7$Mk70Mz",
+      "archiveObject": "source_finish_3Ffs3auhPAUQrH7$Mk70Mz",
+      "reason": "Piles retained in source master; hidden for requested ground-contact visualization"
+    },
+    {
+      "guid": "1gEdPa0913fOeMY0VELBc8",
+      "archiveObject": "source_finish_1gEdPa0913fOeMY0VELBc8",
+      "reason": "Solid terrace deck replaced by separate boards with actual 10 mm through-gaps"
+    },
+    {
+      "guid": "3SONmQrPbBSPHqcnOVHNbq",
+      "archiveObject": "source_finish_3SONmQrPbBSPHqcnOVHNbq",
+      "reason": "Exterior rain chain removed from visible model at user request; full original mesh retained"
+    },
+    {
+      "guid": "2EddkoSgz7vQzBPmLqgAdP",
+      "archiveObject": "source_finish_2EddkoSgz7vQzBPmLqgAdP",
+      "reason": "Exterior rain chain removed from visible model at user request; full original mesh retained"
+    },
+    {
+      "guid": "0fK31lje53X8RtOmoX$stl",
+      "archiveObject": "source_finish_0fK31lje53X8RtOmoX$stl",
+      "reason": "Exterior rain chain removed from visible model at user request; full original mesh retained"
+    },
+    {
+      "guid": "01BIY8zAL6t9$q6XlsyLG1",
+      "archiveObject": "source_finish_01BIY8zAL6t9$q6XlsyLG1",
+      "reason": "Exterior rain chain removed from visible model at user request; full original mesh retained"
+    },
+    {
+      "guid": "0N2jaU7TP7pvNKSfjXDS4Z",
+      "archiveObject": "source_finish_0N2jaU7TP7pvNKSfjXDS4Z",
+      "reason": "Exterior rain chain removed from visible model at user request; full original mesh retained"
+    },
+    {
+      "guid": "2Bz$vD3cHEGB1cWd9DQ8rX",
+      "archiveObject": "source_finish_2Bz$vD3cHEGB1cWd9DQ8rX",
+      "reason": "Exterior rain chain removed from visible model at user request; full original mesh retained"
+    },
+    {
+      "guid": "35VznRtgL3P8c$Q36xJgT1",
+      "archiveObject": "source_finish_35VznRtgL3P8c$Q36xJgT1",
+      "reason": "Exterior rain chain removed from visible model at user request; full original mesh retained"
+    },
+    {
+      "guid": "3cLyDG0TLEdu5bpfdRSatS",
+      "archiveObject": "source_finish_3cLyDG0TLEdu5bpfdRSatS",
+      "reason": "Exterior rain chain removed from visible model at user request; full original mesh retained"
+    },
+    {
+      "guid": "3UsO_92GHFPgWILzk_wBSr",
+      "archiveObject": "source_finish_3UsO_92GHFPgWILzk_wBSr",
+      "reason": "Original dining furniture material assignment retained before requested white finish"
+    },
+    {
+      "guid": "0fhoMwjQv59uPaJu5ROJjU",
+      "archiveObject": "source_finish_0fhoMwjQv59uPaJu5ROJjU",
+      "reason": "Original dining furniture material assignment retained before requested white finish"
+    },
+    {
+      "guid": "0u0bikwRbClvpYRYH4DhBI",
+      "archiveObject": "source_finish_0u0bikwRbClvpYRYH4DhBI",
+      "reason": "Original dining furniture material assignment retained before requested white finish"
+    },
+    {
+      "guid": "1KfkQkgZr9WPPaQo7FuBPn",
+      "archiveObject": "source_finish_1KfkQkgZr9WPPaQo7FuBPn",
+      "reason": "Original dining furniture material assignment retained before requested white finish"
+    },
+    {
+      "guid": "2gaHY96Wb2gfeR2BpxszgM",
+      "archiveObject": "source_finish_2gaHY96Wb2gfeR2BpxszgM",
+      "reason": "Original dining furniture material assignment retained before requested white finish"
+    },
+    {
+      "guid": "02xbQZE_z8FPwixh9A7SfF",
+      "archiveObject": "source_finish_02xbQZE_z8FPwixh9A7SfF",
+      "reason": "Original television overlaps the new controlled screen; retained as hidden source"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_lamp_base",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_lamp_stem",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_sofa_cushion_rust",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_sofa_cushion_linen",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_pot",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_0",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_0",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_1",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_1",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_2",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_2",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_3",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_3",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_4",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_4",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_5",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_5",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_6",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_6",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_7",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_7",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_8",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_8",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_9",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_9",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_10",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_10",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_stem_11",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_plant_leaf_11",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    },
+    {
+      "guid": null,
+      "archiveObject": "source_finish_light_local_fixture",
+      "reason": "Authored floor lamp, plant or sofa cushion removed at user request"
+    }
+  ],
+  "lining": {
+    "pitchM": 0.14,
+    "realGrooveM": 0.002,
+    "layers": 12,
+    "boardSegments": 520,
+    "sourceOpeningsPreserved": true
+  },
+  "floor": {
+    "bathroom": {
+      "productReference": "LAPARET Smart Gris",
+      "moduleM": [
+        0.6,
+        0.6
+      ],
+      "jointM": 0.003,
+      "finish": "matte grey"
+    },
+    "otherRooms": {
+      "productReference": "ROYCE Sense SE-710 Дуб Айа",
+      "moduleM": [
+        0.18,
+        1.2
+      ],
+      "jointM": 0.0007,
+      "grainMapScaleM": [
+        0.78,
+        2.1
+      ],
+      "grainMapping": "Deterministic per-board texture fragments and 180-degree flips; grain follows board length.",
+      "baseColorFactorLinear": [
+        0.78,
+        0.79,
+        0.78
+      ],
+      "boardTintVariation": [
+        0.97,
+        0.99,
+        1.01,
+        1.03
+      ],
+      "sharedAlbedoTextures": 1
+    }
+  },
+  "ceiling": {
+    "heightM": 2.38,
+    "finish": "matte white",
+    "category": "ceiling",
+    "rooms": [
+      "living",
+      "bedroom_west",
+      "bedroom_east",
+      "bathroom",
+      "entry"
+    ],
+    "windowNiches": "Open strips with concealed tracks above ceiling level",
+    "living": {
+      "shape": "two 15-degree roof slopes",
+      "sourceRoofDropM": 0.1,
+      "ridgeIFCX": 8.292172,
+      "peakM": 3.42983503,
+      "pendantMountM": 2.9253905015726946
+    },
+    "otherRoomHeightM": 2.38
+  },
+  "curtains": [
+    {
+      "id": "living_east",
+      "room": "living",
+      "guid": "3LW4j9F4L69fEmTEJ$NU7j",
+      "prefix": "curtains_living",
+      "axis": "x",
+      "plane": 11.84,
+      "span": [
+        -6.05,
+        -4.29
+      ],
+      "bottom": 0.055
+    },
+    {
+      "id": "living_panorama",
+      "room": "living",
+      "guids": [
+        "3mOQE0kq1ADAzxhHE4vXrq",
+        "1YQoK7NXH6e984YHSYZLUz"
+      ],
+      "prefix": "curtains_living_panorama",
+      "axis": "y",
+      "plane": -6.735,
+      "span": [
+        6.9,
+        12.02
+      ],
+      "bottom": 0.055,
+      "curtainMechanism": "fixed-header-tieback"
+    },
+    {
+      "id": "bedroom_west",
+      "room": "bedroom_west",
+      "guid": "3C1Yl09FP1U8mcKdtFO4gl",
+      "prefix": "curtains_bedroom_west",
+      "axis": "x",
+      "plane": 4.75,
+      "span": [
+        -2.85,
+        -1.11
+      ],
+      "bottom": 0.055
+    },
+    {
+      "id": "bedroom_east",
+      "room": "bedroom_east",
+      "guid": "3hikcRWh92FRxXp1pYl2RM",
+      "prefix": "curtains_bedroom_east",
+      "axis": "x",
+      "plane": 11.84,
+      "span": [
+        -2.85,
+        -1.11
+      ],
+      "bottom": 0.055
+    }
+  ],
+  "terrace": {
+    "boardWidthM": 0.14,
+    "boardPitchM": 0.15,
+    "realGapM": 0.01,
+    "solidSourceDeckArchived": true,
+    "boardDirectionIFC": "X, parallel to house frontage",
+    "joistDirectionIFC": "Y, perpendicular to deck boards",
+    "boardCount": 20,
+    "boardLengthM": 8.0,
+    "uv": "Long grain along source X; top UV avoids painted joints because boards have actual gaps."
+  },
+  "ground": {
+    "lowestStairM": -0.914,
+    "recommendedGroundM": -0.924,
+    "pilesRemovedFromGLB": true,
+    "engineeringStatus": "Visualization proposal only",
+    "recessedSkirt": {
+      "material": "Plinth | matte graphite",
+      "topM": -0.37,
+      "bottomM": -0.926,
+      "boundsIFC": [
+        4.38,
+        12.2,
+        -9.89,
+        -0.56
+      ],
+      "status": "Non-structural visual finish closes exposed void below existing rim; source structure retained, stairs remain in front."
+    }
+  },
+  "graphiteMetalGuids": [
+    "06bCO26Cb6wRFF7yOopy1S",
+    "0AtHfsmb14AeGDt3LJC6X4",
+    "0QZEedNqrCC9rBpCOt$JJH",
+    "0RNkYtJ7f3KvanCCynJmip",
+    "0ibPcbWxvCZvO9PewcrVR4",
+    "0loawNb8H7$unYcXOZizdO",
+    "16tVcEWU50DxWeN4bIM8p4",
+    "1Dgyl9OQD3VAhY5wbMboZp",
+    "1W8G2$ilPFiwR4fsGTVEWE",
+    "1YgZTHR5nATQsa5E1gjDCP",
+    "1j3aiRy3H19eKmuOX32JSa",
+    "1z3Lhlslz8X8kHXageCOBp",
+    "2975MtpEf6yeJOUGr_oZEk",
+    "2G97_Lozz8AfRdnVoWwO37",
+    "2Rq9sncA18sv0jdM_AP$gf",
+    "2S7sY5FBL1XeyRnpGiPUtc",
+    "2a5_Zlq65FhhfK1$LTTwF7",
+    "2cdfgwYZ9478s5XnHRrPP3",
+    "2sptfTnoL4zAHyFrqa04yu",
+    "2ucLAoEN9FAP3uKuiY$1vd",
+    "31Gr7ccUnBLxSAumA$V5aq",
+    "3FUd$JkC14sA9vb_1WTZbk",
+    "3HrnD2ClL6gRSkSS7$dLVq",
+    "3Sgi8gMS58shO6eG5bgJRp",
+    "3nxkZR4xrBYg$YgQsN6PcW",
+    "3s$nZMl9v2P9tj8Pqcv1Sx"
+  ],
+  "textureInterpretation": "Image-generated albedo interpreted from user references; no calibrated match or manufacturer PBR maps claimed.",
+  "interiorDoors": {
+    "guids": [
+      "07RAZSyfnEDfBOP6QLZMkt",
+      "0icqSuupz7whtymDbEN2TL",
+      "1z3Dyx$HT9qPwpwjB_0Rnn",
+      "2$bw6uuFTAE8MhuFU1l8aQ"
+    ],
+    "leafAndFrameMaterial": "Door | pale timber",
+    "hardwareMaterial": "Metal | charcoal",
+    "sourceSlotEvidence": "Slot 0 is the full 2.097 m leaf/frame; slots 1/2 are handle/lock meshes at 0.87–1.06 m.",
+    "exteriorDoorAndWindowFramesUnchanged": true
+  },
+  "shower": {
+    "sourceFixtureGuid": "3bMD$NNWr5_eR5EIvDWP05",
+    "wetZoneBoundsIFC": [
+      5.7996724,
+      6.6996724,
+      -5.3022733,
+      -4.4022733
+    ],
+    "wallTopM": 2.38,
+    "material": "Tile | Smart Gris",
+    "moduleM": [
+      0.6,
+      0.6
+    ],
+    "jointM": 0.003,
+    "sourceMosaicPanelsArchived": 360,
+    "traySurfaceM": 0.104,
+    "scope": "Tray surface and two adjacent walls inside existing 900 x 900 mm shower; surrounding whitewashed lining and source glass enclosure preserved.",
+    "engineeringStatus": "Visual finish proposal; drainage slopes, waterproofing and layer buildup require construction design."
+  },
+  "stairs": {
+    "sourceGuids": [
+      "1c_S73KU5DZOyIMbwiOKWJ",
+      "3zg_LS_XXDmRW_q35N4zMg"
+    ],
+    "sourceFlightTreads": 6,
+    "distinctTreadLevels": 5,
+    "sourceOverlap": "Two source flights share the middle tread within 1 micrometre; preserved as one working pair of boards.",
+    "boardsPerTread": 2,
+    "workingBoardCount": 10,
+    "clearGapM": 0.01,
+    "sourceThicknessM": 0.02592593,
+    "sourcePositionsAndDarkStringersPreserved": true,
+    "treads": [
+      {
+        "bounds": [
+          [
+            6.792170974957671,
+            -11.00505180066375,
+            -0.3883333985133157
+          ],
+          [
+            9.792171061340127,
+            -10.643940106531943,
+            -0.3883333562681135
+          ]
+        ],
+        "sourceGuids": [
+          "1c_S73KU5DZOyIMbwiOKWJ",
+          "3zg_LS_XXDmRW_q35N4zMg"
+        ],
+        "topM": -0.3883333633089805,
+        "thicknessM": 0.02592593
+      },
+      {
+        "bounds": [
+          [
+            6.792171054867012,
+            -10.671718444395651,
+            -0.22166672037925844
+          ],
+          [
+            9.792171141249483,
+            -10.310606750263844,
+            -0.22166667813405644
+          ]
+        ],
+        "sourceGuids": [
+          "1c_S73KU5DZOyIMbwiOKWJ"
+        ],
+        "topM": -0.22166668517492347,
+        "thicknessM": 0.02592593
+      },
+      {
+        "bounds": [
+          [
+            6.792171134776368,
+            -10.338385088127552,
+            -0.05500004224520172
+          ],
+          [
+            9.792171221158824,
+            -9.977273393995773,
+            -0.054999999999999494
+          ]
+        ],
+        "sourceGuids": [
+          "1c_S73KU5DZOyIMbwiOKWJ"
+        ],
+        "topM": -0.05500000704086653,
+        "thicknessM": 0.02592593
+      },
+      {
+        "bounds": [
+          [
+            6.792170728570511,
+            -11.67171780067494,
+            -0.7216667547814297
+          ],
+          [
+            9.792170814952968,
+            -11.310606106543133,
+            -0.7216667125362275
+          ]
+        ],
+        "sourceGuids": [
+          "3zg_LS_XXDmRW_q35N4zMg"
+        ],
+        "topM": -0.7216667195770946,
+        "thicknessM": 0.02592593
+      },
+      {
+        "bounds": [
+          [
+            6.792170808479852,
+            -11.338384444406842,
+            -0.5550000766473724
+          ],
+          [
+            9.792170894862323,
+            -10.977272750275034,
+            -0.5550000344021704
+          ]
+        ],
+        "sourceGuids": [
+          "3zg_LS_XXDmRW_q35N4zMg"
+        ],
+        "topM": -0.5550000414430374,
+        "thicknessM": 0.02592593
+      }
+    ]
+  },
+  "eastCladding": {
+    "sourceFacadeGuid": "0mclhuryX3qPYq9SOkz5mZ",
+    "archivedTerraceScreenGuids": [
+      "00ZcXPc7T2gwTlRAruvjoy",
+      "0CjDX53nr9RA2wOJsaHtVP",
+      "0DjMnsW6vAAuh5lFw0mTGk",
+      "0M9$UNO4XDthjjWOno$bGY",
+      "0lJdO4LOLAb8VxHNiyrWE_",
+      "0qrTDCe4f9Bh6dhQSqVa7x",
+      "0xAIewE7TElxqGIsJ4DlIm",
+      "1BvoLk6nb29Ry73JxfCvKv",
+      "1DR46asWH3RgqkKG0qhdQa",
+      "1Yy5QoTtT5mAVYAnLCEAWl",
+      "1mgoV3UwfD9AUc4rDyrzXd",
+      "24MHeXB2zEhvjXfS4q0zsh",
+      "25iQmgDCP1uuVZ9EWjKPiX",
+      "2Fpt5tOxP1q9rVOqugB0kn",
+      "3$A5IfpA9AtRrJvNcF_wGP",
+      "3GsxwEIlr1PfGg_UqPtEbC",
+      "3l8COviGvFn8mL8tDzVYb9",
+      "3mz9wovJTDjhJuq$w3v0EO",
+      "3rDVwN619AWuMtk14WPhwh"
+    ],
+    "restoredSourcePlinthGuids": [
+      "0dfsLyJoD3VO_$PbQgXGsA",
+      "0f2GLhEAD1Xx3bVNtS5iQ2",
+      "1ItkEjFy98L8gwwF42gGpL",
+      "2nXjFrm5b5qh5pCZQAotD3",
+      "2sSE915Ez3lxY$v7jviUvU",
+      "3WLINp$Qn75Az_3dQypkw_"
+    ],
+    "method": "Original closed siding profile and straight lower edge continued across house and terrace at -0.43 m. Six original recessed 50 mm plinth battens remain separate below; no facade extension to ground. Deck-height notch and exposed ledge removed.",
+    "outerFaceIFCX": 12.370172,
+    "horizontalCoursePitchM": 0.15,
+    "continuousLowerEdgeM": -0.43,
+    "sourcePlinthOuterFaceIFCX": 12.33718,
+    "sourcePlinthHeightM": 0.05,
+    "sourcePlinthRangeM": [
+      -0.8337225,
+      -0.412
+    ],
+    "sourcePlinthClearanceBehindWallM": 0.015,
+    "lowerEdgeStepRemoved": true,
+    "plinthBackingMaterial": "Plinth | matte graphite",
+    "plinthUV": "Individual batten UVs exclude the texture painted joint; physical source gaps only.",
+    "uvPhase": "u=(sourceZ-0.02)/0.15; v=(sourceY-sourceCenterY)/2.4, continuous over house and terrace.",
+    "openTerraceFrontAndGraphiteSupportsPreserved": true
+  },
+  "bathroomPrivacy": {
+    "sourceWindowGuid": "2PhxL3sfj9bB8fmxe0jEn2",
+    "curtainsRemoved": true,
+    "corniceNicheRemoved": true,
+    "glassMaterial": "Glass | frosted privacy",
+    "roughness": 0.92,
+    "opacity": 0.94,
+    "status": "Milky rough glass PBR approximation for privacy; source glass/frame geometry unchanged."
+  },
+  "panoramaConcept": {
+    "nodes": [
+      "curtains_living_panorama_left",
+      "curtains_living_panorama_right"
+    ],
+    "mechanism": "fixed-header-tieback",
+    "sourceWindowGuids": [
+      "3mOQE0kq1ADAzxhHE4vXrq",
+      "1YQoK7NXH6e984YHSYZLUz"
+    ],
+    "material": "Fabric | milk linen",
+    "motion": "Heading fixed along both roof slopes; soft vertically folded cloth gathers toward outer sides, producing diagonal draped swags.",
+    "ridgeIFCX": 8.292172,
+    "fieldWidthsM": [
+      1.3891720000000003,
+      3.7248279999999987
+    ],
+    "manualTieback": true,
+    "automated": false,
+    "supplierReference": "https://www.voilavoile.com/ie/explore/112/how-to-hang-curtains-on-apex-and-angled-windows",
+    "feasibility": "Visual manual-tieback concept for a stationary angled curtain heading; no electric-drive or cellular-blind claim."
+  },
+  "rainChains": {
+    "archivedSourceGuids": [
+      "01BIY8zAL6t9$q6XlsyLG1",
+      "0N2jaU7TP7pvNKSfjXDS4Z",
+      "0fK31lje53X8RtOmoX$stl",
+      "2Bz$vD3cHEGB1cWd9DQ8rX",
+      "2EddkoSgz7vQzBPmLqgAdP",
+      "35VznRtgL3P8c$Q36xJgT1",
+      "3SONmQrPbBSPHqcnOVHNbq",
+      "3cLyDG0TLEdu5bpfdRSatS"
+    ],
+    "sourceSegments": 8,
+    "locations": 4,
+    "visibleSegments": 0,
+    "sourceCollection": "Source_Finishes",
+    "sourceName": "Дух.Ш",
+    "mounts": "No separate chain-only mount objects in source; full chain meshes removed, two continuous roof gutters retained."
+  },
+  "terraceFascia": {
+    "objects": [
+      "terrace_fascia_front_left_0",
+      "terrace_fascia_front_left_1",
+      "terrace_fascia_front_left_2",
+      "terrace_fascia_front_right_0",
+      "terrace_fascia_front_right_1",
+      "terrace_fascia_front_right_2",
+      "terrace_fascia_west_return_0",
+      "terrace_fascia_west_return_1",
+      "terrace_fascia_west_return_2",
+      "terrace_fascia_east_corner_0",
+      "terrace_fascia_east_corner_1",
+      "terrace_fascia_east_corner_2"
+    ],
+    "topM": -0.055,
+    "bottomM": -0.43,
+    "coursePitchM": 0.15,
+    "material": "Exterior timber | smoked brown",
+    "frontSectionsIFCX": [
+      [
+        4.214172,
+        6.792171
+      ],
+      [
+        9.792171,
+        12.370172
+      ]
+    ],
+    "stairClearOpeningIFCX": [
+      6.792171,
+      9.792171
+    ],
+    "cornerReturns": [
+      "west_return",
+      "east_corner"
+    ],
+    "plinthUVGuids": [
+      "0B8tNIokf7Zx9V4$ZH$2xc",
+      "0Ea1zuB2D6KR26bW3H1X6m",
+      "0MfhBwVv1A2O3RRs8lcGSQ",
+      "0dfsLyJoD3VO_$PbQgXGsA",
+      "0f2GLhEAD1Xx3bVNtS5iQ2",
+      "0lK6u46Cf5VRFcc0ktVZI3",
+      "0xYhz_Qmj4RQPhVijs4KyH",
+      "0zTyfsvTf12xxLh4eDpldZ",
+      "10CR4aL$XCtfjdj5GMYEIy",
+      "1ItkEjFy98L8gwwF42gGpL",
+      "1Ln4JrXMr1YAaTF$HMpTRc",
+      "1NbgTx28b2wOpyCezK5wTO",
+      "1dnSVlHGD0chRMyjDv7_UW",
+      "1ui_0kdEzCqhv8ZJM7DbJx",
+      "1vFB3xBO9C2RZT6V0LtU3S",
+      "2bX2JQBnT3yOxSF7ls1LPr",
+      "2nXjFrm5b5qh5pCZQAotD3",
+      "2sSE915Ez3lxY$v7jviUvU",
+      "35$twvmcz7fPEhpnPg5fYe",
+      "35mNABrQjBfxwJN9_n4v3f",
+      "3EgP5_8OL4r9NtD2qONUHQ",
+      "3NlyfqVVf5rw5uC90YaEMn",
+      "3PhSv3VK94Qg71XTBaKwPj",
+      "3WLINp$Qn75Az_3dQypkw_"
+    ],
+    "plinthBackingMaterial": "Plinth | matte graphite",
+    "scope": "Closed fascia boards below terrace only; open terrace above, stair treads and narrow lower plinth retained."
+  },
+  "livingRefresh": {
+    "removedAuthoredObjects": [
+      "lamp_base",
+      "lamp_stem",
+      "sofa_cushion_rust",
+      "sofa_cushion_linen",
+      "plant_pot",
+      "plant_stem_0",
+      "plant_leaf_0",
+      "plant_stem_1",
+      "plant_leaf_1",
+      "plant_stem_2",
+      "plant_leaf_2",
+      "plant_stem_3",
+      "plant_leaf_3",
+      "plant_stem_4",
+      "plant_leaf_4",
+      "plant_stem_5",
+      "plant_leaf_5",
+      "plant_stem_6",
+      "plant_leaf_6",
+      "plant_stem_7",
+      "plant_leaf_7",
+      "plant_stem_8",
+      "plant_leaf_8",
+      "plant_stem_9",
+      "plant_leaf_9",
+      "plant_stem_10",
+      "plant_leaf_10",
+      "plant_stem_11",
+      "plant_leaf_11",
+      "light_local_fixture"
+    ],
+    "archiveCollection": "Source_Finishes",
+    "whiteDiningGuids": [
+      "0fhoMwjQv59uPaJu5ROJjU",
+      "0u0bikwRbClvpYRYH4DhBI",
+      "1KfkQkgZr9WPPaQo7FuBPn",
+      "2gaHY96Wb2gfeR2BpxszgM",
+      "3UsO_92GHFPgWILzk_wBSr"
+    ],
+    "diningMaterial": "Dining | matte white",
+    "archivedTVGuid": "02xbQZE_z8FPwixh9A7SfF",
+    "tvScreen": "Single +IFC-X front plane, 1.190 x 0.669375 m, explicit 0..1 UVs",
+    "kitchenLocalFixtureIFC": [
+      9.85217,
+      -3.69,
+      1.486
+    ],
+    "kitchenDecorFixtureIFC": [
+      10.75217,
+      -3.69,
+      1.486
+    ],
+    "sinkCabinetGuid": "3OH04FBhjEXfO99XVpmnLy",
+    "waterValveBodyIFC": [
+      9.95,
+      -3.42,
+      0.36
+    ],
+    "waterValveHandleIFC": [
+      9.95,
+      -3.42,
+      0.427
+    ],
+    "leakJointIFC": [
+      9.95,
+      -3.42,
+      0.28
+    ],
+    "puddleOriginIFC": [
+      9.85217,
+      -3.92,
+      0.022
+    ],
+    "sensorIFC": [
+      9.69,
+      -4.19,
+      0.035
+    ],
+    "puddleBaseRadiusM": 1.0,
+    "waterRouting": "Supply and valve inside the actual sink cabinet; downstream hose loops below valve then rises to sink. Floor egress is at toe kick. Proposed routing, not an as-built installation."
+  }
+}

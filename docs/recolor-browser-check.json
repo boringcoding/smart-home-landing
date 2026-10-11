@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "dpr": 1,
+    "startedAt": "2026-10-11T11:03:23.496Z"
+  },
+  "scope": "Short production-browser regression after exterior material update; not a repeated ten-minute run or cold-start benchmark.",
+  "checks": [
+    {
+      "fps": 60,
+      "p95": 17.6,
+      "triangles": 127742,
+      "calls": 144,
+      "shadowCalls": 447,
+      "geometries": 139,
+      "textures": 13,
+      "jsHeapBytes": 93369281,
+      "profile": "Настольный",
+      "loadedBytes": 3882380,
+      "loadMs": 36,
+      "elapsedSeconds": 33,
+      "asset": "house"
+    },
+    {
+      "fps": 60,
+      "p95": 17.7,
+      "triangles": 53418,
+      "calls": 107,
+      "shadowCalls": 312,
+      "geometries": 106,
+      "textures": 13,
+      "jsHeapBytes": 96161692,
+      "profile": "Настольный",
+      "loadedBytes": 1657432,
+      "loadMs": 160,
+      "elapsedSeconds": 39,
+      "asset": "first-room"
+    },
+    {
+      "fps": 60,
+      "p95": 16.8,
+      "triangles": 127742,
+      "calls": 144,
+      "shadowCalls": 447,
+      "geometries": 139,
+      "textures": 13,
+      "jsHeapBytes": 103272213,
+      "profile": "Настольный",
+      "loadedBytes": 3882380,
+      "loadMs": 43,
+      "elapsedSeconds": 54,
+      "asset": "house"
+    },
+    {
+      "fps": 60,
+      "p95": 18.2,
+      "triangles": 53418,
+      "calls": 107,
+      "shadowCalls": 312,
+      "geometries": 106,
+      "textures": 13,
+      "jsHeapBytes": 106266614,
+      "profile": "Настольный",
+      "loadedBytes": 1657432,
+      "loadMs": 127,
+      "elapsedSeconds": 75,
+      "asset": "first-room"
+    },
+    {
+      "fps": 60,
+      "p95": 18.3,
+      "triangles": 127742,
+      "calls": 144,
+      "shadowCalls": 447,
+      "geometries": 139,
+      "textures": 13,
+      "jsHeapBytes": 108230777,
+      "profile": "Настольный",
+      "loadedBytes": 3882380,
+      "loadMs": 47,
+      "elapsedSeconds": 87,
+      "asset": "house"
+    }
+  ],
+  "console": []
+}

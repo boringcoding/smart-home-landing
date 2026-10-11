@@ -1,0 +1,24 @@
+{
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36",
+    "dpr": 1,
+    "startedAt": "2026-10-11T13:18:47.422Z"
+  },
+  "metrics": {
+    "fps": 60,
+    "p95": 33.6,
+    "triangles": 194537,
+    "calls": 192,
+    "shadowCalls": 603,
+    "geometries": 187,
+    "textures": 22,
+    "jsHeapBytes": 101989465,
+    "profile": "Настольный",
+    "loadedBytes": 9023792,
+    "loadMs": 126,
+    "elapsedSeconds": 113,
+    "asset": "house"
+  },
+  "console": [],
+  "note": "Short desktop visual check: two front fascia sections closed, stairs clear, straight lower right facade with separate narrow plinth, no rain chains visible. Corresponding source GUID absence validated in both GLBs. Not a performance benchmark."
+}

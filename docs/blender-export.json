@@ -1,0 +1,12 @@
+{
+  "blender": "5.2.0 LTS",
+  "sourceProducts": 611,
+  "webMeshes": 82,
+  "files": {
+    "first-room.glb": 12673008,
+    "control.glb": 1813300,
+    "house.glb": 17790168
+  },
+  "staticJoining": "within category + facade + room; material slots deduplicated; master remains granular",
+  "generatedAssets": "All added meshes/materials are authored in build_blender.py; no stock geometry or remote assets. Seven authored 256px wood/fabric PNGs plus three reference-guided interior maps (1024/512/1024 px) are packed in master and GLB. User photographs remain offline references."
+}

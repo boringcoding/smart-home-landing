@@ -1,0 +1,176 @@
+{
+  "reason": "Remove the local notch and exposed lower ledge, close front terrace bays below the deck with matching fascia boards, clean plinth texture mapping, and remove every rain chain.",
+  "sourceSha256": "673317e4e4cc254a6f21e7e1336a80b5901b50a0d821d8cdde29f1164a2ef748",
+  "sourceIFCUnchanged": true,
+  "eastCladding": {
+    "sourceFacadeGuid": "0mclhuryX3qPYq9SOkz5mZ",
+    "archivedTerraceScreenGuids": [
+      "00ZcXPc7T2gwTlRAruvjoy",
+      "0CjDX53nr9RA2wOJsaHtVP",
+      "0DjMnsW6vAAuh5lFw0mTGk",
+      "0M9$UNO4XDthjjWOno$bGY",
+      "0lJdO4LOLAb8VxHNiyrWE_",
+      "0qrTDCe4f9Bh6dhQSqVa7x",
+      "0xAIewE7TElxqGIsJ4DlIm",
+      "1BvoLk6nb29Ry73JxfCvKv",
+      "1DR46asWH3RgqkKG0qhdQa",
+      "1Yy5QoTtT5mAVYAnLCEAWl",
+      "1mgoV3UwfD9AUc4rDyrzXd",
+      "24MHeXB2zEhvjXfS4q0zsh",
+      "25iQmgDCP1uuVZ9EWjKPiX",
+      "2Fpt5tOxP1q9rVOqugB0kn",
+      "3$A5IfpA9AtRrJvNcF_wGP",
+      "3GsxwEIlr1PfGg_UqPtEbC",
+      "3l8COviGvFn8mL8tDzVYb9",
+      "3mz9wovJTDjhJuq$w3v0EO",
+      "3rDVwN619AWuMtk14WPhwh"
+    ],
+    "restoredSourcePlinthGuids": [
+      "0dfsLyJoD3VO_$PbQgXGsA",
+      "0f2GLhEAD1Xx3bVNtS5iQ2",
+      "1ItkEjFy98L8gwwF42gGpL",
+      "2nXjFrm5b5qh5pCZQAotD3",
+      "2sSE915Ez3lxY$v7jviUvU",
+      "3WLINp$Qn75Az_3dQypkw_"
+    ],
+    "method": "Original closed siding profile and straight lower edge continued across house and terrace at -0.43 m. Six original recessed 50 mm plinth battens remain separate below; no facade extension to ground. Deck-height notch and exposed ledge removed.",
+    "outerFaceIFCX": 12.370172,
+    "horizontalCoursePitchM": 0.15,
+    "continuousLowerEdgeM": -0.43,
+    "sourcePlinthOuterFaceIFCX": 12.33718,
+    "sourcePlinthHeightM": 0.05,
+    "sourcePlinthRangeM": [
+      -0.8337225,
+      -0.412
+    ],
+    "sourcePlinthClearanceBehindWallM": 0.015,
+    "lowerEdgeStepRemoved": true,
+    "plinthBackingMaterial": "Plinth | matte graphite",
+    "plinthUV": "Individual batten UVs exclude the texture painted joint; physical source gaps only.",
+    "uvPhase": "u=(sourceZ-0.02)/0.15; v=(sourceY-sourceCenterY)/2.4, continuous over house and terrace.",
+    "openTerraceFrontAndGraphiteSupportsPreserved": true
+  },
+  "terraceFascia": {
+    "objects": [
+      "terrace_fascia_front_left_0",
+      "terrace_fascia_front_left_1",
+      "terrace_fascia_front_left_2",
+      "terrace_fascia_front_right_0",
+      "terrace_fascia_front_right_1",
+      "terrace_fascia_front_right_2",
+      "terrace_fascia_west_return_0",
+      "terrace_fascia_west_return_1",
+      "terrace_fascia_west_return_2",
+      "terrace_fascia_east_corner_0",
+      "terrace_fascia_east_corner_1",
+      "terrace_fascia_east_corner_2"
+    ],
+    "topM": -0.055,
+    "bottomM": -0.43,
+    "coursePitchM": 0.15,
+    "material": "Exterior timber | smoked brown",
+    "frontSectionsIFCX": [
+      [
+        4.214172,
+        6.792171
+      ],
+      [
+        9.792171,
+        12.370172
+      ]
+    ],
+    "stairClearOpeningIFCX": [
+      6.792171,
+      9.792171
+    ],
+    "cornerReturns": [
+      "west_return",
+      "east_corner"
+    ],
+    "plinthUVGuids": [
+      "0B8tNIokf7Zx9V4$ZH$2xc",
+      "0Ea1zuB2D6KR26bW3H1X6m",
+      "0MfhBwVv1A2O3RRs8lcGSQ",
+      "0dfsLyJoD3VO_$PbQgXGsA",
+      "0f2GLhEAD1Xx3bVNtS5iQ2",
+      "0lK6u46Cf5VRFcc0ktVZI3",
+      "0xYhz_Qmj4RQPhVijs4KyH",
+      "0zTyfsvTf12xxLh4eDpldZ",
+      "10CR4aL$XCtfjdj5GMYEIy",
+      "1ItkEjFy98L8gwwF42gGpL",
+      "1Ln4JrXMr1YAaTF$HMpTRc",
+      "1NbgTx28b2wOpyCezK5wTO",
+      "1dnSVlHGD0chRMyjDv7_UW",
+      "1ui_0kdEzCqhv8ZJM7DbJx",
+      "1vFB3xBO9C2RZT6V0LtU3S",
+      "2bX2JQBnT3yOxSF7ls1LPr",
+      "2nXjFrm5b5qh5pCZQAotD3",
+      "2sSE915Ez3lxY$v7jviUvU",
+      "35$twvmcz7fPEhpnPg5fYe",
+      "35mNABrQjBfxwJN9_n4v3f",
+      "3EgP5_8OL4r9NtD2qONUHQ",
+      "3NlyfqVVf5rw5uC90YaEMn",
+      "3PhSv3VK94Qg71XTBaKwPj",
+      "3WLINp$Qn75Az_3dQypkw_"
+    ],
+    "plinthBackingMaterial": "Plinth | matte graphite",
+    "scope": "Closed fascia boards below terrace only; open terrace above, stair treads and narrow lower plinth retained."
+  },
+  "rainChains": {
+    "archivedSourceGuids": [
+      "01BIY8zAL6t9$q6XlsyLG1",
+      "0N2jaU7TP7pvNKSfjXDS4Z",
+      "0fK31lje53X8RtOmoX$stl",
+      "2Bz$vD3cHEGB1cWd9DQ8rX",
+      "2EddkoSgz7vQzBPmLqgAdP",
+      "35VznRtgL3P8c$Q36xJgT1",
+      "3SONmQrPbBSPHqcnOVHNbq",
+      "3cLyDG0TLEdu5bpfdRSatS"
+    ],
+    "sourceSegments": 8,
+    "locations": 4,
+    "visibleSegments": 0,
+    "sourceCollection": "Source_Finishes",
+    "sourceName": "Дух.Ш",
+    "mounts": "No separate chain-only mount objects in source; full chain meshes removed, two continuous roof gutters retained."
+  },
+  "verification": {
+    "eastCladdingExtendedEndVertices": 160,
+    "eastUnchangedWindowAndRearVertices": 464,
+    "eastSourcePlinthBattens": 6,
+    "eastSourcePlinthHeightM": 0.05,
+    "eastSourcePlinthRecessM": 0.032992,
+    "eastOpenTerraceFramingBand": false,
+    "eastLowerEdgeStepRemoved": true,
+    "eastTerraceCladdingLowerEdgeM": -0.4300000071525574,
+    "eastCladdingNonmanifoldEdges": 0,
+    "rainChainSegmentsArchived": 8,
+    "rainChainSegmentsVisible": 0,
+    "plinthBattensCleanUV": 24,
+    "terraceFasciaBoards": 12,
+    "terraceFasciaStairOpeningClear": true
+  },
+  "pipeline": [
+    "scripts/build_blender.py finish_east_cladding_base + add_terrace_fascia",
+    "scripts/optimize.ts",
+    "scripts/validate-scene.ts",
+    "scripts/validate_master.py"
+  ],
+  "models": [
+    {
+      "name": "first-room",
+      "bytes": 7160932,
+      "nodes": 77,
+      "triangles": 132108,
+      "rainChainSegmentsVisible": 0
+    },
+    {
+      "name": "house",
+      "bytes": 9023792,
+      "nodes": 91,
+      "triangles": 193851,
+      "rainChainSegmentsVisible": 0
+    }
+  ],
+  "verificationStage": "Fascia and rain-chain correction before the living-room refresh. Current complete-model metrics are in resource-budgets.json, scene-validation.json and living-refresh.json."
+}

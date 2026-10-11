@@ -1,0 +1,30 @@
+{
+  "scope": "Initial application resource file sizes after exterior recolor. Raw bytes on disk, not a network or cold-start measurement. Includes index, registry, initial GLB and all current JS/CSS chunks; house loaded on demand.",
+  "files": [
+    {
+      "path": "dist/index.html",
+      "bytes": 1388
+    },
+    {
+      "path": "dist/scene-registry.json",
+      "bytes": 14241
+    },
+    {
+      "path": "dist/models/first-room.glb",
+      "bytes": 1657432
+    },
+    {
+      "path": "dist/assets/index-Dgl392Bc.css",
+      "bytes": 36406
+    },
+    {
+      "path": "dist/assets/index-Y2q08VdB.js",
+      "bytes": 291665
+    },
+    {
+      "path": "dist/assets/three-DHWEmw5f.js",
+      "bytes": 673807
+    }
+  ],
+  "totalBytes": 2674939
+}

@@ -1,0 +1,4 @@
+# Python 3.13 (IfcOpenShell arm64 wheel ABI)
+ifcopenshell==0.9.0
+# Blender scripts run with Blender 5.2.0; bpy is provided by Blender.
+shapely==2.2.0

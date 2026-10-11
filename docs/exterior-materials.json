@@ -1,0 +1,2959 @@
+{
+  "request": "Facade, terrace and entrance stairs share muted grey-brown natural timber, using the user-provided house photograph as visual reference.",
+  "reference": "assets/reference/house-colors.png",
+  "referenceSha256": "7c7886c8d1d9e53dbe057548cd1e3809a20a2a67e6205999f36a2a1d458d16fe",
+  "material": {
+    "name": "Exterior timber | smoked brown",
+    "nominalSRGB": "#756858",
+    "baseColorLinear": [
+      0.177888423204422,
+      0.1384316086769104,
+      0.09758734703063965
+    ],
+    "roughness": 0.86,
+    "metallic": 0,
+    "texture": "assets/textures/Exterior_timber_smoked_brown.png",
+    "textureSize": [
+      256,
+      256
+    ],
+    "referenceUse": "Visual interpretation under scene lighting, not a calibrated measured paint specification."
+  },
+  "isolation": "GUID/purpose mapping for exterior cladding, terrace, stairs and skirt boards. Current interior finishes and graphite structural metal are recorded separately in docs/interior-finishes.json; exterior roof steel retains its material.",
+  "assignments": [
+    {
+      "guid": "0qrTDCe4f9Bh6dhQSqVa7x",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          0.3079048918972238
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          0.4529048918972238
+        ]
+      ]
+    },
+    {
+      "guid": "10CR4aL$XCtfjdj5GMYEIy",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246693295416611,
+          -0.47715704692697813,
+          -0.8337178023183656
+        ],
+        [
+          12.337175775985225,
+          -0.4321551074115244,
+          -0.7837178023183655
+        ]
+      ]
+    },
+    {
+      "guid": "3$A5IfpA9AtRrJvNcF_wGP",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          -0.1420951081027759
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          0.002904891897224093
+        ]
+      ]
+    },
+    {
+      "guid": "1w2hacE2n7_hnQoPXgEcVw",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006039,
+          -9.977271684561417,
+          0.5529048918972237
+        ],
+        [
+          4.291691717963753,
+          -7.0574724945601695,
+          0.6029048918972237
+        ]
+      ]
+    },
+    {
+      "guid": "1DR46asWH3RgqkKG0qhdQa",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          0.007904891897224015
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          0.152904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "1NnoXPDQf01huKux307QnK",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          1.902904891897224
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          1.952904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "3sc0oPJ5X80erEtEKYAv7T",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          2.502904891897224
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          2.552904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "00ZcXPc7T2gwTlRAruvjoy",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          0.15790489189722387
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          0.30290489189722386
+        ]
+      ]
+    },
+    {
+      "guid": "0GPr32Sk17QRg$BhfcZpk6",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006039,
+          -9.977271684561417,
+          0.40290489189722384
+        ],
+        [
+          4.291691717963753,
+          -7.0574724945601695,
+          0.4529048918972238
+        ]
+      ]
+    },
+    {
+      "guid": "0AtHfsmb14AeGDt3LJC6X4",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Metal | charcoal"
+      ],
+      "boundsIFC": [
+        [
+          6.792171211142813,
+          -9.974053546141237,
+          3.024090765431282
+        ],
+        [
+          6.8371718892809845,
+          -7.14527228064228,
+          3.169090765431282
+        ]
+      ]
+    },
+    {
+      "guid": "3s$nZMl9v2P9tj8Pqcv1Sx",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Metal | charcoal"
+      ],
+      "boundsIFC": [
+        [
+          9.747171191473193,
+          -9.974054254537572,
+          3.024090765431282
+        ],
+        [
+          9.792171869611364,
+          -7.145272989038619,
+          3.169090765431282
+        ]
+      ]
+    },
+    {
+      "guid": "3xqJgklunA_wWnGODYdTwi",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006039,
+          -9.977271684561417,
+          -0.04709510810277591
+        ],
+        [
+          4.291691717963753,
+          -7.0574724945601695,
+          0.002904891897224093
+        ]
+      ]
+    },
+    {
+      "guid": "0QZEedNqrCC9rBpCOt$JJH",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Metal | charcoal"
+      ],
+      "boundsIFC": [
+        [
+          9.792171191473182,
+          -9.974054265325332,
+          3.024090765431282
+        ],
+        [
+          9.837171869611351,
+          -7.145272999826382,
+          3.169090765431282
+        ]
+      ]
+    },
+    {
+      "guid": "1BvoLk6nb29Ry73JxfCvKv",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          0.9079048918972239
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          1.052904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "3Z_05PohDCluk$ivRmiTaq",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006039,
+          -9.977271684561417,
+          0.102904891897224
+        ],
+        [
+          4.291691717963753,
+          -7.0574724945601695,
+          0.152904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "0KJbx1Q4DFJAjjoTo6Ld4a",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          2.652904891897224
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          2.702904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "19P8jFPT94t8w_OgR5yq2t",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006039,
+          -9.977271684561417,
+          1.152904891897224
+        ],
+        [
+          4.291691717963753,
+          -7.0574724945601695,
+          1.202904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "1J3aTCgRfBifoESU6pvv03",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006039,
+          -9.977271684561417,
+          0.25290489189722387
+        ],
+        [
+          4.291691717963753,
+          -7.0574724945601695,
+          0.30290489189722386
+        ]
+      ]
+    },
+    {
+      "guid": "2ZZO9AIODDyx2XQO$1pVOg",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-122521",
+          "color": [
+            0.5300392156862744,
+            0.49113725490196075,
+            0.42062745098039217
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          8.291931476415893,
+          -9.977274581331757,
+          2.557904891897224
+        ],
+        [
+          12.342931486390512,
+          -9.9322736101935,
+          3.7934821163773136
+        ]
+      ]
+    },
+    {
+      "guid": "3tigjtG4z2EwIb2woaFX$1",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          2.352904891897224
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          2.402904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "2a5_Zlq65FhhfK1$LTTwF7",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Metal | charcoal"
+      ],
+      "boundsIFC": [
+        [
+          6.7471712111428195,
+          -9.974053535353475,
+          3.024090765431282
+        ],
+        [
+          6.7921718892809855,
+          -7.145272269854519,
+          3.169090765431282
+        ]
+      ]
+    },
+    {
+      "guid": "0Jo$Q0bmj2Rf5y0wFeZKRu",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006039,
+          -9.977271684561417,
+          0.8529048918972241
+        ],
+        [
+          4.291691717963753,
+          -7.0574724945601695,
+          0.9029048918972241
+        ]
+      ]
+    },
+    {
+      "guid": "0DjMnsW6vAAuh5lFw0mTGk",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          2.257904891897224
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          2.402904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "3rDVwN619AWuMtk14WPhwh",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          1.3579048918972239
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          1.5029048918972239
+        ]
+      ]
+    },
+    {
+      "guid": "2Fpt5tOxP1q9rVOqugB0kn",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          1.657904891897224
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          1.802904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "2_VaZVrC59NxE6URDf_Fq7",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          1.602904891897224
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          1.652904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "25iQmgDCP1uuVZ9EWjKPiX",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          1.207904891897224
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          1.352904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "3PhSv3VK94Qg71XTBaKwPj",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246688029844702,
+          -10.022271684561415,
+          -0.7587178023183655
+        ],
+        [
+          12.337170510413316,
+          -9.977269745045962,
+          -0.7087178023183655
+        ]
+      ]
+    },
+    {
+      "guid": "3l8COviGvFn8mL8tDzVYb9",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          0.7579048918972241
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          0.9029048918972241
+        ]
+      ]
+    },
+    {
+      "guid": "0lJdO4LOLAb8VxHNiyrWE_",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-122521",
+          "color": [
+            0.5300392156862744,
+            0.49113725490196075,
+            0.42062745098039217
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          2.557904891897224
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          2.702904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "3mz9wovJTDjhJuq$w3v0EO",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          1.9579048918972242
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          2.102904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "1mgoV3UwfD9AUc4rDyrzXd",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          1.057904891897224
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          1.202904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "24MHeXB2zEhvjXfS4q0zsh",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          1.507904891897224
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          1.652904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "2TDfrLTDP9multAnhxFpos",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          2.0529048918972244
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          2.102904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "1dnSVlHGD0chRMyjDv7_UW",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246688029844702,
+          -10.022271684561415,
+          -0.6837178023183654
+        ],
+        [
+          12.337170510413316,
+          -9.977269745045962,
+          -0.6337178023183654
+        ]
+      ]
+    },
+    {
+      "guid": "1NbgTx28b2wOpyCezK5wTO",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246537804045094,
+          -0.47715704696425376,
+          -0.4620000343384028
+        ],
+        [
+          12.337175775985225,
+          -0.4321551074115244,
+          -0.4120000343384028
+        ]
+      ]
+    },
+    {
+      "guid": "1j3aiRy3H19eKmuOX32JSa",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Metal | charcoal"
+      ],
+      "boundsIFC": [
+        [
+          12.147171188795518,
+          -9.977131146828258,
+          2.4065628305548072
+        ],
+        [
+          12.292171866933687,
+          -7.148349857356502,
+          2.496562830554807
+        ]
+      ]
+    },
+    {
+      "guid": "0lK6u46Cf5VRFcc0ktVZI3",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246537798651211,
+          -0.4771570469642551,
+          -0.6120000343384032
+        ],
+        [
+          12.337175775985225,
+          -0.4321551074115244,
+          -0.5620000343384032
+        ]
+      ]
+    },
+    {
+      "guid": "3EgP5_8OL4r9NtD2qONUHQ",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246693295416611,
+          -0.47715704692697813,
+          -0.6837178023183654
+        ],
+        [
+          12.337175775985225,
+          -0.4321551074115244,
+          -0.6337178023183654
+        ]
+      ]
+    },
+    {
+      "guid": "0xYhz_Qmj4RQPhVijs4KyH",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246532543867067,
+          -10.02227168459869,
+          -0.537000034338403
+        ],
+        [
+          12.337170510413316,
+          -9.977269745045962,
+          -0.487000034338403
+        ]
+      ]
+    },
+    {
+      "guid": "2Rq9sncA18sv0jdM_AP$gf",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Metal | charcoal"
+      ],
+      "boundsIFC": [
+        [
+          4.292030504835478,
+          -9.977394957737513,
+          2.408445756558282
+        ],
+        [
+          4.437031182973647,
+          -7.148613668265757,
+          2.498445756558282
+        ]
+      ]
+    },
+    {
+      "guid": "0dfsLyJoD3VO_$PbQgXGsA",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292173487787354,
+          -9.977131157616023,
+          -0.4620000343384028
+        ],
+        [
+          12.337175765197928,
+          -0.4771551128054076,
+          -0.4120000343384028
+        ]
+      ]
+    },
+    {
+      "guid": "3NlyfqVVf5rw5uC90YaEMn",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246693295416611,
+          -0.47715704692697813,
+          -0.7587178023183655
+        ],
+        [
+          12.337175775985225,
+          -0.4321551074115244,
+          -0.7087178023183655
+        ]
+      ]
+    },
+    {
+      "guid": "1XcYnP_05C_B1ORWUfRq_T",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          1.302904891897224
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          1.352904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "1vFB3xBO9C2RZT6V0LtU3S",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246537809438976,
+          -0.4771570469642525,
+          -0.537000034338403
+        ],
+        [
+          12.337175775985225,
+          -0.4321551074115244,
+          -0.487000034338403
+        ]
+      ]
+    },
+    {
+      "guid": "0zTyfsvTf12xxLh4eDpldZ",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246532533079302,
+          -10.022271684598692,
+          -0.6120000343384032
+        ],
+        [
+          12.337170510413316,
+          -9.977269745045962,
+          -0.5620000343384032
+        ]
+      ]
+    },
+    {
+      "guid": "0MfhBwVv1A2O3RRs8lcGSQ",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2465325384731845,
+          -10.02227168459869,
+          -0.4620000343384028
+        ],
+        [
+          12.337170510413316,
+          -9.977269745045962,
+          -0.4120000343384028
+        ]
+      ]
+    },
+    {
+      "guid": "35mNABrQjBfxwJN9_n4v3f",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246688029844702,
+          -10.022271684561415,
+          -0.8337178023183656
+        ],
+        [
+          12.337170510413316,
+          -9.977269745045962,
+          -0.7837178023183655
+        ]
+      ]
+    },
+    {
+      "guid": "1MbpLguaD7a9f5C1zciefx",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-122521",
+          "color": [
+            0.5300392156862744,
+            0.49113725490196075,
+            0.42062745098039217
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          8.291931476415893,
+          -7.100141679893323,
+          2.5112270153928162
+        ],
+        [
+          12.342931486390512,
+          -7.055140708755065,
+          3.746804239872906
+        ]
+      ]
+    },
+    {
+      "guid": "2FGvV6J8T0mOfEhwYtF_3U",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006039,
+          -9.977271684561417,
+          1.0029048918972239
+        ],
+        [
+          4.291691717963753,
+          -7.0574724945601695,
+          1.052904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "3ISmjvWOHFWfCWNZodAH0I",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-122521",
+          "color": [
+            0.5300392156862744,
+            0.49113725490196075,
+            0.42062745098039217
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.292030504835479,
+          -7.100140708755059,
+          2.524918959994886
+        ],
+        [
+          8.291931486848423,
+          -7.055139749866654,
+          3.746804241198629
+        ]
+      ]
+    },
+    {
+      "guid": "3GsxwEIlr1PfGg_UqPtEbC",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          0.6079048918972239
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          0.7529048918972239
+        ]
+      ]
+    },
+    {
+      "guid": "0CjDX53nr9RA2wOJsaHtVP",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          0.4579048918972237
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          0.6029048918972237
+        ]
+      ]
+    },
+    {
+      "guid": "0M9$UNO4XDthjjWOno$bGY",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          1.807904891897224
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          1.952904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "1Yy5QoTtT5mAVYAnLCEAWl",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          2.107904891897223
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          2.252904891897223
+        ]
+      ]
+    },
+    {
+      "guid": "1yEcs5BzT2SAU74gvwCmcx",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          1.7529048918972239
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          1.802904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "2bAReTmx1CeRfaNWFq4nwX",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006039,
+          -9.977271684561417,
+          0.7029048918972238
+        ],
+        [
+          4.291691717963753,
+          -7.0574724945601695,
+          0.7529048918972239
+        ]
+      ]
+    },
+    {
+      "guid": "1ui_0kdEzCqhv8ZJM7DbJx",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006036,
+          -9.977286643593656,
+          -0.6837178023183654
+        ],
+        [
+          4.29169329541661,
+          -0.47731059878304033,
+          -0.6337178023183654
+        ]
+      ]
+    },
+    {
+      "guid": "3s$LfPL5j3eAQu_u6NIF6N",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-122521",
+          "color": [
+            0.5300392156862744,
+            0.49113725490196075,
+            0.42062745098039217
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.292030504835479,
+          -9.977273610193494,
+          2.5715968364992943
+        ],
+        [
+          8.291931486848423,
+          -9.93227265130509,
+          3.7934821177030376
+        ]
+      ]
+    },
+    {
+      "guid": "0Ea1zuB2D6KR26bW3H1X6m",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006036,
+          -9.977286643593656,
+          -0.7587178023183655
+        ],
+        [
+          4.29169329541661,
+          -0.47731059878304033,
+          -0.7087178023183655
+        ]
+      ]
+    },
+    {
+      "guid": "3PygDHwZn8hfeIpBuDNa5r",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          2.2029048918972234
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          2.252904891897223
+        ]
+      ]
+    },
+    {
+      "guid": "0pakCngvP4wwQivCLg7047",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2466910180060395,
+          -9.977271684561417,
+          1.4529048918972238
+        ],
+        [
+          4.2916917179637535,
+          -7.0574724945601695,
+          1.5029048918972239
+        ]
+      ]
+    },
+    {
+      "guid": "3WLINp$Qn75Az_3dQypkw_",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292173487787354,
+          -9.97728664898754,
+          -0.7587178023183655
+        ],
+        [
+          12.337175765197928,
+          -0.4773106041769247,
+          -0.7087178023183655
+        ]
+      ]
+    },
+    {
+      "guid": "0xAIewE7TElxqGIsJ4DlIm",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "terrace screen, outer edge or overhead timber",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292170510413316,
+          -9.977271684561419,
+          2.407904891897224
+        ],
+        [
+          12.33717121037103,
+          -7.057472494560171,
+          2.552904891897224
+        ]
+      ]
+    },
+    {
+      "guid": "35$twvmcz7fPEhpnPg5fYe",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006036,
+          -9.977131157616022,
+          -0.537000034338403
+        ],
+        [
+          4.29169329541661,
+          -0.47715511280540585,
+          -0.487000034338403
+        ]
+      ]
+    },
+    {
+      "guid": "1ItkEjFy98L8gwwF42gGpL",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292173487787354,
+          -9.97728664898754,
+          -0.8337178023183656
+        ],
+        [
+          12.337175765197928,
+          -0.4773106041769247,
+          -0.7837178023183655
+        ]
+      ]
+    },
+    {
+      "guid": "2nXjFrm5b5qh5pCZQAotD3",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292173487787354,
+          -9.97713115222214,
+          -0.6120000343384032
+        ],
+        [
+          12.337175765197928,
+          -0.4771551074115249,
+          -0.5620000343384032
+        ]
+      ]
+    },
+    {
+      "guid": "2sSE915Ez3lxY$v7jviUvU",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292173487787354,
+          -9.977131163009906,
+          -0.537000034338403
+        ],
+        [
+          12.337175765197928,
+          -0.47715511819929024,
+          -0.487000034338403
+        ]
+      ]
+    },
+    {
+      "guid": "0f2GLhEAD1Xx3bVNtS5iQ2",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.292173487787354,
+          -9.97728664898754,
+          -0.6837178023183654
+        ],
+        [
+          12.337175765197928,
+          -0.4773106041769247,
+          -0.6337178023183654
+        ]
+      ]
+    },
+    {
+      "guid": "1Ln4JrXMr1YAaTF$HMpTRc",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006036,
+          -9.977286643593656,
+          -0.8337178023183656
+        ],
+        [
+          4.29169329541661,
+          -0.47731059878304033,
+          -0.7837178023183655
+        ]
+      ]
+    },
+    {
+      "guid": "2bX2JQBnT3yOxSF7ls1LPr",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006036,
+          -9.977131152222139,
+          -0.4620000343384028
+        ],
+        [
+          4.29169329541661,
+          -0.4771551074115231,
+          -0.4120000343384028
+        ]
+      ]
+    },
+    {
+      "guid": "0B8tNIokf7Zx9V4$ZH$2xc",
+      "sourceName": "Трубка -18мм",
+      "ifcType": "IfcBeam",
+      "role": "external horizontal plinth / terrace skirt boards",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.246691018006036,
+          -9.977131146828256,
+          -0.6120000343384032
+        ],
+        [
+          4.29169329541661,
+          -0.47715510201764044,
+          -0.5620000343384032
+        ]
+      ]
+    },
+    {
+      "guid": "3Jg1Zd6450jbdzd5EFEuCc",
+      "sourceName": "Дерево - Конструкции",
+      "ifcType": "IfcBuildingElementPart",
+      "role": "outer timber backing at facade edges",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-122521",
+          "color": [
+            0.5300392156862744,
+            0.49113725490196075,
+            0.42062745098039217
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.23669097013924,
+          -7.007272645456035,
+          -0.18
+        ],
+        [
+          4.26199845863327,
+          -0.447272684259147,
+          2.4499533050507663
+        ]
+      ]
+    },
+    {
+      "guid": "0JN9TZkEPFW45kSBXLupD7",
+      "sourceName": "Дерево - Конструкции",
+      "ifcType": "IfcBuildingElementPart",
+      "role": "outer timber backing at facade edges",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-122521",
+          "color": [
+            0.5300392156862744,
+            0.49113725490196075,
+            0.42062745098039217
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.322171922363284,
+          -7.007274583698783,
+          -0.18
+        ],
+        [
+          12.347173494979186,
+          -0.44727462257598294,
+          2.4499997846030293
+        ]
+      ]
+    },
+    {
+      "guid": "2D8Ua0uOx5VnbCDNcr5Nc7",
+      "sourceName": "Дерево - Конструкции",
+      "ifcType": "IfcBuildingElementPart",
+      "role": "outer timber backing at facade edges",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-122521",
+          "color": [
+            0.5300392156862744,
+            0.49113725490196075,
+            0.42062745098039217
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.2369880877588875,
+          -7.03227458369878,
+          -0.18
+        ],
+        [
+          12.34717192236328,
+          -7.007272639460348,
+          3.82
+        ]
+      ]
+    },
+    {
+      "guid": "0UwP2icMNQUerp7tcryxjw",
+      "sourceName": "Дерево - Конструкции",
+      "ifcType": "IfcBuildingElementPart",
+      "role": "outer timber backing at facade edges",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-122521",
+          "color": [
+            0.5300392156862744,
+            0.49113725490196075,
+            0.42062745098039217
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.236689792314985,
+          -0.4472746285691871,
+          -0.18
+        ],
+        [
+          12.347173500972389,
+          -0.42227268425886766,
+          3.529835029906093
+        ]
+      ]
+    },
+    {
+      "guid": "2D5BbWvjPEau_itFOOQ9x9",
+      "sourceName": "",
+      "ifcType": "IfcBuildingElementProxy",
+      "role": "exterior facade cladding",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.213672899164352,
+          -7.0552726993802,
+          -0.43
+        ],
+        [
+          4.231999918683978,
+          -0.39927270512826674,
+          2.4419152224250538
+        ]
+      ]
+    },
+    {
+      "guid": "1c_S73KU5DZOyIMbwiOKWJ",
+      "sourceName": "ОБ-0007",
+      "ifcType": "IfcBuildingElementProxy",
+      "role": "entrance stair treads and risers; dark support slot retained as graphite",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-256701",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        },
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown",
+        "Metal | charcoal"
+      ],
+      "boundsIFC": [
+        [
+          6.792170974771793,
+          -11.005051802306639,
+          -0.58092600929762
+        ],
+        [
+          9.792171221158824,
+          -9.977273241288259,
+          -0.054999999999999494
+        ]
+      ]
+    },
+    {
+      "guid": "2nc5hhqqn68924vVLi3j15",
+      "sourceName": "",
+      "ifcType": "IfcBuildingElementProxy",
+      "role": "exterior facade cladding",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.213688720082104,
+          -0.4172746005016857,
+          -0.3799999999999993
+        ],
+        [
+          12.370173501002498,
+          -0.3992726494787205,
+          3.52983502990564
+        ]
+      ]
+    },
+    {
+      "guid": "0mclhuryX3qPYq9SOkz5mZ",
+      "sourceName": "",
+      "ifcType": "IfcBuildingElementProxy",
+      "role": "exterior facade cladding",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          12.35217192990777,
+          -7.055274589182415,
+          -0.43
+        ],
+        [
+          12.370171929907771,
+          -0.3992746047118336,
+          2.441961730116823
+        ]
+      ]
+    },
+    {
+      "guid": "3zg_LS_XXDmRW_q35N4zMg",
+      "sourceName": "ОБ-0007",
+      "ifcType": "IfcBuildingElementProxy",
+      "role": "entrance stair treads and risers; dark support slot retained as graphite",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-256701",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        },
+        {
+          "name": "IfcSurfaceStyleRendering-238570",
+          "color": [
+            0.14631372549019608,
+            0.14631372549019608,
+            0.14631372549019608
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown",
+        "Metal | charcoal"
+      ],
+      "boundsIFC": [
+        [
+          6.792170728384633,
+          -11.67171780231783,
+          -0.914259365565734
+        ],
+        [
+          9.792170974771665,
+          -10.64393924129945,
+          -0.3883333562681135
+        ]
+      ]
+    },
+    {
+      "guid": "1$GYiiH852XxGiiSIx$$db",
+      "sourceName": "",
+      "ifcType": "IfcBuildingElementProxy",
+      "role": "exterior facade cladding",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-128021",
+          "color": [
+            0.496,
+            0.4619607843137255,
+            0.4181960784313726
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.223000628955483,
+          -7.055274599756724,
+          -0.18
+        ],
+        [
+          12.37017194048208,
+          -7.037272648808737,
+          3.529835030005847
+        ]
+      ]
+    },
+    {
+      "guid": "1gEdPa0913fOeMY0VELBc8",
+      "sourceName": "Фундамент 204",
+      "ifcType": "IfcSlab",
+      "role": "terrace deck and exposed deck fascia",
+      "sourceMaterials": [
+        {
+          "name": "IfcSurfaceStyleRendering-282750",
+          "color": [
+            0.5349019607843137,
+            0.49843137254901965,
+            0.4473725490196078
+          ],
+          "transparency": 0.0
+        }
+      ],
+      "assignedMaterials": [
+        "Exterior timber | smoked brown"
+      ],
+      "boundsIFC": [
+        [
+          4.290171210371262,
+          -9.977274570513666,
+          -0.40499999999999975
+        ],
+        [
+          12.292171929555135,
+          -6.977272652210004,
+          -0.054999999999999716
+        ]
+      ]
+    }
+  ],
+  "assignmentsStatus": "Initial source material mapping; later archived/rebuilt surfaces are identified in workingGeometryChanges and Source_Finishes.",
+  "workingGeometryChanges": {
+    "terrace": {
+      "boardWidthM": 0.14,
+      "boardPitchM": 0.15,
+      "realGapM": 0.01,
+      "solidSourceDeckArchived": true,
+      "boardDirectionIFC": "X, parallel to house frontage",
+      "joistDirectionIFC": "Y, perpendicular to deck boards",
+      "boardCount": 20,
+      "boardLengthM": 8.0,
+      "uv": "Long grain along source X; top UV avoids painted joints because boards have actual gaps."
+    },
+    "stairs": {
+      "sourceGuids": [
+        "1c_S73KU5DZOyIMbwiOKWJ",
+        "3zg_LS_XXDmRW_q35N4zMg"
+      ],
+      "sourceFlightTreads": 6,
+      "distinctTreadLevels": 5,
+      "sourceOverlap": "Two source flights share the middle tread within 1 micrometre; preserved as one working pair of boards.",
+      "boardsPerTread": 2,
+      "workingBoardCount": 10,
+      "clearGapM": 0.01,
+      "sourceThicknessM": 0.02592593,
+      "sourcePositionsAndDarkStringersPreserved": true,
+      "treads": [
+        {
+          "bounds": [
+            [
+              6.792170974957671,
+              -11.00505180066375,
+              -0.3883333985133157
+            ],
+            [
+              9.792171061340127,
+              -10.643940106531943,
+              -0.3883333562681135
+            ]
+          ],
+          "sourceGuids": [
+            "1c_S73KU5DZOyIMbwiOKWJ",
+            "3zg_LS_XXDmRW_q35N4zMg"
+          ],
+          "topM": -0.3883333633089805,
+          "thicknessM": 0.02592593
+        },
+        {
+          "bounds": [
+            [
+              6.792171054867012,
+              -10.671718444395651,
+              -0.22166672037925844
+            ],
+            [
+              9.792171141249483,
+              -10.310606750263844,
+              -0.22166667813405644
+            ]
+          ],
+          "sourceGuids": [
+            "1c_S73KU5DZOyIMbwiOKWJ"
+          ],
+          "topM": -0.22166668517492347,
+          "thicknessM": 0.02592593
+        },
+        {
+          "bounds": [
+            [
+              6.792171134776368,
+              -10.338385088127552,
+              -0.05500004224520172
+            ],
+            [
+              9.792171221158824,
+              -9.977273393995773,
+              -0.054999999999999494
+            ]
+          ],
+          "sourceGuids": [
+            "1c_S73KU5DZOyIMbwiOKWJ"
+          ],
+          "topM": -0.05500000704086653,
+          "thicknessM": 0.02592593
+        },
+        {
+          "bounds": [
+            [
+              6.792170728570511,
+              -11.67171780067494,
+              -0.7216667547814297
+            ],
+            [
+              9.792170814952968,
+              -11.310606106543133,
+              -0.7216667125362275
+            ]
+          ],
+          "sourceGuids": [
+            "3zg_LS_XXDmRW_q35N4zMg"
+          ],
+          "topM": -0.7216667195770946,
+          "thicknessM": 0.02592593
+        },
+        {
+          "bounds": [
+            [
+              6.792170808479852,
+              -11.338384444406842,
+              -0.5550000766473724
+            ],
+            [
+              9.792170894862323,
+              -10.977272750275034,
+              -0.5550000344021704
+            ]
+          ],
+          "sourceGuids": [
+            "3zg_LS_XXDmRW_q35N4zMg"
+          ],
+          "topM": -0.5550000414430374,
+          "thicknessM": 0.02592593
+        }
+      ]
+    },
+    "eastCladding": {
+      "sourceFacadeGuid": "0mclhuryX3qPYq9SOkz5mZ",
+      "archivedTerraceScreenGuids": [
+        "00ZcXPc7T2gwTlRAruvjoy",
+        "0CjDX53nr9RA2wOJsaHtVP",
+        "0DjMnsW6vAAuh5lFw0mTGk",
+        "0M9$UNO4XDthjjWOno$bGY",
+        "0lJdO4LOLAb8VxHNiyrWE_",
+        "0qrTDCe4f9Bh6dhQSqVa7x",
+        "0xAIewE7TElxqGIsJ4DlIm",
+        "1BvoLk6nb29Ry73JxfCvKv",
+        "1DR46asWH3RgqkKG0qhdQa",
+        "1Yy5QoTtT5mAVYAnLCEAWl",
+        "1mgoV3UwfD9AUc4rDyrzXd",
+        "24MHeXB2zEhvjXfS4q0zsh",
+        "25iQmgDCP1uuVZ9EWjKPiX",
+        "2Fpt5tOxP1q9rVOqugB0kn",
+        "3$A5IfpA9AtRrJvNcF_wGP",
+        "3GsxwEIlr1PfGg_UqPtEbC",
+        "3l8COviGvFn8mL8tDzVYb9",
+        "3mz9wovJTDjhJuq$w3v0EO",
+        "3rDVwN619AWuMtk14WPhwh"
+      ],
+      "restoredSourcePlinthGuids": [
+        "0dfsLyJoD3VO_$PbQgXGsA",
+        "0f2GLhEAD1Xx3bVNtS5iQ2",
+        "1ItkEjFy98L8gwwF42gGpL",
+        "2nXjFrm5b5qh5pCZQAotD3",
+        "2sSE915Ez3lxY$v7jviUvU",
+        "3WLINp$Qn75Az_3dQypkw_"
+      ],
+      "method": "Original closed siding profile and straight lower edge continued across house and terrace at -0.43 m. Six original recessed 50 mm plinth battens remain separate below; no facade extension to ground. Deck-height notch and exposed ledge removed.",
+      "outerFaceIFCX": 12.370172,
+      "horizontalCoursePitchM": 0.15,
+      "continuousLowerEdgeM": -0.43,
+      "sourcePlinthOuterFaceIFCX": 12.33718,
+      "sourcePlinthHeightM": 0.05,
+      "sourcePlinthRangeM": [
+        -0.8337225,
+        -0.412
+      ],
+      "sourcePlinthClearanceBehindWallM": 0.015,
+      "lowerEdgeStepRemoved": true,
+      "plinthBackingMaterial": "Plinth | matte graphite",
+      "plinthUV": "Individual batten UVs exclude the texture painted joint; physical source gaps only.",
+      "uvPhase": "u=(sourceZ-0.02)/0.15; v=(sourceY-sourceCenterY)/2.4, continuous over house and terrace.",
+      "openTerraceFrontAndGraphiteSupportsPreserved": true
+    },
+    "terraceFascia": {
+      "objects": [
+        "terrace_fascia_front_left_0",
+        "terrace_fascia_front_left_1",
+        "terrace_fascia_front_left_2",
+        "terrace_fascia_front_right_0",
+        "terrace_fascia_front_right_1",
+        "terrace_fascia_front_right_2",
+        "terrace_fascia_west_return_0",
+        "terrace_fascia_west_return_1",
+        "terrace_fascia_west_return_2",
+        "terrace_fascia_east_corner_0",
+        "terrace_fascia_east_corner_1",
+        "terrace_fascia_east_corner_2"
+      ],
+      "topM": -0.055,
+      "bottomM": -0.43,
+      "coursePitchM": 0.15,
+      "material": "Exterior timber | smoked brown",
+      "frontSectionsIFCX": [
+        [
+          4.214172,
+          6.792171
+        ],
+        [
+          9.792171,
+          12.370172
+        ]
+      ],
+      "stairClearOpeningIFCX": [
+        6.792171,
+        9.792171
+      ],
+      "cornerReturns": [
+        "west_return",
+        "east_corner"
+      ],
+      "plinthUVGuids": [
+        "0B8tNIokf7Zx9V4$ZH$2xc",
+        "0Ea1zuB2D6KR26bW3H1X6m",
+        "0MfhBwVv1A2O3RRs8lcGSQ",
+        "0dfsLyJoD3VO_$PbQgXGsA",
+        "0f2GLhEAD1Xx3bVNtS5iQ2",
+        "0lK6u46Cf5VRFcc0ktVZI3",
+        "0xYhz_Qmj4RQPhVijs4KyH",
+        "0zTyfsvTf12xxLh4eDpldZ",
+        "10CR4aL$XCtfjdj5GMYEIy",
+        "1ItkEjFy98L8gwwF42gGpL",
+        "1Ln4JrXMr1YAaTF$HMpTRc",
+        "1NbgTx28b2wOpyCezK5wTO",
+        "1dnSVlHGD0chRMyjDv7_UW",
+        "1ui_0kdEzCqhv8ZJM7DbJx",
+        "1vFB3xBO9C2RZT6V0LtU3S",
+        "2bX2JQBnT3yOxSF7ls1LPr",
+        "2nXjFrm5b5qh5pCZQAotD3",
+        "2sSE915Ez3lxY$v7jviUvU",
+        "35$twvmcz7fPEhpnPg5fYe",
+        "35mNABrQjBfxwJN9_n4v3f",
+        "3EgP5_8OL4r9NtD2qONUHQ",
+        "3NlyfqVVf5rw5uC90YaEMn",
+        "3PhSv3VK94Qg71XTBaKwPj",
+        "3WLINp$Qn75Az_3dQypkw_"
+      ],
+      "plinthBackingMaterial": "Plinth | matte graphite",
+      "scope": "Closed fascia boards below terrace only; open terrace above, stair treads and narrow lower plinth retained."
+    },
+    "rainChains": {
+      "archivedSourceGuids": [
+        "01BIY8zAL6t9$q6XlsyLG1",
+        "0N2jaU7TP7pvNKSfjXDS4Z",
+        "0fK31lje53X8RtOmoX$stl",
+        "2Bz$vD3cHEGB1cWd9DQ8rX",
+        "2EddkoSgz7vQzBPmLqgAdP",
+        "35VznRtgL3P8c$Q36xJgT1",
+        "3SONmQrPbBSPHqcnOVHNbq",
+        "3cLyDG0TLEdu5bpfdRSatS"
+      ],
+      "sourceSegments": 8,
+      "locations": 4,
+      "visibleSegments": 0,
+      "sourceCollection": "Source_Finishes",
+      "sourceName": "Дух.Ш",
+      "mounts": "No separate chain-only mount objects in source; full chain meshes removed, two continuous roof gutters retained."
+    }
+  }
+}
