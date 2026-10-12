@@ -1,9 +1,58 @@
 # GPU submission and startup verification
 
-## Status, 2026-10-12
+## Follow-up: receiver sampling isolated
+
+The subsequent Pixel report for `0101029e` confirms the same failure twice with
+an empty GPU queue between stages:
+
+| Batch | Attempt 1 | Attempt 2 |
+| --- | --- | --- |
+| Full materials, DPR 2.5, anisotropy 4 | GPU complete; no GL errors | GPU complete; no GL errors |
+| RGBA8 shadow generation, 103 draws | GPU complete; no GL errors | GPU complete; no GL errors |
+| Main frame using the completed shadow map | Context lost; no GPU acknowledgement | Context lost; no GPU acknowledgement |
+
+This excludes texture upload, model complexity, the drawing-buffer resolution and
+shadow-map production as the operation at which these two runs failed. The failure
+is isolated to the shadow-enabled receiver program. Shader errors with empty logs
+still do not identify the exact GPU instruction or prove that Glass is at fault.
+
+The targeted compatibility change is in `explicitShadowSampling.ts`: only the
+depth lookup in `texture2DCompare` changes from `texture2D(depths, uv)` to
+`textureLod(depths, uv, 0.0)`. The pinned renderer's shadow target uses one image
+level, Nearest for both filters, ClampToEdge, no mipmaps and no anisotropic filter.
+Both lookups therefore select the same base-level texel. All 16 actual PCF Soft
+lookups, weights, depth comparisons, bias and intensity remain unchanged. Albedo
+sampling, texture resolutions, DPR and shadow-map size are untouched.
+
+Explicit LOD avoids implicit derivative selection in the receiver's conditional
+shadow lookup, including code reached after clipping discard. This is a targeted
+driver-path workaround, **not proof that undefined derivatives caused the GPU
+reset**: this non-mipmapped texture need not use derivatives in the first place.
+See [GLSL ES 3.00](https://registry.khronos.org/OpenGL/specs/es/3.0/GLSL_ES_Specification_3.00.pdf),
+texture lookup and uniform/non-uniform control flow sections.
+
+The optional localhost-only `?validateShadows=1` fixture compares the stock and
+explicit-LOD receiver pixels in the existing renderer/context. It runs after a
+completed model frame while normal frame submission is suspended; production
+Pages does not run this fixture. The result is recorded as
+`shadow-sampling.validation`. Physical Pixel verification is still required.
+
+Validation of the targeted change (Apple M2 / ANGLE Metal / Chromium 155):
+
+- 112 automated tests passed; TypeScript and production build passed.
+- Both RGBA8 comparison fixtures passed: 32,768 pixels, zero changed RGB or alpha
+  pixels, maximum channel delta 0. Checksums were `5ccc8cf9` (unclipped) and
+  `aff3615d` (divergent/clipped) for both variants. The fixtures included 5,174 and
+  5,313 partially shadowed pixels respectively; they were not empty renders.
+- Mobile High at DPR 2.5 completed material, shadow-map and receiver GPU batches.
+  Interior, animated curtains, rapid Economy/High switching and whole-house views
+  completed with no reported graphics errors. These are desktop-GPU checks with a
+  mobile viewport, not a physical Pixel result.
+
+## Historical baseline before staged startup (19761bce)
 
 The Pixel 10 Pro XL failure is **not yet confirmed fixed on the physical device**.
-The latest device report tested build `19761bce` (Three r181, RGBA8 PCF Soft).
+The preceding device report tested build `19761bce` (Three r181, RGBA8 PCF Soft).
 Economy rendered successfully; High still lost its WebGL context. Do not describe
 desktop or viewport-emulated results as a successful Pixel test.
 

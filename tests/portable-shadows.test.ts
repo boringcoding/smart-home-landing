@@ -6,7 +6,7 @@ import { WebGLShadowMap } from 'three/src/renderers/webgl/WebGLShadowMap.js';
 
 const read = (path: string) => readFileSync(new URL(path, import.meta.url), 'utf8');
 
-// The Android workaround is the stock r181 RGBA shadow backend, not a shader patch.
+// Keep the stock RGBA/PCF backend; only its level-zero lookup is deliberately patched.
 // These contracts deliberately require review before upgrading the renderer again.
 test('pinned Three receivers unpack ordinary RGBA textures for stock PCF Soft', () => {
   const manifest = JSON.parse(read('../package.json'));
@@ -71,6 +71,10 @@ test('installed shadow renderer allocates RGBA8 and retains per-mesh clipping an
     assert.equal(map.texture.colorSpace, THREE.NoColorSpace);
     assert.equal(map.texture.minFilter, THREE.NearestFilter);
     assert.equal(map.texture.magFilter, THREE.NearestFilter);
+    assert.equal(map.texture.wrapS, THREE.ClampToEdgeWrapping);
+    assert.equal(map.texture.wrapT, THREE.ClampToEdgeWrapping);
+    assert.equal(map.texture.generateMipmaps, false, 'explicit LOD 0 must retain all available shadow detail');
+    assert.equal(map.texture.mipmaps.length, 0);
     assert.equal(map.depthTexture, null, 'native depth must never be sampled by receivers');
     assert.equal(map.depthBuffer, true, 'casters still need depth testing through a renderbuffer');
     assert.equal(map.samples, 0);
@@ -106,5 +110,6 @@ test('production scene selects the stock filter and explicitly packs custom shad
   assert.ok(selected.length > 0);
   assert.ok(selected.every(value => value === 'THREE.PCFSoftShadowMap'), 'initialization and quality changes must select the same packed backend');
   assert.match(scene, /customDepthMaterial\s*=\s*new THREE\.MeshDepthMaterial\(\s*\{\s*depthPacking\s*:\s*THREE\.RGBADepthPacking\s*\}\s*\)/);
-  assert.doesNotMatch(scene, /installPortableShadows|ShaderChunk\./, 'no global receiver patch should survive the migration');
+  assert.match(scene, /installExplicitShadowSampling\(\)/, 'install only the reviewed level-zero lookup before rendering');
+  assert.doesNotMatch(scene, /installPortableShadows|ShaderChunk\./, 'keep shader mutation inside the guarded sampling module');
 });

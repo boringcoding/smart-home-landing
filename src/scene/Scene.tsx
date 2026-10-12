@@ -14,6 +14,7 @@ import { classifyWebGLCreationFailure } from './webglFailure';
 import { drawingPixelRatio, renderQuality } from './renderQuality';
 import { resizeDrawingBuffer } from './drawingBuffer';
 import { GpuSubmissionFence } from './GpuSubmissionFence';
+import { installExplicitShadowSampling, SHADOW_SAMPLING_MODE } from './explicitShadowSampling';
 import { logDiagnostic, setGraphicsDiagnostics, setMetricsDiagnostics } from '../diagnostics';
 
 type Device = {id:string;type:string;system:SystemId;room:string;nodes:string[];position:number[];sourcePosition?:number[];streamBottomPosition?:number[];sensorPosition?:number[];puddlePosition?:number[];cabinetNodes?:string[];inspectionBounds?:{min:number[];max:number[]};[key:string]:unknown};
@@ -49,6 +50,8 @@ export default function Scene(props: SceneProps) {
     let generation=0,preparation:PreparationPass|null=null,submissionPass:Submission['pass']='frame';
     let submittedFrames=0,completedFrames=0,lastGpuWaitMs=0,skippedGpuFrames=0;
     let pendingSubmission:Submission|null=null,lastGpuCompletion:Record<string,unknown>|null=null;
+    let validationStarted=false,validationInFlight=false;
+    const validateShadowSampling=['127.0.0.1','localhost'].includes(location.hostname)&&new URLSearchParams(location.search).get('validateShadows')==='1';
     const describeDraw=()=>drawMaterial&&drawGeometry&&drawObject?{
       pass:drawPass,object:drawObject.name,material:drawMaterial.name,materialType:drawMaterial.type,
       clippingPlanes:drawMaterial.clippingPlanes?.length??0,clipIntersection:drawMaterial.clipIntersection,
@@ -88,6 +91,9 @@ export default function Scene(props: SceneProps) {
     } finally {canvas.removeEventListener('webglcontextcreationerror',contextCreationError);}
     disposers.push(()=>{renderer.dispose();if(!renderer.getContext().isContextLost())renderer.forceContextLoss();canvas.remove();});
     try {
+    const shadowSampling=installExplicitShadowSampling();
+    logScene('renderer.shadow-sampling',shadowSampling);
+    setGraphicsDiagnostics({shadowSampling:SHADOW_SAMPLING_MODE});
     // Three r181 requires WebGL2; its published type still includes WebGL1.
     const gl=renderer.getContext() as WebGL2RenderingContext,contextAttributes=gl.getContextAttributes();
     const gpuFence=new GpuSubmissionFence<Submission>(gl);
@@ -170,7 +176,7 @@ export default function Scene(props: SceneProps) {
       const w=element.clientWidth,h=element.clientHeight;if(!w||!h)return;
       if(mobileViewport!==isMobile()){mobileViewport=isMobile();lastQuality='';}
       // Never replace the drawing buffer while its previous frame is in flight.
-      if(gpuFence.hasPending)return;
+      if(gpuFence.hasPending||validationInFlight)return;
       const ratio=drawingPixelRatio(renderQuality(latest.current.ui.quality,mobileViewport,autoDegraded),w,h,devicePixelRatio,mobileViewport);
       const changed=resizeDrawingBuffer(renderer,w,h,ratio);
       // A new postprocessing pipeline still needs sizing when the canvas size is unchanged.
@@ -492,6 +498,7 @@ export default function Scene(props: SceneProps) {
       let phase='update';
       try {
       if(document.hidden||lost){last=now;return;}
+      if(validationInFlight){last=now;return;}
       phase='gpu-completion';
       const completion=gpuFence.poll();
       if(completion.status==='pending'){skippedGpuFrames++;return;}
@@ -523,6 +530,23 @@ export default function Scene(props: SceneProps) {
             logScene('model.gpu.ready',{generation,model:finished.model,profile:profile.label,shadowTarget:shadowTarget(),waitMs:lastGpuWaitMs});
             setGraphicsDiagnostics({gpuPreparation:{generation,pass:finished.pass,complete:true}});
             latest.current.onStatus?.('ready');
+            if(validateShadowSampling&&!validationStarted){
+              validationStarted=true;validationInFlight=true;
+              logScene('shadow-sampling.validation.begin');
+              void import('./shadowSamplingValidation').then(({runShadowSamplingValidation})=>{
+                if(disposed||lost)throw new Error('Scene disposed before validation');
+                return runShadowSamplingValidation(renderer,registryAbort.signal);
+              }).then(report=>{
+                if(!disposed){logScene('shadow-sampling.validation',{...report},report.passed?'info':'error');setGraphicsDiagnostics({shadowSamplingValidation:report});}
+              }).catch(error=>{
+                if(disposed||lost||renderFailed)return;
+                renderFailed=true;cancelAnimationFrame(raf);modelLoader.dispose();registryAbort.abort();
+                logScene('shadow-sampling.validation.error',{error:errorDetail(error)},'error');
+                latest.current.onStatus?.('error','GPU-проверка остановлена. Подробности доступны в диагностике.');
+              })
+                .finally(()=>{validationInFlight=false;});
+              return;
+            }
           }
         }
       }
