@@ -13,6 +13,7 @@ import { SceneAntialias } from './SceneAntialias';
 import { classifyWebGLCreationFailure } from './webglFailure';
 import { drawingPixelRatio, renderQuality } from './renderQuality';
 import { resizeDrawingBuffer } from './drawingBuffer';
+import { GpuSubmissionFence } from './GpuSubmissionFence';
 import { logDiagnostic, setGraphicsDiagnostics, setMetricsDiagnostics } from '../diagnostics';
 
 type Device = {id:string;type:string;system:SystemId;room:string;nodes:string[];position:number[];sourcePosition?:number[];streamBottomPosition?:number[];sensorPosition?:number[];puddlePosition?:number[];cabinetNodes?:string[];inspectionBounds?:{min:number[];max:number[]};[key:string]:unknown};
@@ -43,6 +44,11 @@ export default function Scene(props: SceneProps) {
     let renderer:THREE.WebGLRenderer;
     let drawObject:THREE.Object3D|null=null,drawGeometry:THREE.BufferGeometry|null=null;
     let drawMaterial:(THREE.Material & {map?:THREE.Texture|null;depthPacking?:number})|null=null,drawPass='';
+    type PreparationPass='materials'|'shadow-map'|'shadowed-frame';
+    type Submission={generation:number;configuration:string;pass:PreparationPass|'frame';model:string;firstFrame:boolean;firstModelFrame:boolean;submitCpuMs?:number;calls?:number;shadowCalls?:number};
+    let generation=0,preparation:PreparationPass|null=null,submissionPass:Submission['pass']='frame';
+    let submittedFrames=0,completedFrames=0,lastGpuWaitMs=0,skippedGpuFrames=0;
+    let pendingSubmission:Submission|null=null,lastGpuCompletion:Record<string,unknown>|null=null;
     const describeDraw=()=>drawMaterial&&drawGeometry&&drawObject?{
       pass:drawPass,object:drawObject.name,material:drawMaterial.name,materialType:drawMaterial.type,
       clippingPlanes:drawMaterial.clippingPlanes?.length??0,clipIntersection:drawMaterial.clipIntersection,
@@ -59,7 +65,7 @@ export default function Scene(props: SceneProps) {
     };
     const started=performance.now();
     logScene('scene.init',{quality:latest.current.ui.quality,mobile:mobileViewport,profile:profile.label,width:element.clientWidth,height:element.clientHeight,nativeDpr:devicePixelRatio});
-    setGraphicsDiagnostics({sceneId,contextLost:false,contextStatusMessage:'',nativeContextRestored:false,creationFailure:null,gpu:null,contextAttributes:null,limits:null,extensions:null,viewport:null,quality:latest.current.ui.quality,profile:profile.label,renderProfile:profile,shadowFilter:null,postprocessing:null,smoothing:null,fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null});
+    setGraphicsDiagnostics({sceneId,contextLost:false,contextStatusMessage:'',nativeContextRestored:false,creationFailure:null,gpu:null,contextAttributes:null,limits:null,extensions:null,viewport:null,quality:latest.current.ui.quality,profile:profile.label,renderProfile:profile,shadowFilter:null,postprocessing:null,smoothing:null,fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null,gpuPreparation:null,gpuQueueLimit:1});
     setMetricsDiagnostics({sceneId,phase:'initializing'});
     logScene('renderer.create.begin');
     // Capture the browser's original rejection before Three replaces it with a
@@ -82,7 +88,21 @@ export default function Scene(props: SceneProps) {
     } finally {canvas.removeEventListener('webglcontextcreationerror',contextCreationError);}
     disposers.push(()=>{renderer.dispose();if(!renderer.getContext().isContextLost())renderer.forceContextLoss();canvas.remove();});
     try {
-    const gl=renderer.getContext(),contextAttributes=gl.getContextAttributes();
+    // Three r181 requires WebGL2; its published type still includes WebGL1.
+    const gl=renderer.getContext() as WebGL2RenderingContext,contextAttributes=gl.getContextAttributes();
+    const gpuFence=new GpuSubmissionFence<Submission>(gl);
+    disposers.push(()=>gpuFence.dispose());
+    const visibilityChanged=()=>{if(document.hidden)gpuFence.pause();else gpuFence.resume();};
+    document.addEventListener('visibilitychange',visibilityChanged);
+    disposers.push(()=>document.removeEventListener('visibilitychange',visibilityChanged));
+    const prepareModel=(reason:string)=>{
+      generation++;
+      preparation=mobileViewport&&profile.shadowSize>0?'materials':null;
+      awaitingModelFrame=true;
+      logScene('renderer.preparation.begin',{generation,reason,model:loadingKey||assetKey,passes:preparation?['materials','shadow-map','shadowed-frame']:['frame'],profile:profile.label});
+      setGraphicsDiagnostics({gpuPreparation:{generation,pass:preparation??'frame',complete:false},gpuQueueLimit:1});
+      latest.current.onStatus?.('loading','Подготавливаем материалы и освещение');
+    };
     logScene('renderer.create.complete',{contextAttributes});
     renderer.debug.onShaderError=(context,program,vertex,fragment)=>{
       logScene('renderer.shader.error',{
@@ -99,7 +119,7 @@ export default function Scene(props: SceneProps) {
       const graphics={sceneId,threeRevision:THREE.REVISION,contextAttributes,
         gpu:{vendor:gl.getParameter(gl.VENDOR),renderer:gl.getParameter(gl.RENDERER),unmaskedVendor:debug?gl.getParameter(debug.UNMASKED_VENDOR_WEBGL):null,unmaskedRenderer:debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):null,version:gl.getParameter(gl.VERSION),shadingLanguage:gl.getParameter(gl.SHADING_LANGUAGE_VERSION)},
         limits:{maxTextureSize:gl.getParameter(gl.MAX_TEXTURE_SIZE),maxRenderbufferSize:gl.getParameter(gl.MAX_RENDERBUFFER_SIZE),maxViewportDims:Array.from(gl.getParameter(gl.MAX_VIEWPORT_DIMS) as Int32Array),maxTextureUnits:gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS),maxVertexTextureUnits:gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS),maxSamples:'MAX_SAMPLES' in gl?gl.getParameter(gl.MAX_SAMPLES):null,defaultDepthBits:gl.getParameter(gl.DEPTH_BITS),maxAnisotropy:renderer.capabilities.getMaxAnisotropy()},
-        extensions:{colorBufferFloat:!!gl.getExtension('EXT_color_buffer_float'),floatLinear:!!gl.getExtension('OES_texture_float_linear'),debugRendererInfo:!!debug},
+        extensions:{colorBufferFloat:!!gl.getExtension('EXT_color_buffer_float'),floatLinear:!!gl.getExtension('OES_texture_float_linear'),parallelShaderCompile:!!gl.getExtension('KHR_parallel_shader_compile'),debugRendererInfo:!!debug},
       };
       setGraphicsDiagnostics(graphics);logScene('renderer.capabilities',graphics);
     } catch(error){logScene('renderer.capabilities.error',{error:errorDetail(error)},'warn');}
@@ -127,9 +147,13 @@ export default function Scene(props: SceneProps) {
     updatePipeline();
     const scene=new THREE.Scene();scene.fog=new THREE.Fog('#e9ece3',38,85);
     const camera=new THREE.PerspectiveCamera(38,1,.2,100);camera.position.set(9,9,12);
+    const renderChoice=()=>{const u=latest.current.ui;return [u.quality,u.view,u.room,u.system,u.cameraRevision,!!u.electrical?.enabled,u.electrical?.selectedId,mobileViewport,Math.round(camera.aspect*100)].join(':');};
     let mainCalls=0,shadowCalls=0,mainTriangles=0;
     const renderDirect=renderer.renderBufferDirect.bind(renderer);
     renderer.renderBufferDirect=(renderCamera,...args)=>{
+      // Run shadow preparation through Three's normal render lifecycle, with
+      // its own light/clipping state. Only omit main draws for this one pass.
+      if(submissionPass==='shadow-map'&&renderCamera===camera)return;
       const callsBefore=renderer.info.render.calls,trianglesBefore=renderer.info.render.triangles;
       // Retain references only; serialize on failure, without allocating a
       // diagnostic object for each of the hundreds of draws every frame.
@@ -145,6 +169,8 @@ export default function Scene(props: SceneProps) {
     const resize=()=>{
       const w=element.clientWidth,h=element.clientHeight;if(!w||!h)return;
       if(mobileViewport!==isMobile()){mobileViewport=isMobile();lastQuality='';}
+      // Never replace the drawing buffer while its previous frame is in flight.
+      if(gpuFence.hasPending)return;
       const ratio=drawingPixelRatio(renderQuality(latest.current.ui.quality,mobileViewport,autoDegraded),w,h,devicePixelRatio,mobileViewport);
       const changed=resizeDrawingBuffer(renderer,w,h,ratio);
       // A new postprocessing pipeline still needs sizing when the canvas size is unchanged.
@@ -205,6 +231,7 @@ export default function Scene(props: SceneProps) {
     const modelLoader=new LatestAssetLoader<GLTF>({
       start:key=>{
         loadingKey=key;loadAttempt++;
+        generation++;preparation=null;awaitingModelFrame=false;
         logScene('model.load.begin',{attempt:loadAttempt,model:key,previousModel:assetKey||null});
         latest.current.onStatus?.('loading');loadStarted=performance.now();loadedBytes=0;
         // Release the current GLB before downloading/decoding its replacement.
@@ -270,9 +297,9 @@ export default function Scene(props: SceneProps) {
           const halfX=Math.max(.01,(bounds.max.x-bounds.min.x)/2),halfZ=Math.max(.01,(bounds.max.z-bounds.min.z)/2);
           puddleScaleAtSensor=Math.hypot((sensor.x-center.x)/halfX,(sensor.z-center.z)/halfZ);
         }
-        scene.add(model);shadowsDirty=true;lastView='';lastSelection='';loadMs=performance.now()-loadStarted;awaitingModelFrame=true;
+        scene.add(model);shadowsDirty=true;lastView='';lastSelection='';loadMs=performance.now()-loadStarted;
         logScene('model.commit.ready',{attempt:loadAttempt,model:key,nodes:nodes.size,bytes:loadedBytes,loadMs:Math.round(loadMs)});
-        latest.current.onStatus?.('ready');
+        prepareModel('model-commit');
       },
       error:(error,key)=>{if(!disposed&&!lost&&!renderFailed){logScene('model.failed',{attempt:loadAttempt,model:key,error:errorDetail(error)},'error');latest.current.onStatus?.('error','Модель не загрузилась. Проверьте соединение и повторите загрузку сцены. Комплектация и настройки сохранены.');}},
     });
@@ -305,7 +332,9 @@ export default function Scene(props: SceneProps) {
       requestModel();}).catch(error=>{if(!disposed&&!lost&&!renderFailed){logScene('registry.error',{error:errorDetail(error)},'error');latest.current.onStatus?.('error',String(error));}});
     const applyView=()=>{
       const {ui}=latest.current,key=ui.view+':'+ui.room+':'+ui.system+':'+ui.cameraRevision+':'+ui.electrical?.enabled+':'+ui.electrical?.selectedId+':'+mobileViewport+':'+Math.round(camera.aspect*100);
-      if(key===lastView||!model||!registry)return;lastView=key;shadowsDirty=true;
+      if(key===lastView||!model||!registry)return;
+      const previousView=lastView;lastView=key;shadowsDirty=true;
+      if(mobileViewport&&profile.shadowSize>0&&previousView)prepareModel('view-change');
       const house=ui.view==='house',engineer=ui.view==='engineering',interior=ui.view==='interior',waterInspection=engineer&&ui.system==='water'&&ui.room==='living'&&!ui.electrical?.enabled;
       const electricalFocus=ui.electrical?.enabled&&ui.electrical.selectedId?electrical.focus(ui.electrical.selectedId):null;
       cutPlane.constant=ui.electrical?.enabled?(electricalFocus?.cutHeight??1.25):.82;
@@ -426,7 +455,7 @@ export default function Scene(props: SceneProps) {
     const inspectZoom=(e:WheelEvent)=>{if(latest.current.ui.view!=='interior')return;e.preventDefault();camera.fov=THREE.MathUtils.clamp(camera.fov+Math.sign(e.deltaY)*3,45,90);camera.updateProjectionMatrix();};
     const contextLost=(e:Event)=>{
       e.preventDefault();if(disposed||lost)return;lost=true;
-      logScene('renderer.context.lost',{statusMessage:(e as WebGLContextEvent).statusMessage??'',diagnosticRequest:diagnosticLossPending,profile:profile.label,model:loadingKey||assetKey,contextAttributes,lastMetrics,lastDraw:describeDraw(),memory:{...renderer.info.memory}},'error');
+      logScene('renderer.context.lost',{statusMessage:(e as WebGLContextEvent).statusMessage??'',diagnosticRequest:diagnosticLossPending,profile:profile.label,model:loadingKey||assetKey,contextAttributes,lastMetrics,pendingSubmission,lastGpuCompletion,lastDraw:describeDraw(),memory:{...renderer.info.memory}},'error');
       setGraphicsDiagnostics({contextLost:true,contextStatusMessage:(e as WebGLContextEvent).statusMessage??''});
       modelLoader.dispose();registryAbort.abort();latest.current.onStatus?.('context-lost','Браузер остановил 3D. Настройки дома сохранены.');
     };
@@ -456,37 +485,94 @@ export default function Scene(props: SceneProps) {
       }
       if(old.anisotropy!==profile.anisotropy){const textures=new Set<THREE.Texture>();for(const materials of dynamicMaterials.values())for(const material of materials)for(const value of Object.values(material))if(value instanceof THREE.Texture&&value!==tvTexture)textures.add(value);for(const texture of textures){texture.anisotropy=Math.min(profile.anisotropy,renderer.capabilities.getMaxAnisotropy());texture.needsUpdate=true;}}
       shadowsDirty=true;frames=[];slowSamples=0;resize();
+      if(model)prepareModel('quality-change');
     };
     const animate=(now:number)=>{
       if(disposed||renderFailed)return;raf=requestAnimationFrame(animate);
       let phase='update';
       try {
       if(document.hidden||lost){last=now;return;}
+      phase='gpu-completion';
+      const completion=gpuFence.poll();
+      if(completion.status==='pending'){skippedGpuFrames++;return;}
+      if(completion.status==='error'){
+        logScene('renderer.gpu.error',{...completion,pendingSubmission,lastGpuCompletion,lastDraw:describeDraw()},'error');
+        // Context loss is handled by the DOM event (including the one retry).
+        if(completion.reason==='context-lost'){cancelAnimationFrame(raf);return;}
+        throw new Error(`GPU completion failed: ${completion.reason}`);
+      }
+      if(completion.status==='complete'&&completion.metadata){
+        const finished=completion.metadata;pendingSubmission=null;completedFrames++;
+        lastGpuWaitMs=Math.round(completion.elapsedMs??0);
+        lastGpuCompletion={...finished,waitMs:lastGpuWaitMs,submittedFrames,completedFrames,errors:completion.errors??[]};
+        // Read GL errors only during preparation, after completion; never force
+        // a synchronous getError round trip for every animation frame.
+        if(finished.pass!=='frame'||finished.firstFrame||finished.firstModelFrame){
+          const errors:number[]=[];for(let i=0;i<8;i++){const error=gl.getError();if(error===gl.NO_ERROR)break;errors.push(error);}
+          lastGpuCompletion.errors=errors;
+          if(errors.length){logScene('renderer.gpu.gl-error',lastGpuCompletion,'error');throw new Error('GPU reported an error during preparation');}
+        }
+        if(completion.errors?.length){logScene('renderer.gpu.gl-error',lastGpuCompletion,'error');throw new Error('GPU reported an error after rendering');}
+        const current=finished.generation===generation&&finished.configuration===renderChoice();
+        if(finished.pass!=='frame'||finished.firstFrame||finished.firstModelFrame)logScene('renderer.gpu.complete',{...lastGpuCompletion,current,shadowTarget:shadowTarget()});
+        if(current){
+          if(finished.pass==='materials')preparation='shadow-map';
+          else if(finished.pass==='shadow-map')preparation='shadowed-frame';
+          else if(finished.firstModelFrame){
+            preparation=null;awaitingModelFrame=false;
+            logScene('model.gpu.ready',{generation,model:finished.model,profile:profile.label,shadowTarget:shadowTarget(),waitMs:lastGpuWaitMs});
+            setGraphicsDiagnostics({gpuPreparation:{generation,pass:finished.pass,complete:true}});
+            latest.current.onStatus?.('ready');
+          }
+        }
+      }
+      phase='update';
       const requestedDiagnostic=latest.current.diagnosticContextLossRequest??0;
       if(requestedDiagnostic!==diagnosticRequest){diagnosticRequest=requestedDiagnostic;diagnosticLossPending=true;logScene('renderer.context.loss-requested',{source:'local-diagnostic-control'});renderer.forceContextLoss();return;}
       const elapsed=now-last;if(profile.fps===30&&elapsed<1000/30-.75)return;
       const dt=Math.min(elapsed/1000,.1);last=now;
       const {ui}=latest.current;
+      resize();
       if(lastQuality!==ui.quality){lastQuality=ui.quality;applyQuality();}
       requestModel();
       applyView();updateDevices(dt,now);
       if(cameraMove){cameraMove.t=Math.min(1,cameraMove.t+dt/.9);const t=cameraMove.t, ease=t*t*(3-2*t);camera.position.lerpVectors(cameraMove.from,cameraMove.to,ease);controls.target.lerpVectors(cameraMove.targetFrom,cameraMove.target,ease);if(t>=1)cameraMove=null;}
       controls.update();if(latest.current.ui.view==='interior')inspectionLight.position.copy(camera.position);mainCalls=0;shadowCalls=0;mainTriangles=0;
-      if(shadowsDirty&&profile.shadowSize>0&&now-lastShadowAt>120){renderer.shadowMap.needsUpdate=true;shadowsDirty=false;lastShadowAt=now;}
+      if(!preparation&&shadowsDirty&&profile.shadowSize>0&&now-lastShadowAt>120){renderer.shadowMap.needsUpdate=true;shadowsDirty=false;lastShadowAt=now;}
       phase='render';
+      submissionPass=preparation??'frame';
+      if(submissionPass==='materials'){renderer.shadowMap.enabled=false;renderer.shadowMap.needsUpdate=false;}
+      else if(submissionPass==='shadow-map'){renderer.shadowMap.enabled=true;renderer.shadowMap.needsUpdate=true;}
+      else if(submissionPass==='shadowed-frame'){renderer.shadowMap.enabled=true;renderer.shadowMap.needsUpdate=false;}
+      else renderer.shadowMap.enabled=profile.shadowSize>0;
+      const submission:Submission={generation,configuration:renderChoice(),pass:submissionPass,model:loadingKey||assetKey,firstFrame,firstModelFrame:awaitingModelFrame&&(submissionPass==='shadowed-frame'||submissionPass==='frame')};
+      pendingSubmission=submission;
+      if(submissionPass!=='frame')logScene('renderer.gpu.submit.begin',submission);
       if(firstFrame)logScene('renderer.first-frame.begin',{profile:profile.label,smoothing:!!smoothing,shadowFilter:profile.shadowSize?profile.shadowFilter:'off'});
-      if(awaitingModelFrame)logScene('model.first-frame.begin',{attempt:loadAttempt,model:loadingKey,profile:profile.label});
+      if(submission.firstModelFrame)logScene('model.first-frame.begin',{attempt:loadAttempt,model:loadingKey,profile:profile.label});
+      const submitStarted=performance.now();
       if(smoothing)smoothing.render(renderer,scene,camera);else renderer.render(scene,camera);
-      if(firstFrame){logScene('renderer.first-frame.complete',{contextLost:gl.isContextLost(),shadowTarget:shadowTarget(),memory:{...renderer.info.memory}});firstFrame=false;}
-      if(awaitingModelFrame){logScene('model.first-frame.complete',{attempt:loadAttempt,model:loadingKey,contextLost:gl.isContextLost(),shadowTarget:shadowTarget(),calls:mainCalls,triangles:mainTriangles,memory:{...renderer.info.memory}});awaitingModelFrame=false;}
+      if(submissionPass==='shadow-map'){shadowsDirty=false;lastShadowAt=now;}
+      submission.submitCpuMs=Math.round(performance.now()-submitStarted);submission.calls=mainCalls;submission.shadowCalls=shadowCalls;
+      submittedFrames++;
+      const submitted=gpuFence.submit(submission);
+      submissionPass='frame';
+      if(submitted.status==='error'){
+        logScene('renderer.gpu.submit.error',{...submitted,lastDraw:describeDraw()},'error');
+        if(submitted.reason==='context-lost'){cancelAnimationFrame(raf);return;}
+        throw new Error(`GPU fence failed: ${submitted.reason}`);
+      }
+      if(firstFrame){logScene('renderer.first-frame.submitted',{contextLost:gl.isContextLost(),shadowTarget:shadowTarget(),memory:{...renderer.info.memory}});firstFrame=false;}
+      if(submission.firstModelFrame)logScene('model.first-frame.submitted',{attempt:loadAttempt,model:loadingKey,contextLost:gl.isContextLost(),shadowTarget:shadowTarget(),calls:mainCalls,triangles:mainTriangles,memory:{...renderer.info.memory}});
+      if(preparation)return;
       phase='metrics';
       if(model&&elapsed<500)frames.push(elapsed);if(frames.length>180)frames.shift();
       if(now-metricAt>1500&&model){metricAt=now;const sorted=[...frames].sort((a,b)=>a-b),median=sorted[Math.floor(sorted.length/2)]??16.7,p95=sorted[Math.floor(sorted.length*.95)]??16.7;
         const metrics={fps:Math.round(1000/median),p95:Math.round(p95*10)/10,triangles:mainTriangles,calls:mainCalls,shadowCalls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,jsHeapBytes:(performance as Performance & {memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize??null,profile:profile.label,pixelRatio:renderer.getPixelRatio(),antialias:renderer.getContext().getContextAttributes()?.antialias??false,smoothing:smoothing?'FXAA':renderer.getContext().getContextAttributes()?.antialias?'MSAA':renderer.getPixelRatio()>1?'supersampling':'none',postprocessing:!!smoothing,depthBits:smoothing?.depthBits??renderer.getContext().getParameter(renderer.getContext().DEPTH_BITS),shadowMapSize:profile.shadowSize,shadowTarget:shadowTarget(),shadowFilter:profile.shadowSize?profile.shadowFilter:'off',shadows:renderer.shadowMap.enabled,pointLights:electrical.activePointLights+Number(windowLight.visible)+Number(inspectionLight.visible)+Number(screenLight.visible),modelFile:assetKey+(profile.compactTextures?'-mobile':''),loadedBytes,loadMs:Math.round(loadMs),elapsedSeconds:Math.round((now-started)/1000),asset:assetKey};
-        lastMetrics=metrics;setMetricsDiagnostics({sceneId,...metrics});
+        lastMetrics={...metrics,submittedFrames,completedFrames,lastGpuWaitMs,skippedGpuFrames,pendingSubmission,lastGpuCompletion};setMetricsDiagnostics({sceneId,...lastMetrics});
         latest.current.onMetrics?.(metrics);element.dataset.metrics=JSON.stringify(metrics);
         const samples=JSON.parse(element.dataset.samples??'[]');samples.push(metrics);element.dataset.samples=JSON.stringify(samples.slice(-480));
-        if(ui.quality==='auto'&&!autoDegraded){slowSamples=p95>(mobileViewport?55:40)?slowSamples+1:0;if(slowSamples>=4){autoDegraded=true;applyQuality();}}
+        if(ui.quality==='auto'&&!autoDegraded){slowSamples=p95>(mobileViewport?55:40)?slowSamples+1:0;if(slowSamples>=4){autoDegraded=true;lastQuality='';}}
       }
       } catch(error){
         if(disposed||lost||renderFailed)return;
