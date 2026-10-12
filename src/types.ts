@@ -57,4 +57,4 @@ export type Command =
   | { type: 'scenario'; scenario: ScenarioId }
   | { type: 'reset' };
 export interface SceneMetrics { fps: number; p95: number; triangles: number; calls: number; geometries: number; textures: number; profile: string; loadedBytes: number; loadMs: number }
-export interface SceneProps { state: HomeState; ui: UIState; diagnosticContextLossRequest?: number; onMetrics?: (metrics: SceneMetrics) => void; onSelect?: (system: SystemId, room?: string) => void; onElectricalSelect?: (id: string) => void; onStatus?: (status: 'loading' | 'ready' | 'error' | 'context-lost', detail?: string) => void }
+export interface SceneProps { state: HomeState; ui: UIState; diagnosticContextLossRequest?: number; onMetrics?: (metrics: SceneMetrics) => void; onSelect?: (system: SystemId, room?: string) => void; onElectricalSelect?: (id: string) => void; onStatus?: (status: 'loading' | 'ready' | 'error' | 'context-lost' | 'blocked', detail?: string) => void }

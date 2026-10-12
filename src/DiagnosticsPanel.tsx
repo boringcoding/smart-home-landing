@@ -16,7 +16,7 @@ function errorSummary(detail: unknown): string {
   return summaryValue(detail);
 }
 
-export default memo(function DiagnosticsPanel() {
+export default memo(function DiagnosticsPanel({ openRequest = 0 }: { openRequest?: number }) {
   const [snapshot, setSnapshot] = useState(getDiagnosticsSnapshot);
   const [expanded, setExpanded] = useState(() => new URLSearchParams(window.location.search).get('debug') === '1' || snapshot.errorCount > 0);
   const [report, setReport] = useState(getDiagnosticReport);
@@ -43,6 +43,7 @@ export default memo(function DiagnosticsPanel() {
     return unsubscribe;
   }, []);
   useEffect(() => { if (expanded && !reportFocused.current) setReport(getDiagnosticReport()); }, [expanded]);
+  useEffect(() => { if (openRequest > 0) setExpanded(true); }, [openRequest]);
 
   async function copyReport() {
     const currentReport = getDiagnosticReport();
@@ -87,7 +88,7 @@ export default memo(function DiagnosticsPanel() {
   const gpu = graphics.unmaskedRenderer ?? graphics.renderer ?? gpuInfo.unmaskedRenderer ?? gpuInfo.renderer ?? graphics.gpu;
   const profile = snapshot.metrics?.profile ?? graphics.profile ?? graphics.quality;
 
-  return <section className={`diagnostics-panel ${snapshot.errorCount ? 'has-errors' : ''}`} aria-label="Диагностика 3D">
+  return <section id="diagnostics-panel" tabIndex={-1} className={`diagnostics-panel ${snapshot.errorCount ? 'has-errors' : ''}`} aria-label="Диагностика 3D">
     <button className="diagnostics-toggle" type="button" aria-expanded={expanded} aria-controls="diagnostics-content" onClick={() => setExpanded(value => !value)}>
       <span>Диагностика 3D</span><span className="diagnostics-count">Ошибок: {snapshot.errorCount}</span><span className="diagnostics-chevron" aria-hidden="true">{expanded ? '−' : '+'}</span>
     </button>

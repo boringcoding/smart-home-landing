@@ -125,12 +125,14 @@ export default function App() {
   const [panelOpen, setPanelOpen] = useState(true);
   const [curtainScope, setCurtainScope] = useState<'room' | 'all'>('room');
   const [metrics, setMetrics] = useState<SceneMetrics>();
-  const [sceneStatus, setSceneStatus] = useState<{ status: 'loading' | 'ready' | 'error' | 'context-lost'; detail?: string }>({ status: 'loading' });
+  const [sceneStatus, setSceneStatus] = useState<{ status: 'loading' | 'ready' | 'error' | 'context-lost' | 'blocked'; detail?: string }>({ status: 'loading' });
   const [sceneEpoch, setSceneEpoch] = useState(0);
   const [sceneMounted, setSceneMounted] = useState(true);
   const [sceneRecovering, setSceneRecovering] = useState(false);
   const [diagnosticContextLossRequest, setDiagnosticContextLossRequest] = useState(0);
+  const [diagnosticsOpenRequest, setDiagnosticsOpenRequest] = useState(0);
   const currentSceneEpoch = useRef(0);
+  const browserBlocked = useRef(false);
   const autoRecoveryUsed = useRef(graphicsSafeMode);
   const [sound, setSound] = useState(false);
   const [soundError, setSoundError] = useState('');
@@ -149,12 +151,15 @@ export default function App() {
   const chooseQuality = useCallback((quality: UIState['quality']) => {
     logDiagnostic('ui.quality-choice', { quality });
     setUI(previous => ({ ...previous, quality }));
-    setGraphicsSafeMode(false);
+    if (!browserBlocked.current) setGraphicsSafeMode(false);
     try { sessionStorage.setItem(graphicsQualityChoiceKey, quality); } catch { /* This choice remains active for the current page. */ }
-    try { sessionStorage.removeItem(graphicsSafeModeKey); } catch { /* Explicit selection still applies even if persistence is blocked. */ }
+    if (!browserBlocked.current) {
+      try { sessionStorage.removeItem(graphicsSafeModeKey); } catch { /* Explicit selection still applies even if persistence is blocked. */ }
+    }
     // A manual choice does not replenish the one automatic recovery attempt in this page.
   }, []);
   const restartScene = useCallback((reason: 'manual' | 'context-lost' = 'manual') => {
+    if (browserBlocked.current) return;
     // Mark the old instance stale before unmounting: async model/status callbacks may still arrive.
     const nextEpoch = ++currentSceneEpoch.current;
     logDiagnostic('app.scene-retry', { reason, epoch: nextEpoch, quality: 'low' });
@@ -168,7 +173,15 @@ export default function App() {
   }, []);
   const onStatus: NonNullable<SceneProps['onStatus']> = useCallback((status, detail) => {
     if (sceneEpoch !== currentSceneEpoch.current) return;
-    logDiagnostic(`app.scene.${status}`, { detail, epoch: sceneEpoch }, status === 'error' || status === 'context-lost' ? 'error' : 'info');
+    if (browserBlocked.current && status !== 'blocked') return;
+    logDiagnostic(`app.scene.${status}`, { detail, epoch: sceneEpoch }, status === 'error' || status === 'context-lost' || status === 'blocked' ? 'error' : 'info');
+    if (status === 'blocked') {
+      // A browser-level block cannot be cleared by replacing this canvas.
+      browserBlocked.current = true;
+      autoRecoveryUsed.current = true;
+      try { sessionStorage.setItem(graphicsSafeModeKey, '1'); } catch { /* Current settings remain available if storage is blocked. */ }
+      setGraphicsSafeMode(true);
+    }
     if (status === 'context-lost') {
       const shouldRetry = !autoRecoveryUsed.current;
       autoRecoveryUsed.current = true;
@@ -379,12 +392,13 @@ export default function App() {
       <div className="intro"><div><div className="eyebrow"><span className="tiny-line" />ТЕХНОЛОГИИ ДЛЯ ЖИЗНИ</div><h1>Дом в вашем ритме<span>.</span></h1></div><p>Представьте свой обычный день.<br />Посмотрите, что дом может взять на себя.</p></div>
       <section className="showroom" aria-label="Интерактивная модель умного дома">
         <div className="scene-column">
-          <DiagnosticsPanel />
+          <DiagnosticsPanel openRequest={diagnosticsOpenRequest} />
           <nav className="room-navigation" aria-label="Помещения дома"><button className="electrical-mode-button" aria-pressed={Boolean(ui.electrical?.enabled)} onClick={openElectrical}><Icon name="lighting" size={16} />Электрика</button><span className="eyebrow">ОСМОТРИТЕ ДОМ</span><div className="room-chips"><button aria-pressed={ui.room === 'all'} onClick={() => chooseRoom('all')}>Весь этаж</button>{rooms.map(room => <button key={room.id} aria-pressed={ui.room === room.id} onClick={() => chooseRoom(room.id)}>{room.name}</button>)}</div></nav>
-          <div className={`scene-wrapper ${sceneStatus.status === 'error' || sceneStatus.status === 'context-lost' ? 'scene-unavailable' : ''}`}>
-            {sceneMounted && <SceneBoundary key={sceneEpoch} onError={() => { if (sceneEpoch !== currentSceneEpoch.current) return; setSceneRecovering(false); setSceneStatus({ status: 'error', detail: 'Ошибка графического модуля. Комплектация и заявка остаются доступны.' }); }}><Scene state={state} ui={ui} onMetrics={onMetrics} onSelect={onSelect} onElectricalSelect={onElectricalSelect} onStatus={onStatus} diagnosticContextLossRequest={localGraphicsDiagnostics ? diagnosticContextLossRequest : undefined} /></SceneBoundary>}
+          <div className={`scene-wrapper ${sceneStatus.status === 'error' || sceneStatus.status === 'context-lost' || sceneStatus.status === 'blocked' ? 'scene-unavailable' : ''} ${sceneStatus.status === 'blocked' ? 'scene-blocked' : ''}`}>
+            {sceneMounted && <SceneBoundary key={sceneEpoch} onError={() => { if (browserBlocked.current || sceneEpoch !== currentSceneEpoch.current) return; setSceneRecovering(false); setSceneStatus({ status: 'error', detail: 'Ошибка графического модуля. Комплектация и заявка остаются доступны.' }); }}><Scene state={state} ui={ui} onMetrics={onMetrics} onSelect={onSelect} onElectricalSelect={onElectricalSelect} onStatus={onStatus} diagnosticContextLossRequest={localGraphicsDiagnostics ? diagnosticContextLossRequest : undefined} /></SceneBoundary>}
             <div className="scene-toolbar"><div className="segmented view-controls" aria-label="Режим просмотра">{([{ value: 'house', label: 'Дом' }, { value: 'floor', label: 'Этаж' }, { value: 'interior', label: 'Внутри' }, { value: 'engineering', label: 'Инженерия' }] as const).map(item => <button key={item.value} aria-pressed={!ui.electrical?.enabled && ui.view === item.value} onClick={() => chooseView(item.value)}>{item.label}</button>)}</div><button className="icon-button view-expand" title={ui.hideUI ? 'Показать управление' : 'Скрыть панели управления'} aria-label={ui.hideUI ? 'Показать управление' : 'Скрыть панели управления'} onClick={() => setUI(previous => ({ ...previous, hideUI: !previous.hideUI }))}><Icon name={ui.hideUI ? 'close' : 'expand'} /></button></div>
             {sceneStatus.status === 'loading' && <div className="scene-loading" role="status"><span className="loader" /><strong>{sceneRecovering ? 'Восстанавливаем 3D' : 'Готовим ваш дом'}</strong><span>{sceneRecovering ? 'Экономичное качество · настройки дома сохранены' : 'Загрузка 3D-модели'}</span></div>}
+            {sceneStatus.status === 'blocked' && <div className="scene-fallback" role="status"><h3>Браузер заблокировал 3D</h3><p>После прежней потери графической сессии браузер запретил создание новой. Сайт не может снять эту блокировку.</p><p>Обновите страницу через меню браузера. Если блокировка остаётся, полностью закройте браузер и откройте снова.</p><a className="secondary" href="#diagnostics-panel" onClick={() => setDiagnosticsOpenRequest(value => value + 1)}>Показать диагностику</a></div>}
             {(sceneStatus.status === 'error' || sceneStatus.status === 'context-lost') && <div className="scene-fallback" role="status"><Icon name="home" size={36} /><h3>{sceneStatus.status === 'context-lost' ? '3D приостановлено' : 'Не удалось загрузить 3D'}</h3><p>{sceneStatus.status === 'context-lost' ? 'Браузер остановил графическую сессию. Настройки дома сохранены. Комплектация и черновик заявки остаются доступны.' : sceneStatus.detail ?? 'Настройте комплектацию и сохраните проект — эти действия остаются доступны.'}</p><button className="secondary" onClick={() => restartScene()}>Повторить 3D в экономичном режиме</button></div>}
             <div className="scene-bottom"><div className="scene-room"><span className="eyebrow">{ui.electrical?.enabled ? 'ЭЛЕКТРИЧЕСКИЙ ПЛАН' : ui.view === 'house' ? 'ВАШ ДОМ' : ui.view === 'engineering' ? 'СИСТЕМЫ ДОМА' : ui.view === 'interior' ? 'ВНУТРИ КОМНАТЫ' : 'ЭТАЖ 01'}</span><label className="room-select"><select aria-label="Выбрать помещение" value={ui.room} onChange={event => chooseRoom(event.target.value)}><option value="all">Весь этаж</option>{rooms.map(room => <option key={room.id} value={room.id}>{room.name}</option>)}</select><Icon name="chevron" size={15} /></label></div><div className="scene-hint"><span className="orbit-mark">↔</span><span>{ui.view === 'interior' ? 'Осмотритесь вокруг' : 'Вращайте · приближайте'}<br /><span>{ui.electrical?.enabled ? 'Нажмите на точку' : ui.view === 'interior' ? 'Поднимите взгляд к потолку' : 'Нажмите на устройство'}</span></span></div></div>
             <div className="scene-corner-note">На основе вашей IFC-модели</div>

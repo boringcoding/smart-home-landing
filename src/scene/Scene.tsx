@@ -10,6 +10,7 @@ import { createElectricalLayer } from './ElectricalLayer';
 import { LatestAssetLoader } from './LatestAssetLoader';
 import { SerialDecoder } from './SerialDecoder';
 import { SceneAntialias } from './SceneAntialias';
+import { classifyWebGLCreationFailure } from './webglFailure';
 import { drawingPixelRatio, renderQuality } from './renderQuality';
 import { logDiagnostic, setGraphicsDiagnostics, setMetricsDiagnostics } from '../diagnostics';
 
@@ -39,13 +40,39 @@ export default function Scene(props: SceneProps) {
     let shadowsDirty=true,lastShadowAt=0,curtainShadowState='';
     let diagnosticRequest=latest.current.diagnosticContextLossRequest??0,diagnosticLossPending=false;
     let renderer:THREE.WebGLRenderer;
+    const disposers:Array<()=>void>=[];
+    const disposeResources=()=>{
+      if(disposed)return;
+      disposed=true;cancelAnimationFrame(raf);
+      for(const dispose of disposers.reverse()){
+        try{dispose();}catch(error){logScene('scene.cleanup.error',{error:errorDetail(error)},'warn');}
+      }
+    };
     const started=performance.now();
     logScene('scene.init',{quality:latest.current.ui.quality,mobile:mobileViewport,profile:profile.label,width:element.clientWidth,height:element.clientHeight,nativeDpr:devicePixelRatio});
-    setGraphicsDiagnostics({sceneId,contextLost:false,contextStatusMessage:'',nativeContextRestored:false,fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null});
+    setGraphicsDiagnostics({sceneId,contextLost:false,contextStatusMessage:'',nativeContextRestored:false,creationFailure:null,gpu:null,contextAttributes:null,limits:null,extensions:null,viewport:null,quality:latest.current.ui.quality,profile:profile.label,smoothing:null,fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null});
     setMetricsDiagnostics({sceneId,phase:'initializing'});
     logScene('renderer.create.begin');
-    try { renderer=new THREE.WebGLRenderer({antialias:!mobileViewport&&latest.current.ui.quality!=='low',alpha:false,powerPreference:mobileViewport?'default':'high-performance'}); }
-    catch (error) {logScene('renderer.create.error',{error:errorDetail(error)},'error');latest.current.onStatus?.('error','Ваш браузер не смог запустить 3D. Настройки систем и сохранение заявки доступны.');return;}
+    // Capture the browser's original rejection before Three replaces it with a
+    // generic constructor error. Reuse this single canvas, never probe a second context.
+    const canvas=document.createElement('canvas');
+    const creationMessages:string[]=[];
+    const contextCreationError=(event:Event)=>{
+      const message=(event as WebGLContextEvent).statusMessage??'';
+      if(message&&!creationMessages.includes(message))creationMessages.push(message.slice(0,2000));
+      logScene('renderer.context.creation-error',{statusMessage:message},'error');
+    };
+    canvas.addEventListener('webglcontextcreationerror',contextCreationError);
+    try { renderer=new THREE.WebGLRenderer({canvas,antialias:!mobileViewport&&latest.current.ui.quality!=='low',alpha:false,powerPreference:mobileViewport?'default':'high-performance'}); }
+    catch (error) {
+      const failure=classifyWebGLCreationFailure(creationMessages,error);
+      logScene('renderer.create.error',{...failure,error:errorDetail(error)},'error');
+      setGraphicsDiagnostics({creationFailure:failure});
+      latest.current.onStatus?.(failure.kind==='blocked'?'blocked':'error',failure.message);
+      return;
+    } finally {canvas.removeEventListener('webglcontextcreationerror',contextCreationError);}
+    disposers.push(()=>{renderer.dispose();if(!renderer.getContext().isContextLost())renderer.forceContextLoss();canvas.remove();});
+    try {
     const gl=renderer.getContext(),contextAttributes=gl.getContextAttributes();
     logScene('renderer.create.complete',{contextAttributes});
     renderer.debug.onShaderError=(context,program,vertex,fragment)=>{
@@ -74,9 +101,17 @@ export default function Scene(props: SceneProps) {
     renderer.domElement.setAttribute('role','img');
     renderer.domElement.setAttribute('tabindex','0');
     element.appendChild(renderer.domElement);
-    const smoothing=!renderer.getContext().getContextAttributes()?.antialias&&renderer.extensions.has('EXT_color_buffer_float')?new SceneAntialias():null;
-    setGraphicsDiagnostics({smoothing:smoothing?'FXAA':contextAttributes?.antialias?'MSAA':'none',profile:profile.label});
-    logScene('renderer.pipeline',{smoothing:smoothing?'FXAA':contextAttributes?.antialias?'MSAA':'none'});
+    let smoothing:SceneAntialias|null=null;
+    disposers.push(()=>smoothing?.dispose());
+    const updatePipeline=()=>{
+      const enablePostprocessing=profile.postprocessing&&!contextAttributes?.antialias&&renderer.extensions.has('EXT_color_buffer_float');
+      if(enablePostprocessing&&!smoothing)smoothing=new SceneAntialias();
+      else if(!enablePostprocessing&&smoothing){renderer.setRenderTarget(null);smoothing.dispose();smoothing=null;}
+      const pipeline={smoothing:smoothing?'FXAA':contextAttributes?.antialias?'MSAA':profile.pixelRatio>1?'supersampling':'none',postprocessing:!!smoothing,profile:profile.label};
+      setGraphicsDiagnostics({...pipeline,...(!smoothing?{fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null}:{})});
+      logScene('renderer.pipeline',pipeline);
+    };
+    updatePipeline();
     const scene=new THREE.Scene();scene.fog=new THREE.Fog('#e9ece3',38,85);
     const camera=new THREE.PerspectiveCamera(38,1,.2,100);camera.position.set(9,9,12);
     let mainCalls=0,shadowCalls=0,mainTriangles=0;
@@ -86,22 +121,22 @@ export default function Scene(props: SceneProps) {
       renderDirect(renderCamera,...args);
       if(renderCamera===camera){mainCalls+=renderer.info.render.calls-callsBefore;mainTriangles+=renderer.info.render.triangles-trianglesBefore;}else if(renderCamera===sun.shadow.camera){shadowCalls+=renderer.info.render.calls-callsBefore;}
     };
-    const controls=new OrbitControls(camera,renderer.domElement);
+    const controls=new OrbitControls(camera,renderer.domElement);disposers.push(()=>controls.dispose());
     controls.target.set(1.3,.7,1.3);controls.enableDamping=true;controls.dampingFactor=.075;
     controls.minDistance=4.5;controls.maxDistance=28;controls.minPolarAngle=.2;controls.maxPolarAngle=1.31;
     controls.enablePan=false;controls.zoomSpeed=.55;controls.rotateSpeed=.6;
     controls.touches.ONE=THREE.TOUCH.ROTATE;controls.touches.TWO=THREE.TOUCH.DOLLY_PAN;
     let previousSize='';
     const resize=()=>{const w=element.clientWidth,h=element.clientHeight;if(!w||!h)return;if(mobileViewport!==isMobile()){mobileViewport=isMobile();lastQuality='';}camera.aspect=w/h;camera.updateProjectionMatrix();const ratio=drawingPixelRatio(renderQuality(latest.current.ui.quality,mobileViewport,autoDegraded),w,h,devicePixelRatio,mobileViewport);const size=`${w}:${h}:${ratio}`;if(size!==previousSize)logScene('renderer.resize.begin',{width:w,height:h,pixelRatio:ratio});renderer.setPixelRatio(ratio);renderer.setSize(w,h);smoothing?.resize(w*ratio,h*ratio);if(size!==previousSize){previousSize=size;const viewport={width:w,height:h,pixelRatio:ratio,bufferWidth:renderer.domElement.width,bufferHeight:renderer.domElement.height};setGraphicsDiagnostics({viewport});logScene('renderer.resize.complete',viewport);}};
-    const observer=new ResizeObserver(resize);observer.observe(element);resize();
+    const observer=new ResizeObserver(resize);disposers.push(()=>observer.disconnect());observer.observe(element);resize();
     const hemisphere=new THREE.HemisphereLight('#e9efff','#a59a83',1.15);scene.add(hemisphere);
-    const sun=new THREE.DirectionalLight('#fff3dc',3.1);sun.position.set(9,12,3);sun.castShadow=profile.shadowSize>0;
+    const sun=new THREE.DirectionalLight('#fff3dc',3.1);disposers.push(()=>sun.shadow.dispose());sun.position.set(9,12,3);sun.castShadow=profile.shadowSize>0;
     Object.assign(sun.shadow.camera,{left:-10,right:10,top:11,bottom:-11,near:.5,far:40});
     sun.shadow.mapSize.set(profile.shadowSize||1024,profile.shadowSize||1024);sun.shadow.bias=-.0004;sun.shadow.normalBias=.025;scene.add(sun);
     const windowLight=new THREE.PointLight('#e2edff',12,7,2);windowLight.position.set(3.5,1.55,1.45);scene.add(windowLight);
     const screenLight=new THREE.PointLight('#8caeff',0,4,2);screenLight.position.set(-1.0,1.2,1.3);scene.add(screenLight);
     const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.MeshStandardMaterial({color:'#dedfd4',roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.y=-.924;ground.receiveShadow=true;scene.add(ground);
-    const electrical=createElectricalLayer();scene.add(electrical.root);
+    const electrical=createElectricalLayer();scene.add(electrical.root);disposers.push(()=>{scene.remove(electrical.root);electrical.dispose();});
     // A low-power viewing fill keeps finishes readable when inspecting enclosed rooms.
     const inspectionLight=new THREE.PointLight('#fff5e5',0,7,2);scene.add(inspectionLight);
     const engineering=new THREE.Group();engineering.name='engineering-proposal';scene.add(engineering);
@@ -116,8 +151,10 @@ export default function Scene(props: SceneProps) {
     let waterAnchor:Device|undefined,puddleScaleAtSensor=1,streamConfigured=false;
     const tvCanvas=document.createElement('canvas');tvCanvas.width=512;tvCanvas.height=288;
     const tvContext=tvCanvas.getContext('2d')!;const tvTexture=new THREE.CanvasTexture(tvCanvas);tvTexture.colorSpace=THREE.SRGBColorSpace;tvTexture.flipY=false;
+    disposers.push(()=>tvTexture.dispose());
     let previousVideoTime=-2;
     const tvMaterial=new THREE.MeshStandardMaterial({color:0xffffff,roughness:.28,emissive:0xffffff,emissiveIntensity:.6,map:tvTexture,emissiveMap:tvTexture});
+    disposers.push(()=>tvMaterial.dispose());
     const loader=new GLTFLoader();loader.setMeshoptDecoder(MeshoptDecoder);
     const nodes=new Map<string,THREE.Object3D>(), deviceNodes=new Map<SystemId,THREE.Object3D[]>();
     const dynamicMaterials=new Map<string,THREE.MeshStandardMaterial[]>();
@@ -136,6 +173,7 @@ export default function Scene(props: SceneProps) {
       textures.forEach(t=>{if(typeof ImageBitmap!=='undefined'&&t.source.data instanceof ImageBitmap)bitmaps.add(t.source.data);t.dispose();});
       bitmaps.forEach(bitmap=>bitmap.close());
     };
+    disposers.push(()=>{scene.remove(electrical.root);release(scene);});
     let loadStarted=0,loadAttempt=0;
     const modelLoader=new LatestAssetLoader<GLTF>({
       start:key=>{
@@ -217,7 +255,8 @@ export default function Scene(props: SceneProps) {
       const key=ui.view==='house'||ui.room!=='living'?'house':'first-room';
       modelLoader.request(key+(profile.compactTextures?'-mobile':''));
     };
-    const registryAbort=new AbortController();
+    disposers.push(()=>modelLoader.dispose());
+    const registryAbort=new AbortController();disposers.push(()=>registryAbort.abort());
     logScene('registry.fetch.begin');
     fetch(`${import.meta.env.BASE_URL}scene-registry.json`,{signal:registryAbort.signal}).then(r=>{logScene('registry.fetch.response',{status:r.status,ok:r.ok});if(!r.ok)throw Error('Реестр сцены недоступен');return r.json()}).then((r:Registry)=>{if(disposed||lost||renderFailed)return;registry=r;logScene('registry.ready',{rooms:r.rooms.length,devices:r.devices.length});ground.position.y=(r.environment?.groundY??-.914)-.01;
       const television=r.devices.find(d=>d.id==='tv_living');if(television)screenLight.position.copy(v3(television.position)).add(new THREE.Vector3(.25,0,0));
@@ -369,10 +408,16 @@ export default function Scene(props: SceneProps) {
     renderer.domElement.addEventListener('wheel',inspectZoom,{passive:false});renderer.domElement.addEventListener('pointerdown',onDown);renderer.domElement.addEventListener('pointerup',onClick);renderer.domElement.addEventListener('keydown',keydown);
     renderer.domElement.addEventListener('webglcontextlost',contextLost);
     renderer.domElement.addEventListener('webglcontextrestored',contextRestored);
+    disposers.push(()=>{
+      renderer.domElement.removeEventListener('webglcontextlost',contextLost);
+      renderer.domElement.removeEventListener('webglcontextrestored',contextRestored);
+      renderer.domElement.removeEventListener('wheel',inspectZoom);renderer.domElement.removeEventListener('pointerdown',onDown);renderer.domElement.removeEventListener('pointerup',onClick);renderer.domElement.removeEventListener('keydown',keydown);
+    });
     const applyQuality=()=>{
       const old=profile;profile=renderQuality(latest.current.ui.quality,mobileViewport,autoDegraded);
       logScene('renderer.quality',{quality:latest.current.ui.quality,mobile:mobileViewport,autoDegraded,profile});
       setGraphicsDiagnostics({profile:profile.label,quality:latest.current.ui.quality,renderProfile:profile});
+      updatePipeline();
       sun.castShadow=profile.shadowSize>0;renderer.shadowMap.enabled=profile.shadowSize>0;
       if(old.shadowSize!==profile.shadowSize){sun.shadow.dispose();sun.shadow.map=null;sun.shadow.mapPass=null;sun.shadow.mapSize.set(profile.shadowSize||1024,profile.shadowSize||1024);}
       if(old.anisotropy!==profile.anisotropy){const textures=new Set<THREE.Texture>();for(const materials of dynamicMaterials.values())for(const material of materials)for(const value of Object.values(material))if(value instanceof THREE.Texture&&value!==tvTexture)textures.add(value);for(const texture of textures){texture.anisotropy=Math.min(profile.anisotropy,renderer.capabilities.getMaxAnisotropy());texture.needsUpdate=true;}}
@@ -403,7 +448,7 @@ export default function Scene(props: SceneProps) {
       phase='metrics';
       if(model&&elapsed<500)frames.push(elapsed);if(frames.length>180)frames.shift();
       if(now-metricAt>1500&&model){metricAt=now;const sorted=[...frames].sort((a,b)=>a-b),median=sorted[Math.floor(sorted.length/2)]??16.7,p95=sorted[Math.floor(sorted.length*.95)]??16.7;
-        const metrics={fps:Math.round(1000/median),p95:Math.round(p95*10)/10,triangles:mainTriangles,calls:mainCalls,shadowCalls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,jsHeapBytes:(performance as Performance & {memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize??null,profile:profile.label,pixelRatio:renderer.getPixelRatio(),antialias:renderer.getContext().getContextAttributes()?.antialias??false,smoothing:smoothing?'FXAA':renderer.getContext().getContextAttributes()?.antialias?'MSAA':'none',depthBits:smoothing?.depthBits??renderer.getContext().getParameter(renderer.getContext().DEPTH_BITS),shadowMapSize:profile.shadowSize,shadows:renderer.shadowMap.enabled,pointLights:electrical.activePointLights+Number(windowLight.visible)+Number(inspectionLight.visible)+Number(screenLight.visible),modelFile:assetKey+(profile.compactTextures?'-mobile':''),loadedBytes,loadMs:Math.round(loadMs),elapsedSeconds:Math.round((now-started)/1000),asset:assetKey};
+        const metrics={fps:Math.round(1000/median),p95:Math.round(p95*10)/10,triangles:mainTriangles,calls:mainCalls,shadowCalls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,jsHeapBytes:(performance as Performance & {memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize??null,profile:profile.label,pixelRatio:renderer.getPixelRatio(),antialias:renderer.getContext().getContextAttributes()?.antialias??false,smoothing:smoothing?'FXAA':renderer.getContext().getContextAttributes()?.antialias?'MSAA':renderer.getPixelRatio()>1?'supersampling':'none',postprocessing:!!smoothing,depthBits:smoothing?.depthBits??renderer.getContext().getParameter(renderer.getContext().DEPTH_BITS),shadowMapSize:profile.shadowSize,shadows:renderer.shadowMap.enabled,pointLights:electrical.activePointLights+Number(windowLight.visible)+Number(inspectionLight.visible)+Number(screenLight.visible),modelFile:assetKey+(profile.compactTextures?'-mobile':''),loadedBytes,loadMs:Math.round(loadMs),elapsedSeconds:Math.round((now-started)/1000),asset:assetKey};
         lastMetrics=metrics;setMetricsDiagnostics({sceneId,...metrics});
         latest.current.onMetrics?.(metrics);element.dataset.metrics=JSON.stringify(metrics);
         const samples=JSON.parse(element.dataset.samples??'[]');samples.push(metrics);element.dataset.samples=JSON.stringify(samples.slice(-480));
@@ -419,14 +464,14 @@ export default function Scene(props: SceneProps) {
     logScene('scene.ready-for-frames');
     return()=>{
       logScene('scene.cleanup.begin',{lost,renderFailed,model:loadingKey||assetKey,memory:{...renderer.info.memory},intentionalContextRelease:true});
-      disposed=true;modelLoader.dispose();registryAbort.abort();cancelAnimationFrame(raf);observer.disconnect();
-      renderer.domElement.removeEventListener('webglcontextlost',contextLost);
-      renderer.domElement.removeEventListener('webglcontextrestored',contextRestored);
-      renderer.domElement.removeEventListener('wheel',inspectZoom);renderer.domElement.removeEventListener('pointerdown',onDown);renderer.domElement.removeEventListener('pointerup',onClick);renderer.domElement.removeEventListener('keydown',keydown);
-      controls.dispose();scene.remove(electrical.root);electrical.dispose();release(scene);sun.shadow.dispose();tvTexture.dispose();tvMaterial.dispose();
-      smoothing?.dispose();renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();
+      disposeResources();
       logScene('scene.cleanup.complete',{intentionalContextRelease:true});
     };
+    } catch(error){
+      logScene('scene.setup.error',{error:errorDetail(error)},'error');
+      disposeResources();
+      latest.current.onStatus?.('error','Не удалось подготовить 3D. Скопируйте диагностику или повторите запуск сцены.');
+    }
   },[]);
   return <div className="three-scene" ref={host} style={{width:'100%',height:'100%',position:'absolute',inset:0}} />;
 }

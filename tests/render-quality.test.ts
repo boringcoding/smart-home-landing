@@ -31,13 +31,38 @@ test('explicit high increases mobile detail but stays within the 1.8 MP limit', 
   );
 });
 
-test('economy deliberately removes shadows and uses compact textures on any device', () => {
+test('economy keeps the direct-render recovery path on any device', () => {
   for (const mobile of [true, false]) {
     const economy = renderQuality('low', mobile);
     assert.equal(economy.compactTextures, true);
+    assert.equal(economy.postprocessing, false, 'recovery must never allocate HDR/FXAA render targets');
     assert.equal(economy.shadowSize, 0);
-    assert.ok(drawingPixelRatio(economy, 932, 430, 3, mobile) <= 1.25);
+    assert.equal(economy.anisotropy, 1);
+    assert.equal(economy.pixelRatio, 1);
+    assert.ok(drawingPixelRatio(economy, 932, 430, 3, mobile) <= 1);
     assert.ok(bufferPixels(economy, 932, 430, 3, mobile) <= 650_000);
+    assert.deepEqual(renderQuality('low', mobile, true), economy);
+  }
+});
+
+test('mobile auto and high render directly while keeping their material and shadow detail', () => {
+  for (const quality of ['auto', 'high'] as const) {
+    for (const adaptiveReduced of [false, true]) {
+      const profile = renderQuality(quality, true, adaptiveReduced);
+      assert.equal(profile.postprocessing, false, `${quality} must not require floating-point render targets on a phone`);
+      assert.equal(profile.compactTextures, false);
+      assert.equal(profile.shadowSize, 1024);
+      assert.equal(profile.anisotropy, 4);
+      assert.equal(profile.pixelBudget, quality === 'high' ? 1_800_000 : 1_200_000);
+    }
+  }
+});
+
+test('desktop auto and high remain eligible for postprocessing', () => {
+  for (const quality of ['auto', 'high'] as const) {
+    for (const adaptiveReduced of [false, true]) {
+      assert.equal(renderQuality(quality, false, adaptiveReduced).postprocessing, true);
+    }
   }
 });
 
