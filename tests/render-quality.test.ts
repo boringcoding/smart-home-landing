@@ -52,7 +52,7 @@ test('mobile auto and high render directly while keeping their material and shad
       assert.equal(profile.postprocessing, false, `${quality} must not require floating-point render targets on a phone`);
       assert.equal(profile.compactTextures, false);
       assert.equal(profile.shadowSize, 1024);
-      assert.equal(profile.shadowFilter, 'software-pcf-9', 'normal mobile shadows must avoid native comparison samplers');
+      assert.equal(profile.shadowFilter, 'rgba8-pcf-soft', 'normal mobile shadows must avoid native depth texture sampling');
       assert.equal(profile.anisotropy, 4);
       assert.equal(profile.pixelBudget, quality === 'high' ? 1_800_000 : 1_200_000);
     }
@@ -63,7 +63,7 @@ test('desktop auto and high remain eligible for postprocessing', () => {
   for (const quality of ['auto', 'high'] as const) {
     for (const adaptiveReduced of [false, true]) {
       assert.equal(renderQuality(quality, false, adaptiveReduced).postprocessing, true);
-      assert.equal(renderQuality(quality, false, adaptiveReduced).shadowFilter, 'hardware-pcf');
+      assert.equal(renderQuality(quality, false, adaptiveReduced).shadowFilter, 'rgba8-pcf-soft');
     }
   }
 });

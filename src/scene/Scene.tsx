@@ -12,7 +12,6 @@ import { SerialDecoder } from './SerialDecoder';
 import { SceneAntialias } from './SceneAntialias';
 import { classifyWebGLCreationFailure } from './webglFailure';
 import { drawingPixelRatio, renderQuality } from './renderQuality';
-import { installPortableShadows } from './portableShadows';
 import { resizeDrawingBuffer } from './drawingBuffer';
 import { logDiagnostic, setGraphicsDiagnostics, setMetricsDiagnostics } from '../diagnostics';
 
@@ -42,6 +41,14 @@ export default function Scene(props: SceneProps) {
     let shadowsDirty=true,lastShadowAt=0,curtainShadowState='';
     let diagnosticRequest=latest.current.diagnosticContextLossRequest??0,diagnosticLossPending=false;
     let renderer:THREE.WebGLRenderer;
+    let drawObject:THREE.Object3D|null=null,drawGeometry:THREE.BufferGeometry|null=null;
+    let drawMaterial:(THREE.Material & {map?:THREE.Texture|null;depthPacking?:number})|null=null,drawPass='';
+    const describeDraw=()=>drawMaterial&&drawGeometry&&drawObject?{
+      pass:drawPass,object:drawObject.name,material:drawMaterial.name,materialType:drawMaterial.type,
+      clippingPlanes:drawMaterial.clippingPlanes?.length??0,clipIntersection:drawMaterial.clipIntersection,
+      morphPositions:drawGeometry.morphAttributes.position?.length??0,morphNormals:drawGeometry.morphAttributes.normal?.length??0,
+      map:!!drawMaterial.map,side:drawMaterial.side,depthPacking:drawMaterial.depthPacking??null,
+    }:null;
     const disposers:Array<()=>void>=[];
     const disposeResources=()=>{
       if(disposed)return;
@@ -80,6 +87,8 @@ export default function Scene(props: SceneProps) {
     renderer.debug.onShaderError=(context,program,vertex,fragment)=>{
       logScene('renderer.shader.error',{
         model:loadingKey||assetKey,profile:profile.label,
+        contextLost:context.isContextLost(),draw:describeDraw(),
+        vertexSourceLength:context.getShaderSource(vertex)?.length??null,fragmentSourceLength:context.getShaderSource(fragment)?.length??null,
         linked:context.getProgramParameter(program,context.LINK_STATUS),
         vertexCompiled:context.getShaderParameter(vertex,context.COMPILE_STATUS),fragmentCompiled:context.getShaderParameter(fragment,context.COMPILE_STATUS),
         programLog:context.getProgramInfoLog(program)?.slice(0,6000),vertexLog:context.getShaderInfoLog(vertex)?.slice(0,6000),fragmentLog:context.getShaderInfoLog(fragment)?.slice(0,6000),
@@ -96,9 +105,8 @@ export default function Scene(props: SceneProps) {
     } catch(error){logScene('renderer.capabilities.error',{error:errorDetail(error)},'warn');}
     renderer.outputColorSpace=THREE.SRGBColorSpace;
     renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.13;
-    installPortableShadows();
     renderer.shadowMap.enabled=profile.shadowSize>0;
-    renderer.shadowMap.type=profile.shadowFilter==='software-pcf-9'?THREE.BasicShadowMap:THREE.PCFShadowMap;
+    renderer.shadowMap.type=THREE.PCFSoftShadowMap;
     renderer.shadowMap.autoUpdate=false;
     renderer.localClippingEnabled=true;
     renderer.setClearColor('#e9ece3');
@@ -123,6 +131,9 @@ export default function Scene(props: SceneProps) {
     const renderDirect=renderer.renderBufferDirect.bind(renderer);
     renderer.renderBufferDirect=(renderCamera,...args)=>{
       const callsBefore=renderer.info.render.calls,trianglesBefore=renderer.info.render.triangles;
+      // Retain references only; serialize on failure, without allocating a
+      // diagnostic object for each of the hundreds of draws every frame.
+      drawGeometry=args[1];drawMaterial=args[2];drawObject=args[3];drawPass=renderCamera===camera?'main':'shadow';
       renderDirect(renderCamera,...args);
       if(renderCamera===camera){mainCalls+=renderer.info.render.calls-callsBefore;mainTriangles+=renderer.info.render.triangles-trianglesBefore;}else if(renderCamera===sun.shadow.camera){shadowCalls+=renderer.info.render.calls-callsBefore;}
     };
@@ -146,6 +157,7 @@ export default function Scene(props: SceneProps) {
     const observer=new ResizeObserver(resize);disposers.push(()=>observer.disconnect());observer.observe(element);resize();
     const hemisphere=new THREE.HemisphereLight('#e9efff','#a59a83',1.15);scene.add(hemisphere);
     const sun=new THREE.DirectionalLight('#fff3dc',3.1);disposers.push(()=>sun.shadow.dispose());sun.position.set(9,12,3);sun.castShadow=profile.shadowSize>0;
+    const shadowTarget=()=>sun.shadow.map?{width:sun.shadow.map.width,height:sun.shadow.map.height,colorType:sun.shadow.map.texture.type,colorFormat:sun.shadow.map.texture.format,nativeDepthTexture:!!sun.shadow.map.depthTexture}:null;
     Object.assign(sun.shadow.camera,{left:-10,right:10,top:11,bottom:-11,near:.5,far:40});
     sun.shadow.mapSize.set(profile.shadowSize||1024,profile.shadowSize||1024);sun.shadow.bias=-.0004;sun.shadow.normalBias=.025;scene.add(sun);
     const windowLight=new THREE.PointLight('#e2edff',12,7,2);windowLight.position.set(3.5,1.55,1.45);scene.add(windowLight);
@@ -232,9 +244,9 @@ export default function Scene(props: SceneProps) {
         model.traverse(o=>{
           nodes.set(o.name,o);baseRotations.set(o.name,o.quaternion.clone());baseScales.set(o.name,o.scale.clone());
           if(o instanceof THREE.Mesh){o.castShadow=true;o.receiveShadow=true;
-            // Three 0.186 shared shadow uniforms can re-upload a disposed map.
-            // Per-mesh shadow materials keep those uniforms within the GLB lifetime.
-            o.customDepthMaterial=new THREE.MeshDepthMaterial();
+            // Keep clipping/morph shadow variants within the GLB lifetime.
+            // The pinned renderer reads packed RGBA, not a sampled DepthTexture.
+            o.customDepthMaterial=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking});
             o.customDepthMaterial.name=`${o.name}:shadow-depth`;
             o.customDistanceMaterial=new THREE.MeshDistanceMaterial();
             o.customDistanceMaterial.name=`${o.name}:shadow-distance`;
@@ -414,7 +426,7 @@ export default function Scene(props: SceneProps) {
     const inspectZoom=(e:WheelEvent)=>{if(latest.current.ui.view!=='interior')return;e.preventDefault();camera.fov=THREE.MathUtils.clamp(camera.fov+Math.sign(e.deltaY)*3,45,90);camera.updateProjectionMatrix();};
     const contextLost=(e:Event)=>{
       e.preventDefault();if(disposed||lost)return;lost=true;
-      logScene('renderer.context.lost',{statusMessage:(e as WebGLContextEvent).statusMessage??'',diagnosticRequest:diagnosticLossPending,profile:profile.label,model:loadingKey||assetKey,contextAttributes,lastMetrics,memory:{...renderer.info.memory}},'error');
+      logScene('renderer.context.lost',{statusMessage:(e as WebGLContextEvent).statusMessage??'',diagnosticRequest:diagnosticLossPending,profile:profile.label,model:loadingKey||assetKey,contextAttributes,lastMetrics,lastDraw:describeDraw(),memory:{...renderer.info.memory}},'error');
       setGraphicsDiagnostics({contextLost:true,contextStatusMessage:(e as WebGLContextEvent).statusMessage??''});
       modelLoader.dispose();registryAbort.abort();latest.current.onStatus?.('context-lost','Браузер остановил 3D. Настройки дома сохранены.');
     };
@@ -434,7 +446,7 @@ export default function Scene(props: SceneProps) {
       setGraphicsDiagnostics({profile:profile.label,quality:latest.current.ui.quality,renderProfile:profile});
       updatePipeline();
       sun.castShadow=profile.shadowSize>0;renderer.shadowMap.enabled=profile.shadowSize>0;
-      renderer.shadowMap.type=profile.shadowFilter==='software-pcf-9'?THREE.BasicShadowMap:THREE.PCFShadowMap;
+      renderer.shadowMap.type=THREE.PCFSoftShadowMap;
       if(old.shadowSize!==profile.shadowSize||old.shadowFilter!==profile.shadowFilter){
         sun.shadow.dispose();sun.shadow.map=null;sun.shadow.mapPass=null;
         sun.shadow.mapSize.set(profile.shadowSize||1024,profile.shadowSize||1024);
@@ -465,12 +477,12 @@ export default function Scene(props: SceneProps) {
       if(firstFrame)logScene('renderer.first-frame.begin',{profile:profile.label,smoothing:!!smoothing,shadowFilter:profile.shadowSize?profile.shadowFilter:'off'});
       if(awaitingModelFrame)logScene('model.first-frame.begin',{attempt:loadAttempt,model:loadingKey,profile:profile.label});
       if(smoothing)smoothing.render(renderer,scene,camera);else renderer.render(scene,camera);
-      if(firstFrame){logScene('renderer.first-frame.complete',{contextLost:gl.isContextLost(),memory:{...renderer.info.memory}});firstFrame=false;}
-      if(awaitingModelFrame){logScene('model.first-frame.complete',{attempt:loadAttempt,model:loadingKey,contextLost:gl.isContextLost(),calls:mainCalls,triangles:mainTriangles,memory:{...renderer.info.memory}});awaitingModelFrame=false;}
+      if(firstFrame){logScene('renderer.first-frame.complete',{contextLost:gl.isContextLost(),shadowTarget:shadowTarget(),memory:{...renderer.info.memory}});firstFrame=false;}
+      if(awaitingModelFrame){logScene('model.first-frame.complete',{attempt:loadAttempt,model:loadingKey,contextLost:gl.isContextLost(),shadowTarget:shadowTarget(),calls:mainCalls,triangles:mainTriangles,memory:{...renderer.info.memory}});awaitingModelFrame=false;}
       phase='metrics';
       if(model&&elapsed<500)frames.push(elapsed);if(frames.length>180)frames.shift();
       if(now-metricAt>1500&&model){metricAt=now;const sorted=[...frames].sort((a,b)=>a-b),median=sorted[Math.floor(sorted.length/2)]??16.7,p95=sorted[Math.floor(sorted.length*.95)]??16.7;
-        const metrics={fps:Math.round(1000/median),p95:Math.round(p95*10)/10,triangles:mainTriangles,calls:mainCalls,shadowCalls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,jsHeapBytes:(performance as Performance & {memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize??null,profile:profile.label,pixelRatio:renderer.getPixelRatio(),antialias:renderer.getContext().getContextAttributes()?.antialias??false,smoothing:smoothing?'FXAA':renderer.getContext().getContextAttributes()?.antialias?'MSAA':renderer.getPixelRatio()>1?'supersampling':'none',postprocessing:!!smoothing,depthBits:smoothing?.depthBits??renderer.getContext().getParameter(renderer.getContext().DEPTH_BITS),shadowMapSize:profile.shadowSize,shadowFilter:profile.shadowSize?profile.shadowFilter:'off',shadows:renderer.shadowMap.enabled,pointLights:electrical.activePointLights+Number(windowLight.visible)+Number(inspectionLight.visible)+Number(screenLight.visible),modelFile:assetKey+(profile.compactTextures?'-mobile':''),loadedBytes,loadMs:Math.round(loadMs),elapsedSeconds:Math.round((now-started)/1000),asset:assetKey};
+        const metrics={fps:Math.round(1000/median),p95:Math.round(p95*10)/10,triangles:mainTriangles,calls:mainCalls,shadowCalls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,jsHeapBytes:(performance as Performance & {memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize??null,profile:profile.label,pixelRatio:renderer.getPixelRatio(),antialias:renderer.getContext().getContextAttributes()?.antialias??false,smoothing:smoothing?'FXAA':renderer.getContext().getContextAttributes()?.antialias?'MSAA':renderer.getPixelRatio()>1?'supersampling':'none',postprocessing:!!smoothing,depthBits:smoothing?.depthBits??renderer.getContext().getParameter(renderer.getContext().DEPTH_BITS),shadowMapSize:profile.shadowSize,shadowTarget:shadowTarget(),shadowFilter:profile.shadowSize?profile.shadowFilter:'off',shadows:renderer.shadowMap.enabled,pointLights:electrical.activePointLights+Number(windowLight.visible)+Number(inspectionLight.visible)+Number(screenLight.visible),modelFile:assetKey+(profile.compactTextures?'-mobile':''),loadedBytes,loadMs:Math.round(loadMs),elapsedSeconds:Math.round((now-started)/1000),asset:assetKey};
         lastMetrics=metrics;setMetricsDiagnostics({sceneId,...metrics});
         latest.current.onMetrics?.(metrics);element.dataset.metrics=JSON.stringify(metrics);
         const samples=JSON.parse(element.dataset.samples??'[]');samples.push(metrics);element.dataset.samples=JSON.stringify(samples.slice(-480));

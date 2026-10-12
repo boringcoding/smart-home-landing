@@ -19,6 +19,7 @@ const staticHosting = import.meta.env.VITE_STATIC_HOSTING === 'true';
 // v1 belonged to the previous mobile renderer; its recovery flag must not pin this profile to low.
 const graphicsSafeModeKey = 'smart-house.graphics-safe-mode.v2';
 const graphicsQualityChoiceKey = 'smart-house.graphics-quality-choice.v2';
+const graphicsQualityLabels: Record<UIState['quality'], string> = { auto: 'Авто', high: 'Высокое', low: 'Экономичное' };
 const localGraphicsDiagnostics = ['127.0.0.1', 'localhost'].includes(window.location.hostname) && new URLSearchParams(window.location.search).get('diagnostics') === '1';
 function readGraphicsSafeMode() {
   try { return sessionStorage.getItem(graphicsSafeModeKey) === '1'; }
@@ -121,6 +122,8 @@ export default function App() {
   const [state, setState] = useState(initialState);
   const [graphicsSafeMode, setGraphicsSafeMode] = useState(readGraphicsSafeMode);
   const [ui, setUI] = useState<UIState>(() => ({ view: 'floor', room: 'living', system: 'lighting', electrical: electricalDefaults, quality: graphicsSafeMode ? 'low' : readGraphicsQuality(), reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches, hideUI: false, cameraRevision: 0 }));
+  const selectedGraphicsQuality = useRef(ui.quality);
+  selectedGraphicsQuality.current = ui.quality;
   const [modal, setModal] = useState<'config' | 'lead' | null>(null);
   const [panelOpen, setPanelOpen] = useState(true);
   const [curtainScope, setCurtainScope] = useState<'room' | 'all'>('room');
@@ -133,7 +136,8 @@ export default function App() {
   const [diagnosticsOpenRequest, setDiagnosticsOpenRequest] = useState(0);
   const currentSceneEpoch = useRef(0);
   const browserBlocked = useRef(false);
-  const autoRecoveryUsed = useRef(graphicsSafeMode);
+  // A persisted startup profile does not consume this page's single automatic retry.
+  const autoRecoveryUsed = useRef(false);
   const [sound, setSound] = useState(false);
   const [soundError, setSoundError] = useState('');
   const [savedLead, setSavedLead] = useState<unknown>(null);
@@ -148,33 +152,37 @@ export default function App() {
   const [serverSave, setServerSave] = useState<{ busy: boolean; id?: string; error?: string }>({ busy: false });
   const audioRef = useRef<{ context: AudioContext; gain: GainNode } | null>(null);
   const dispatch = useCallback((command: Command) => setState(previous => reduceCommand(previous, command)), []);
+  const restartScene = useCallback((reason: 'manual' | 'context-lost' | 'quality-choice' = 'manual', quality: UIState['quality'] = selectedGraphicsQuality.current) => {
+    if (browserBlocked.current) return;
+    // Mark the old instance stale before unmounting: async model/status callbacks may still arrive.
+    const nextEpoch = ++currentSceneEpoch.current;
+    logDiagnostic('app.scene-retry', { reason, epoch: nextEpoch, quality });
+    selectedGraphicsQuality.current = quality;
+    setUI(previous => ({ ...previous, quality }));
+    setMetrics(undefined);
+    setDiagnosticContextLossRequest(0);
+    setSceneRecovering(true);
+    setSceneStatus({ status: 'loading', detail: `Перезапускаем 3D. Качество: ${graphicsQualityLabels[quality]}. Настройки дома сохранены.` });
+    setSceneMounted(false);
+    setSceneEpoch(nextEpoch);
+  }, []);
   const chooseQuality = useCallback((quality: UIState['quality']) => {
     logDiagnostic('ui.quality-choice', { quality });
+    selectedGraphicsQuality.current = quality;
     setUI(previous => ({ ...previous, quality }));
     if (!browserBlocked.current) setGraphicsSafeMode(false);
     try { sessionStorage.setItem(graphicsQualityChoiceKey, quality); } catch { /* This choice remains active for the current page. */ }
     if (!browserBlocked.current) {
       try { sessionStorage.removeItem(graphicsSafeModeKey); } catch { /* Explicit selection still applies even if persistence is blocked. */ }
+      // Updating props cannot revive a lost context or a failed error boundary.
+      if (sceneStatus.status === 'context-lost' || sceneStatus.status === 'error') restartScene('quality-choice', quality);
     }
     // A manual choice does not replenish the one automatic recovery attempt in this page.
-  }, []);
-  const restartScene = useCallback((reason: 'manual' | 'context-lost' = 'manual') => {
-    if (browserBlocked.current) return;
-    // Mark the old instance stale before unmounting: async model/status callbacks may still arrive.
-    const nextEpoch = ++currentSceneEpoch.current;
-    logDiagnostic('app.scene-retry', { reason, epoch: nextEpoch, quality: 'low' });
-    setUI(previous => ({ ...previous, quality: 'low' }));
-    setMetrics(undefined);
-    setDiagnosticContextLossRequest(0);
-    setSceneRecovering(true);
-    setSceneStatus({ status: 'loading', detail: 'Перезапускаем 3D в экономичном режиме. Настройки дома сохранены.' });
-    setSceneMounted(false);
-    setSceneEpoch(nextEpoch);
-  }, []);
+  }, [sceneStatus.status, restartScene]);
   const onStatus: NonNullable<SceneProps['onStatus']> = useCallback((status, detail) => {
     if (sceneEpoch !== currentSceneEpoch.current) return;
     if (browserBlocked.current && status !== 'blocked') return;
-    logDiagnostic(`app.scene.${status}`, { detail, epoch: sceneEpoch }, status === 'error' || status === 'context-lost' || status === 'blocked' ? 'error' : 'info');
+    logDiagnostic(`app.scene.${status}`, { detail, epoch: sceneEpoch, quality: selectedGraphicsQuality.current }, status === 'error' || status === 'context-lost' || status === 'blocked' ? 'error' : 'info');
     if (status === 'blocked') {
       // A browser-level block cannot be cleared by replacing this canvas.
       browserBlocked.current = true;
@@ -188,7 +196,6 @@ export default function App() {
       try { sessionStorage.setItem(graphicsSafeModeKey, '1'); } catch { /* Recovery still works in this page when storage is unavailable. */ }
       setGraphicsSafeMode(true);
       if (shouldRetry) { restartScene('context-lost'); return; }
-      setUI(previous => ({ ...previous, quality: 'low' }));
     }
     if (status !== 'loading') setSceneRecovering(false);
     setSceneStatus({ status, detail });
@@ -397,9 +404,9 @@ export default function App() {
           <div className={`scene-wrapper ${sceneStatus.status === 'error' || sceneStatus.status === 'context-lost' || sceneStatus.status === 'blocked' ? 'scene-unavailable' : ''} ${sceneStatus.status === 'blocked' ? 'scene-blocked' : ''}`}>
             {sceneMounted && <SceneBoundary key={sceneEpoch} onError={() => { if (browserBlocked.current || sceneEpoch !== currentSceneEpoch.current) return; setSceneRecovering(false); setSceneStatus({ status: 'error', detail: 'Ошибка графического модуля. Комплектация и заявка остаются доступны.' }); }}><Scene state={state} ui={ui} onMetrics={onMetrics} onSelect={onSelect} onElectricalSelect={onElectricalSelect} onStatus={onStatus} diagnosticContextLossRequest={localGraphicsDiagnostics ? diagnosticContextLossRequest : undefined} /></SceneBoundary>}
             <div className="scene-toolbar"><div className="segmented view-controls" aria-label="Режим просмотра">{([{ value: 'house', label: 'Дом' }, { value: 'floor', label: 'Этаж' }, { value: 'interior', label: 'Внутри' }, { value: 'engineering', label: 'Инженерия' }] as const).map(item => <button key={item.value} aria-pressed={!ui.electrical?.enabled && ui.view === item.value} onClick={() => chooseView(item.value)}>{item.label}</button>)}</div><button className="icon-button view-expand" title={ui.hideUI ? 'Показать управление' : 'Скрыть панели управления'} aria-label={ui.hideUI ? 'Показать управление' : 'Скрыть панели управления'} onClick={() => setUI(previous => ({ ...previous, hideUI: !previous.hideUI }))}><Icon name={ui.hideUI ? 'close' : 'expand'} /></button></div>
-            {sceneStatus.status === 'loading' && <div className="scene-loading" role="status"><span className="loader" /><strong>{sceneRecovering ? 'Восстанавливаем 3D' : 'Готовим ваш дом'}</strong><span>{sceneRecovering ? 'Экономичное качество · настройки дома сохранены' : 'Загрузка 3D-модели'}</span></div>}
+            {sceneStatus.status === 'loading' && <div className="scene-loading" role="status"><span className="loader" /><strong>{sceneRecovering ? 'Восстанавливаем 3D' : 'Готовим ваш дом'}</strong><span>{sceneRecovering ? `Качество: ${graphicsQualityLabels[ui.quality]} · настройки дома сохранены` : 'Загрузка 3D-модели'}</span></div>}
             {sceneStatus.status === 'blocked' && <div className="scene-fallback" role="status"><h3>Браузер заблокировал 3D</h3><p>После прежней потери графической сессии браузер запретил создание новой. Сайт не может снять эту блокировку.</p><p>Обновите страницу через меню браузера. Если блокировка остаётся, полностью закройте браузер и откройте снова.</p><a className="secondary" href="#diagnostics-panel" onClick={() => setDiagnosticsOpenRequest(value => value + 1)}>Показать диагностику</a></div>}
-            {(sceneStatus.status === 'error' || sceneStatus.status === 'context-lost') && <div className="scene-fallback" role="status"><Icon name="home" size={36} /><h3>{sceneStatus.status === 'context-lost' ? '3D приостановлено' : 'Не удалось загрузить 3D'}</h3><p>{sceneStatus.status === 'context-lost' ? 'Браузер остановил графическую сессию. Настройки дома сохранены. Комплектация и черновик заявки остаются доступны.' : sceneStatus.detail ?? 'Настройте комплектацию и сохраните проект — эти действия остаются доступны.'}</p><button className="secondary" onClick={() => restartScene()}>Повторить 3D в экономичном режиме</button></div>}
+            {(sceneStatus.status === 'error' || sceneStatus.status === 'context-lost') && <div className="scene-fallback" role="status"><h3>{sceneStatus.status === 'context-lost' ? '3D приостановлено' : 'Не удалось загрузить 3D'}</h3><p>{sceneStatus.status === 'context-lost' ? 'Браузер остановил графическую сессию. Настройки дома сохранены. Комплектация и черновик заявки остаются доступны.' : sceneStatus.detail ?? 'Настройте комплектацию и сохраните проект — эти действия остаются доступны.'}</p><button className="secondary" onClick={() => restartScene()}>Повторить 3D · {graphicsQualityLabels[ui.quality]}</button>{ui.quality !== 'low' && <button className="secondary" onClick={() => chooseQuality('low')}>Попробовать экономичный режим</button>}</div>}
             <div className="scene-bottom"><div className="scene-room"><span className="eyebrow">{ui.electrical?.enabled ? 'ЭЛЕКТРИЧЕСКИЙ ПЛАН' : ui.view === 'house' ? 'ВАШ ДОМ' : ui.view === 'engineering' ? 'СИСТЕМЫ ДОМА' : ui.view === 'interior' ? 'ВНУТРИ КОМНАТЫ' : 'ЭТАЖ 01'}</span><label className="room-select"><select aria-label="Выбрать помещение" value={ui.room} onChange={event => chooseRoom(event.target.value)}><option value="all">Весь этаж</option>{rooms.map(room => <option key={room.id} value={room.id}>{room.name}</option>)}</select><Icon name="chevron" size={15} /></label></div><div className="scene-hint"><span className="orbit-mark">↔</span><span>{ui.view === 'interior' ? 'Осмотритесь вокруг' : 'Вращайте · приближайте'}<br /><span>{ui.electrical?.enabled ? 'Нажмите на точку' : ui.view === 'interior' ? 'Поднимите взгляд к потолку' : 'Нажмите на устройство'}</span></span></div></div>
             <div className="scene-corner-note">На основе вашей IFC-модели</div>
           </div>
