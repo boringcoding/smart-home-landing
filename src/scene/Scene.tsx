@@ -50,7 +50,7 @@ export default function Scene(props: SceneProps) {
     };
     const started=performance.now();
     logScene('scene.init',{quality:latest.current.ui.quality,mobile:mobileViewport,profile:profile.label,width:element.clientWidth,height:element.clientHeight,nativeDpr:devicePixelRatio});
-    setGraphicsDiagnostics({sceneId,contextLost:false,contextStatusMessage:'',nativeContextRestored:false,creationFailure:null,gpu:null,contextAttributes:null,limits:null,extensions:null,viewport:null,quality:latest.current.ui.quality,profile:profile.label,smoothing:null,fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null});
+    setGraphicsDiagnostics({sceneId,contextLost:false,contextStatusMessage:'',nativeContextRestored:false,creationFailure:null,gpu:null,contextAttributes:null,limits:null,extensions:null,viewport:null,quality:latest.current.ui.quality,profile:profile.label,renderProfile:profile,postprocessing:null,smoothing:null,fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null});
     setMetricsDiagnostics({sceneId,phase:'initializing'});
     logScene('renderer.create.begin');
     // Capture the browser's original rejection before Three replaces it with a
