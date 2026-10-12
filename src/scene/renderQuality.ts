@@ -13,6 +13,8 @@ export function renderQuality(quality:UIState['quality'],mobile:boolean,adaptive
     pixelRatio:economy?1:mobile?(high?2.5:adaptive?1.5:2):(adaptive?1.5:2),
     pixelBudget:economy?650_000:mobile?(high?1_800_000:1_200_000):5_000_000,
     shadowSize:economy?0:(mobile||adaptive)?1024:2048,
+    // Ordinary depth reads + software filtering avoid native comparison samplers on phones.
+    shadowFilter:mobile?'software-pcf-9' as const:'hardware-pcf' as const,
     pointLights:mobile||economy?3:6,
     anisotropy:economy?1:mobile?4:8,
     fps:mobile||economy?30:60,

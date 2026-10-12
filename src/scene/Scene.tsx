@@ -12,6 +12,8 @@ import { SerialDecoder } from './SerialDecoder';
 import { SceneAntialias } from './SceneAntialias';
 import { classifyWebGLCreationFailure } from './webglFailure';
 import { drawingPixelRatio, renderQuality } from './renderQuality';
+import { installPortableShadows } from './portableShadows';
+import { resizeDrawingBuffer } from './drawingBuffer';
 import { logDiagnostic, setGraphicsDiagnostics, setMetricsDiagnostics } from '../diagnostics';
 
 type Device = {id:string;type:string;system:SystemId;room:string;nodes:string[];position:number[];sourcePosition?:number[];streamBottomPosition?:number[];sensorPosition?:number[];puddlePosition?:number[];cabinetNodes?:string[];inspectionBounds?:{min:number[];max:number[]};[key:string]:unknown};
@@ -50,7 +52,7 @@ export default function Scene(props: SceneProps) {
     };
     const started=performance.now();
     logScene('scene.init',{quality:latest.current.ui.quality,mobile:mobileViewport,profile:profile.label,width:element.clientWidth,height:element.clientHeight,nativeDpr:devicePixelRatio});
-    setGraphicsDiagnostics({sceneId,contextLost:false,contextStatusMessage:'',nativeContextRestored:false,creationFailure:null,gpu:null,contextAttributes:null,limits:null,extensions:null,viewport:null,quality:latest.current.ui.quality,profile:profile.label,renderProfile:profile,postprocessing:null,smoothing:null,fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null});
+    setGraphicsDiagnostics({sceneId,contextLost:false,contextStatusMessage:'',nativeContextRestored:false,creationFailure:null,gpu:null,contextAttributes:null,limits:null,extensions:null,viewport:null,quality:latest.current.ui.quality,profile:profile.label,renderProfile:profile,shadowFilter:null,postprocessing:null,smoothing:null,fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null});
     setMetricsDiagnostics({sceneId,phase:'initializing'});
     logScene('renderer.create.begin');
     // Capture the browser's original rejection before Three replaces it with a
@@ -94,7 +96,10 @@ export default function Scene(props: SceneProps) {
     } catch(error){logScene('renderer.capabilities.error',{error:errorDetail(error)},'warn');}
     renderer.outputColorSpace=THREE.SRGBColorSpace;
     renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.13;
-    renderer.shadowMap.enabled=profile.shadowSize>0;renderer.shadowMap.type=THREE.PCFShadowMap;renderer.shadowMap.autoUpdate=false;
+    installPortableShadows();
+    renderer.shadowMap.enabled=profile.shadowSize>0;
+    renderer.shadowMap.type=profile.shadowFilter==='software-pcf-9'?THREE.BasicShadowMap:THREE.PCFShadowMap;
+    renderer.shadowMap.autoUpdate=false;
     renderer.localClippingEnabled=true;
     renderer.setClearColor('#e9ece3');
     renderer.domElement.setAttribute('aria-label','Трёхмерная модель дома. Перетаскивайте для вращения, используйте кнопки видов и комнат для навигации.');
@@ -107,7 +112,7 @@ export default function Scene(props: SceneProps) {
       const enablePostprocessing=profile.postprocessing&&!contextAttributes?.antialias&&renderer.extensions.has('EXT_color_buffer_float');
       if(enablePostprocessing&&!smoothing)smoothing=new SceneAntialias();
       else if(!enablePostprocessing&&smoothing){renderer.setRenderTarget(null);smoothing.dispose();smoothing=null;}
-      const pipeline={smoothing:smoothing?'FXAA':contextAttributes?.antialias?'MSAA':profile.pixelRatio>1?'supersampling':'none',postprocessing:!!smoothing,profile:profile.label};
+      const pipeline={smoothing:smoothing?'FXAA':contextAttributes?.antialias?'MSAA':profile.pixelRatio>1?'supersampling':'none',postprocessing:!!smoothing,profile:profile.label,shadowFilter:profile.shadowSize?profile.shadowFilter:'off'};
       setGraphicsDiagnostics({...pipeline,...(!smoothing?{fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null}:{})});
       logScene('renderer.pipeline',pipeline);
     };
@@ -126,8 +131,18 @@ export default function Scene(props: SceneProps) {
     controls.minDistance=4.5;controls.maxDistance=28;controls.minPolarAngle=.2;controls.maxPolarAngle=1.31;
     controls.enablePan=false;controls.zoomSpeed=.55;controls.rotateSpeed=.6;
     controls.touches.ONE=THREE.TOUCH.ROTATE;controls.touches.TWO=THREE.TOUCH.DOLLY_PAN;
-    let previousSize='';
-    const resize=()=>{const w=element.clientWidth,h=element.clientHeight;if(!w||!h)return;if(mobileViewport!==isMobile()){mobileViewport=isMobile();lastQuality='';}camera.aspect=w/h;camera.updateProjectionMatrix();const ratio=drawingPixelRatio(renderQuality(latest.current.ui.quality,mobileViewport,autoDegraded),w,h,devicePixelRatio,mobileViewport);const size=`${w}:${h}:${ratio}`;if(size!==previousSize)logScene('renderer.resize.begin',{width:w,height:h,pixelRatio:ratio});renderer.setPixelRatio(ratio);renderer.setSize(w,h);smoothing?.resize(w*ratio,h*ratio);if(size!==previousSize){previousSize=size;const viewport={width:w,height:h,pixelRatio:ratio,bufferWidth:renderer.domElement.width,bufferHeight:renderer.domElement.height};setGraphicsDiagnostics({viewport});logScene('renderer.resize.complete',viewport);}};
+    const resize=()=>{
+      const w=element.clientWidth,h=element.clientHeight;if(!w||!h)return;
+      if(mobileViewport!==isMobile()){mobileViewport=isMobile();lastQuality='';}
+      const ratio=drawingPixelRatio(renderQuality(latest.current.ui.quality,mobileViewport,autoDegraded),w,h,devicePixelRatio,mobileViewport);
+      const changed=resizeDrawingBuffer(renderer,w,h,ratio);
+      // A new postprocessing pipeline still needs sizing when the canvas size is unchanged.
+      smoothing?.resize(w*ratio,h*ratio);
+      if(!changed)return;
+      camera.aspect=w/h;camera.updateProjectionMatrix();
+      const viewport={width:w,height:h,pixelRatio:ratio,bufferWidth:renderer.domElement.width,bufferHeight:renderer.domElement.height};
+      setGraphicsDiagnostics({viewport});logScene('renderer.resize.complete',viewport);
+    };
     const observer=new ResizeObserver(resize);disposers.push(()=>observer.disconnect());observer.observe(element);resize();
     const hemisphere=new THREE.HemisphereLight('#e9efff','#a59a83',1.15);scene.add(hemisphere);
     const sun=new THREE.DirectionalLight('#fff3dc',3.1);disposers.push(()=>sun.shadow.dispose());sun.position.set(9,12,3);sun.castShadow=profile.shadowSize>0;
@@ -277,7 +292,7 @@ export default function Scene(props: SceneProps) {
       }
       requestModel();}).catch(error=>{if(!disposed&&!lost&&!renderFailed){logScene('registry.error',{error:errorDetail(error)},'error');latest.current.onStatus?.('error',String(error));}});
     const applyView=()=>{
-      const {ui}=latest.current,key=ui.view+':'+ui.room+':'+ui.system+':'+ui.cameraRevision+':'+ui.electrical?.enabled+':'+ui.electrical?.selectedId+':'+Math.round(camera.aspect*100);
+      const {ui}=latest.current,key=ui.view+':'+ui.room+':'+ui.system+':'+ui.cameraRevision+':'+ui.electrical?.enabled+':'+ui.electrical?.selectedId+':'+mobileViewport+':'+Math.round(camera.aspect*100);
       if(key===lastView||!model||!registry)return;lastView=key;shadowsDirty=true;
       const house=ui.view==='house',engineer=ui.view==='engineering',interior=ui.view==='interior',waterInspection=engineer&&ui.system==='water'&&ui.room==='living'&&!ui.electrical?.enabled;
       const electricalFocus=ui.electrical?.enabled&&ui.electrical.selectedId?electrical.focus(ui.electrical.selectedId):null;
@@ -419,7 +434,14 @@ export default function Scene(props: SceneProps) {
       setGraphicsDiagnostics({profile:profile.label,quality:latest.current.ui.quality,renderProfile:profile});
       updatePipeline();
       sun.castShadow=profile.shadowSize>0;renderer.shadowMap.enabled=profile.shadowSize>0;
-      if(old.shadowSize!==profile.shadowSize){sun.shadow.dispose();sun.shadow.map=null;sun.shadow.mapPass=null;sun.shadow.mapSize.set(profile.shadowSize||1024,profile.shadowSize||1024);}
+      renderer.shadowMap.type=profile.shadowFilter==='software-pcf-9'?THREE.BasicShadowMap:THREE.PCFShadowMap;
+      if(old.shadowSize!==profile.shadowSize||old.shadowFilter!==profile.shadowFilter){
+        sun.shadow.dispose();sun.shadow.map=null;sun.shadow.mapPass=null;
+        sun.shadow.mapSize.set(profile.shadowSize||1024,profile.shadowSize||1024);
+        // A new map/sampler type must exist before the next main pass, even
+        // when the normal animated-shadow throttle has not elapsed yet.
+        renderer.shadowMap.needsUpdate=true;lastShadowAt=-Infinity;
+      }
       if(old.anisotropy!==profile.anisotropy){const textures=new Set<THREE.Texture>();for(const materials of dynamicMaterials.values())for(const material of materials)for(const value of Object.values(material))if(value instanceof THREE.Texture&&value!==tvTexture)textures.add(value);for(const texture of textures){texture.anisotropy=Math.min(profile.anisotropy,renderer.capabilities.getMaxAnisotropy());texture.needsUpdate=true;}}
       shadowsDirty=true;frames=[];slowSamples=0;resize();
     };
@@ -440,7 +462,7 @@ export default function Scene(props: SceneProps) {
       controls.update();if(latest.current.ui.view==='interior')inspectionLight.position.copy(camera.position);mainCalls=0;shadowCalls=0;mainTriangles=0;
       if(shadowsDirty&&profile.shadowSize>0&&now-lastShadowAt>120){renderer.shadowMap.needsUpdate=true;shadowsDirty=false;lastShadowAt=now;}
       phase='render';
-      if(firstFrame)logScene('renderer.first-frame.begin',{profile:profile.label,smoothing:!!smoothing});
+      if(firstFrame)logScene('renderer.first-frame.begin',{profile:profile.label,smoothing:!!smoothing,shadowFilter:profile.shadowSize?profile.shadowFilter:'off'});
       if(awaitingModelFrame)logScene('model.first-frame.begin',{attempt:loadAttempt,model:loadingKey,profile:profile.label});
       if(smoothing)smoothing.render(renderer,scene,camera);else renderer.render(scene,camera);
       if(firstFrame){logScene('renderer.first-frame.complete',{contextLost:gl.isContextLost(),memory:{...renderer.info.memory}});firstFrame=false;}
@@ -448,7 +470,7 @@ export default function Scene(props: SceneProps) {
       phase='metrics';
       if(model&&elapsed<500)frames.push(elapsed);if(frames.length>180)frames.shift();
       if(now-metricAt>1500&&model){metricAt=now;const sorted=[...frames].sort((a,b)=>a-b),median=sorted[Math.floor(sorted.length/2)]??16.7,p95=sorted[Math.floor(sorted.length*.95)]??16.7;
-        const metrics={fps:Math.round(1000/median),p95:Math.round(p95*10)/10,triangles:mainTriangles,calls:mainCalls,shadowCalls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,jsHeapBytes:(performance as Performance & {memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize??null,profile:profile.label,pixelRatio:renderer.getPixelRatio(),antialias:renderer.getContext().getContextAttributes()?.antialias??false,smoothing:smoothing?'FXAA':renderer.getContext().getContextAttributes()?.antialias?'MSAA':renderer.getPixelRatio()>1?'supersampling':'none',postprocessing:!!smoothing,depthBits:smoothing?.depthBits??renderer.getContext().getParameter(renderer.getContext().DEPTH_BITS),shadowMapSize:profile.shadowSize,shadows:renderer.shadowMap.enabled,pointLights:electrical.activePointLights+Number(windowLight.visible)+Number(inspectionLight.visible)+Number(screenLight.visible),modelFile:assetKey+(profile.compactTextures?'-mobile':''),loadedBytes,loadMs:Math.round(loadMs),elapsedSeconds:Math.round((now-started)/1000),asset:assetKey};
+        const metrics={fps:Math.round(1000/median),p95:Math.round(p95*10)/10,triangles:mainTriangles,calls:mainCalls,shadowCalls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,jsHeapBytes:(performance as Performance & {memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize??null,profile:profile.label,pixelRatio:renderer.getPixelRatio(),antialias:renderer.getContext().getContextAttributes()?.antialias??false,smoothing:smoothing?'FXAA':renderer.getContext().getContextAttributes()?.antialias?'MSAA':renderer.getPixelRatio()>1?'supersampling':'none',postprocessing:!!smoothing,depthBits:smoothing?.depthBits??renderer.getContext().getParameter(renderer.getContext().DEPTH_BITS),shadowMapSize:profile.shadowSize,shadowFilter:profile.shadowSize?profile.shadowFilter:'off',shadows:renderer.shadowMap.enabled,pointLights:electrical.activePointLights+Number(windowLight.visible)+Number(inspectionLight.visible)+Number(screenLight.visible),modelFile:assetKey+(profile.compactTextures?'-mobile':''),loadedBytes,loadMs:Math.round(loadMs),elapsedSeconds:Math.round((now-started)/1000),asset:assetKey};
         lastMetrics=metrics;setMetricsDiagnostics({sceneId,...metrics});
         latest.current.onMetrics?.(metrics);element.dataset.metrics=JSON.stringify(metrics);
         const samples=JSON.parse(element.dataset.samples??'[]');samples.push(metrics);element.dataset.samples=JSON.stringify(samples.slice(-480));
