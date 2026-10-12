@@ -11,6 +11,7 @@ import { LatestAssetLoader } from './LatestAssetLoader';
 import { SerialDecoder } from './SerialDecoder';
 import { SceneAntialias } from './SceneAntialias';
 import { drawingPixelRatio, renderQuality } from './renderQuality';
+import { logDiagnostic, setGraphicsDiagnostics, setMetricsDiagnostics } from '../diagnostics';
 
 type Device = {id:string;type:string;system:SystemId;room:string;nodes:string[];position:number[];sourcePosition?:number[];streamBottomPosition?:number[];sensorPosition?:number[];puddlePosition?:number[];cabinetNodes?:string[];inspectionBounds?:{min:number[];max:number[]};[key:string]:unknown};
 type Room = {id:string;label:string;center:number[];bounds?:{min:number[];max:number[]}};
@@ -19,23 +20,51 @@ const v3 = (a:number[]) => new THREE.Vector3(a[0],a[1],a[2]);
 const smooth = (a:number,b:number,dt:number,speed=5) => THREE.MathUtils.lerp(a,b,1-Math.exp(-speed*dt));
 // Shared across React remounts: an in-flight decoder must finish before its replacement starts.
 const decoder = new SerialDecoder();
+let sceneSequence=0;
+const errorDetail=(error:unknown)=>error instanceof Error?{name:error.name,message:error.message,stack:error.stack}:String(error);
 
 export default function Scene(props: SceneProps) {
   const host = useRef<HTMLDivElement>(null);
   const latest = useRef(props); latest.current = props;
   useEffect(() => {
     const element=host.current!;
+    const sceneId=++sceneSequence;
+    const logScene=(stage:string,detail:Record<string,unknown>={},level:'info'|'warn'|'error'='info')=>logDiagnostic(stage,{sceneId,...detail},level);
     element.dataset.environment=JSON.stringify({userAgent:navigator.userAgent,dpr:devicePixelRatio,startedAt:new Date().toISOString()});
     let disposed=false,raf=0,model:THREE.Group|null=null,registry:Registry|null=null,assetKey='',loadedBytes=0,loadMs=0;
+    let renderFailed=false,firstFrame=true,awaitingModelFrame=false,lastMetrics:Record<string,unknown>|null=null,loadingKey='';
     const isMobile=() => element.clientWidth<700 || matchMedia('(pointer: coarse)').matches;
     let lastQuality='',mobileViewport=isMobile(),autoDegraded=false;
     let profile=renderQuality(latest.current.ui.quality,mobileViewport);
     let shadowsDirty=true,lastShadowAt=0,curtainShadowState='';
-    let diagnosticRequest=latest.current.diagnosticContextLossRequest??0;
+    let diagnosticRequest=latest.current.diagnosticContextLossRequest??0,diagnosticLossPending=false;
     let renderer:THREE.WebGLRenderer;
     const started=performance.now();
+    logScene('scene.init',{quality:latest.current.ui.quality,mobile:mobileViewport,profile:profile.label,width:element.clientWidth,height:element.clientHeight,nativeDpr:devicePixelRatio});
+    setGraphicsDiagnostics({sceneId,contextLost:false,contextStatusMessage:'',nativeContextRestored:false,fxaaHdrFramebuffer:null,fxaaDisplayFramebuffer:null});
+    setMetricsDiagnostics({sceneId,phase:'initializing'});
+    logScene('renderer.create.begin');
     try { renderer=new THREE.WebGLRenderer({antialias:!mobileViewport&&latest.current.ui.quality!=='low',alpha:false,powerPreference:mobileViewport?'default':'high-performance'}); }
-    catch { latest.current.onStatus?.('error','Ваш браузер не смог запустить 3D. Настройки систем и сохранение заявки доступны.'); return; }
+    catch (error) {logScene('renderer.create.error',{error:errorDetail(error)},'error');latest.current.onStatus?.('error','Ваш браузер не смог запустить 3D. Настройки систем и сохранение заявки доступны.');return;}
+    const gl=renderer.getContext(),contextAttributes=gl.getContextAttributes();
+    logScene('renderer.create.complete',{contextAttributes});
+    renderer.debug.onShaderError=(context,program,vertex,fragment)=>{
+      logScene('renderer.shader.error',{
+        model:loadingKey||assetKey,profile:profile.label,
+        linked:context.getProgramParameter(program,context.LINK_STATUS),
+        vertexCompiled:context.getShaderParameter(vertex,context.COMPILE_STATUS),fragmentCompiled:context.getShaderParameter(fragment,context.COMPILE_STATUS),
+        programLog:context.getProgramInfoLog(program)?.slice(0,6000),vertexLog:context.getShaderInfoLog(vertex)?.slice(0,6000),fragmentLog:context.getShaderInfoLog(fragment)?.slice(0,6000),
+      },'error');
+    };
+    try {
+      const debug=gl.getExtension('WEBGL_debug_renderer_info');
+      const graphics={sceneId,threeRevision:THREE.REVISION,contextAttributes,
+        gpu:{vendor:gl.getParameter(gl.VENDOR),renderer:gl.getParameter(gl.RENDERER),unmaskedVendor:debug?gl.getParameter(debug.UNMASKED_VENDOR_WEBGL):null,unmaskedRenderer:debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):null,version:gl.getParameter(gl.VERSION),shadingLanguage:gl.getParameter(gl.SHADING_LANGUAGE_VERSION)},
+        limits:{maxTextureSize:gl.getParameter(gl.MAX_TEXTURE_SIZE),maxRenderbufferSize:gl.getParameter(gl.MAX_RENDERBUFFER_SIZE),maxViewportDims:Array.from(gl.getParameter(gl.MAX_VIEWPORT_DIMS) as Int32Array),maxTextureUnits:gl.getParameter(gl.MAX_TEXTURE_IMAGE_UNITS),maxVertexTextureUnits:gl.getParameter(gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS),maxSamples:'MAX_SAMPLES' in gl?gl.getParameter(gl.MAX_SAMPLES):null,defaultDepthBits:gl.getParameter(gl.DEPTH_BITS),maxAnisotropy:renderer.capabilities.getMaxAnisotropy()},
+        extensions:{colorBufferFloat:!!gl.getExtension('EXT_color_buffer_float'),floatLinear:!!gl.getExtension('OES_texture_float_linear'),debugRendererInfo:!!debug},
+      };
+      setGraphicsDiagnostics(graphics);logScene('renderer.capabilities',graphics);
+    } catch(error){logScene('renderer.capabilities.error',{error:errorDetail(error)},'warn');}
     renderer.outputColorSpace=THREE.SRGBColorSpace;
     renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.13;
     renderer.shadowMap.enabled=profile.shadowSize>0;renderer.shadowMap.type=THREE.PCFShadowMap;renderer.shadowMap.autoUpdate=false;
@@ -46,6 +75,8 @@ export default function Scene(props: SceneProps) {
     renderer.domElement.setAttribute('tabindex','0');
     element.appendChild(renderer.domElement);
     const smoothing=!renderer.getContext().getContextAttributes()?.antialias&&renderer.extensions.has('EXT_color_buffer_float')?new SceneAntialias():null;
+    setGraphicsDiagnostics({smoothing:smoothing?'FXAA':contextAttributes?.antialias?'MSAA':'none',profile:profile.label});
+    logScene('renderer.pipeline',{smoothing:smoothing?'FXAA':contextAttributes?.antialias?'MSAA':'none'});
     const scene=new THREE.Scene();scene.fog=new THREE.Fog('#e9ece3',38,85);
     const camera=new THREE.PerspectiveCamera(38,1,.2,100);camera.position.set(9,9,12);
     let mainCalls=0,shadowCalls=0,mainTriangles=0;
@@ -60,7 +91,8 @@ export default function Scene(props: SceneProps) {
     controls.minDistance=4.5;controls.maxDistance=28;controls.minPolarAngle=.2;controls.maxPolarAngle=1.31;
     controls.enablePan=false;controls.zoomSpeed=.55;controls.rotateSpeed=.6;
     controls.touches.ONE=THREE.TOUCH.ROTATE;controls.touches.TWO=THREE.TOUCH.DOLLY_PAN;
-    const resize=()=>{const w=element.clientWidth,h=element.clientHeight;if(!w||!h)return;if(mobileViewport!==isMobile()){mobileViewport=isMobile();lastQuality='';}camera.aspect=w/h;camera.updateProjectionMatrix();const ratio=drawingPixelRatio(renderQuality(latest.current.ui.quality,mobileViewport,autoDegraded),w,h,devicePixelRatio,mobileViewport);renderer.setPixelRatio(ratio);renderer.setSize(w,h);smoothing?.resize(w*ratio,h*ratio);};
+    let previousSize='';
+    const resize=()=>{const w=element.clientWidth,h=element.clientHeight;if(!w||!h)return;if(mobileViewport!==isMobile()){mobileViewport=isMobile();lastQuality='';}camera.aspect=w/h;camera.updateProjectionMatrix();const ratio=drawingPixelRatio(renderQuality(latest.current.ui.quality,mobileViewport,autoDegraded),w,h,devicePixelRatio,mobileViewport);const size=`${w}:${h}:${ratio}`;if(size!==previousSize)logScene('renderer.resize.begin',{width:w,height:h,pixelRatio:ratio});renderer.setPixelRatio(ratio);renderer.setSize(w,h);smoothing?.resize(w*ratio,h*ratio);if(size!==previousSize){previousSize=size;const viewport={width:w,height:h,pixelRatio:ratio,bufferWidth:renderer.domElement.width,bufferHeight:renderer.domElement.height};setGraphicsDiagnostics({viewport});logScene('renderer.resize.complete',viewport);}};
     const observer=new ResizeObserver(resize);observer.observe(element);resize();
     const hemisphere=new THREE.HemisphereLight('#e9efff','#a59a83',1.15);scene.add(hemisphere);
     const sun=new THREE.DirectionalLight('#fff3dc',3.1);sun.position.set(9,12,3);sun.castShadow=profile.shadowSize>0;
@@ -104,9 +136,11 @@ export default function Scene(props: SceneProps) {
       textures.forEach(t=>{if(typeof ImageBitmap!=='undefined'&&t.source.data instanceof ImageBitmap)bitmaps.add(t.source.data);t.dispose();});
       bitmaps.forEach(bitmap=>bitmap.close());
     };
-    let loadStarted=0;
+    let loadStarted=0,loadAttempt=0;
     const modelLoader=new LatestAssetLoader<GLTF>({
-      start:()=>{
+      start:key=>{
+        loadingKey=key;loadAttempt++;
+        logScene('model.load.begin',{attempt:loadAttempt,model:key,previousModel:assetKey||null});
         latest.current.onStatus?.('loading');loadStarted=performance.now();loadedBytes=0;
         // Release the current GLB before downloading/decoding its replacement.
         // The loading overlay hides the gap and peak memory stays at one model.
@@ -117,15 +151,29 @@ export default function Scene(props: SceneProps) {
         renderer.renderLists.dispose();
       },
       load:async(key,signal)=>{
-        const response=await fetch(`${import.meta.env.BASE_URL}models/${key}.glb`,{signal});
-        if(!response.ok)throw new Error(`Model HTTP ${response.status}`);
-        const buffer=await response.arrayBuffer();signal.throwIfAborted();
-        loadedBytes=buffer.byteLength;
-        // Parsing cannot be cancelled; LatestAssetLoader serializes it and disposes stale results.
-        return decoder.run(()=>loader.parseAsync(buffer,`${import.meta.env.BASE_URL}models/`),signal);
+        const attempt=loadAttempt;let phase='fetch';
+        try {
+          logScene('model.fetch.begin',{attempt,model:key});
+          const response=await fetch(`${import.meta.env.BASE_URL}models/${key}.glb`,{signal});
+          logScene('model.fetch.response',{attempt,model:key,status:response.status,ok:response.ok,contentType:response.headers.get('content-type'),contentLength:response.headers.get('content-length')});
+          if(!response.ok)throw new Error(`Model HTTP ${response.status}`);
+          phase='body';const buffer=await response.arrayBuffer();signal.throwIfAborted();
+          loadedBytes=buffer.byteLength;
+          logScene('model.fetch.complete',{attempt,model:key,bytes:buffer.byteLength});
+          // Parsing cannot be cancelled; LatestAssetLoader serializes it and disposes stale results.
+          phase='decode-queue';logScene('model.decode.queued',{attempt,model:key});
+          return await decoder.run(async()=>{
+            phase='decode';const decodeStarted=performance.now();
+            logScene('model.decode.begin',{attempt,model:key});
+            const result=await loader.parseAsync(buffer,`${import.meta.env.BASE_URL}models/`);
+            logScene('model.decode.complete',{attempt,model:key,ms:Math.round(performance.now()-decodeStarted),stale:signal.aborted});
+            return result;
+          },signal);
+        } catch(error){logScene(signal.aborted?'model.load.cancelled':'model.load.error',{attempt,model:key,phase,error:errorDetail(error)},signal.aborted?'info':'error');throw error;}
       },
-      release:result=>release(result.scene),
+      release:result=>{logScene('model.decoded.release',{attempt:loadAttempt,model:loadingKey,disposed});release(result.scene);},
       commit:(result,key)=>{
+        logScene('model.commit.begin',{attempt:loadAttempt,model:key});
         model=result.scene;assetKey=key.replace(/-mobile$/,'');
         const originalMaterials=new Set<THREE.Material>();
         model.traverse(o=>{
@@ -157,18 +205,21 @@ export default function Scene(props: SceneProps) {
           const halfX=Math.max(.01,(bounds.max.x-bounds.min.x)/2),halfZ=Math.max(.01,(bounds.max.z-bounds.min.z)/2);
           puddleScaleAtSensor=Math.hypot((sensor.x-center.x)/halfX,(sensor.z-center.z)/halfZ);
         }
-        scene.add(model);shadowsDirty=true;lastView='';lastSelection='';loadMs=performance.now()-loadStarted;latest.current.onStatus?.('ready');
+        scene.add(model);shadowsDirty=true;lastView='';lastSelection='';loadMs=performance.now()-loadStarted;awaitingModelFrame=true;
+        logScene('model.commit.ready',{attempt:loadAttempt,model:key,nodes:nodes.size,bytes:loadedBytes,loadMs:Math.round(loadMs)});
+        latest.current.onStatus?.('ready');
       },
-      error:error=>{if(!disposed&&!lost){console.warn('3D model loading failed',error);latest.current.onStatus?.('error','Модель не загрузилась. Проверьте соединение и повторите загрузку сцены. Комплектация и настройки сохранены.');}},
+      error:(error,key)=>{if(!disposed&&!lost&&!renderFailed){logScene('model.failed',{attempt:loadAttempt,model:key,error:errorDetail(error)},'error');latest.current.onStatus?.('error','Модель не загрузилась. Проверьте соединение и повторите загрузку сцены. Комплектация и настройки сохранены.');}},
     });
     const requestModel=()=>{
-      if(!registry||disposed||lost)return;
+      if(!registry||disposed||lost||renderFailed)return;
       const {ui}=latest.current;
       const key=ui.view==='house'||ui.room!=='living'?'house':'first-room';
       modelLoader.request(key+(profile.compactTextures?'-mobile':''));
     };
     const registryAbort=new AbortController();
-    fetch(`${import.meta.env.BASE_URL}scene-registry.json`,{signal:registryAbort.signal}).then(r=>{if(!r.ok)throw Error('Реестр сцены недоступен');return r.json()}).then((r:Registry)=>{if(disposed)return;registry=r;ground.position.y=(r.environment?.groundY??-.914)-.01;
+    logScene('registry.fetch.begin');
+    fetch(`${import.meta.env.BASE_URL}scene-registry.json`,{signal:registryAbort.signal}).then(r=>{logScene('registry.fetch.response',{status:r.status,ok:r.ok});if(!r.ok)throw Error('Реестр сцены недоступен');return r.json()}).then((r:Registry)=>{if(disposed||lost||renderFailed)return;registry=r;logScene('registry.ready',{rooms:r.rooms.length,devices:r.devices.length});ground.position.y=(r.environment?.groundY??-.914)-.01;
       const television=r.devices.find(d=>d.id==='tv_living');if(television)screenLight.position.copy(v3(television.position)).add(new THREE.Vector3(.25,0,0));
       waterAnchor=r.devices.find(d=>d.id==='leak');
       if(waterAnchor?.sourcePosition&&waterAnchor.streamBottomPosition){
@@ -185,7 +236,7 @@ export default function Scene(props: SceneProps) {
         const lo=[min[0]-.006,min[1]+.085,min[2]-.006],hi=[max[0]+.006,Math.min(max[1],min[1]+.67),max[2]+.012];
         cabinetCut=[new THREE.Plane(new THREE.Vector3(1,0,0),-hi[0]),new THREE.Plane(new THREE.Vector3(-1,0,0),lo[0]),new THREE.Plane(new THREE.Vector3(0,1,0),-hi[1]),new THREE.Plane(new THREE.Vector3(0,-1,0),lo[1]),new THREE.Plane(new THREE.Vector3(0,0,1),-hi[2]),new THREE.Plane(new THREE.Vector3(0,0,-1),lo[2])];
       }
-      requestModel();}).catch(e=>{if(!disposed&&!lost)latest.current.onStatus?.('error',String(e))});
+      requestModel();}).catch(error=>{if(!disposed&&!lost&&!renderFailed){logScene('registry.error',{error:errorDetail(error)},'error');latest.current.onStatus?.('error',String(error));}});
     const applyView=()=>{
       const {ui}=latest.current,key=ui.view+':'+ui.room+':'+ui.system+':'+ui.cameraRevision+':'+ui.electrical?.enabled+':'+ui.electrical?.selectedId+':'+Math.round(camera.aspect*100);
       if(key===lastView||!model||!registry)return;lastView=key;shadowsDirty=true;
@@ -307,21 +358,33 @@ export default function Scene(props: SceneProps) {
       camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(spherical));if(e.key==='Home')lastView='';
     };
     const inspectZoom=(e:WheelEvent)=>{if(latest.current.ui.view!=='interior')return;e.preventDefault();camera.fov=THREE.MathUtils.clamp(camera.fov+Math.sign(e.deltaY)*3,45,90);camera.updateProjectionMatrix();};
-    const contextLost=(e:Event)=>{e.preventDefault();if(disposed||lost)return;lost=true;modelLoader.dispose();registryAbort.abort();latest.current.onStatus?.('context-lost','Браузер остановил 3D. Настройки дома сохранены.');};
+    const contextLost=(e:Event)=>{
+      e.preventDefault();if(disposed||lost)return;lost=true;
+      logScene('renderer.context.lost',{statusMessage:(e as WebGLContextEvent).statusMessage??'',diagnosticRequest:diagnosticLossPending,profile:profile.label,model:loadingKey||assetKey,contextAttributes,lastMetrics,memory:{...renderer.info.memory}},'error');
+      setGraphicsDiagnostics({contextLost:true,contextStatusMessage:(e as WebGLContextEvent).statusMessage??''});
+      modelLoader.dispose();registryAbort.abort();latest.current.onStatus?.('context-lost','Браузер остановил 3D. Настройки дома сохранены.');
+    };
+    // App owns recovery/remount; a native restore must not restart this retired loader.
+    const contextRestored=()=>{if(!disposed){logScene('renderer.context.restored',{profile:profile.label,model:loadingKey||assetKey,awaitingAppRemount:true});setGraphicsDiagnostics({nativeContextRestored:true});}};
     renderer.domElement.addEventListener('wheel',inspectZoom,{passive:false});renderer.domElement.addEventListener('pointerdown',onDown);renderer.domElement.addEventListener('pointerup',onClick);renderer.domElement.addEventListener('keydown',keydown);
     renderer.domElement.addEventListener('webglcontextlost',contextLost);
+    renderer.domElement.addEventListener('webglcontextrestored',contextRestored);
     const applyQuality=()=>{
       const old=profile;profile=renderQuality(latest.current.ui.quality,mobileViewport,autoDegraded);
+      logScene('renderer.quality',{quality:latest.current.ui.quality,mobile:mobileViewport,autoDegraded,profile});
+      setGraphicsDiagnostics({profile:profile.label,quality:latest.current.ui.quality,renderProfile:profile});
       sun.castShadow=profile.shadowSize>0;renderer.shadowMap.enabled=profile.shadowSize>0;
       if(old.shadowSize!==profile.shadowSize){sun.shadow.dispose();sun.shadow.map=null;sun.shadow.mapPass=null;sun.shadow.mapSize.set(profile.shadowSize||1024,profile.shadowSize||1024);}
       if(old.anisotropy!==profile.anisotropy){const textures=new Set<THREE.Texture>();for(const materials of dynamicMaterials.values())for(const material of materials)for(const value of Object.values(material))if(value instanceof THREE.Texture&&value!==tvTexture)textures.add(value);for(const texture of textures){texture.anisotropy=Math.min(profile.anisotropy,renderer.capabilities.getMaxAnisotropy());texture.needsUpdate=true;}}
       shadowsDirty=true;frames=[];slowSamples=0;resize();
     };
     const animate=(now:number)=>{
-      if(disposed)return;raf=requestAnimationFrame(animate);
+      if(disposed||renderFailed)return;raf=requestAnimationFrame(animate);
+      let phase='update';
+      try {
       if(document.hidden||lost){last=now;return;}
       const requestedDiagnostic=latest.current.diagnosticContextLossRequest??0;
-      if(requestedDiagnostic!==diagnosticRequest){diagnosticRequest=requestedDiagnostic;renderer.forceContextLoss();return;}
+      if(requestedDiagnostic!==diagnosticRequest){diagnosticRequest=requestedDiagnostic;diagnosticLossPending=true;logScene('renderer.context.loss-requested',{source:'local-diagnostic-control'});renderer.forceContextLoss();return;}
       const elapsed=now-last;if(profile.fps===30&&elapsed<1000/30-.75)return;
       const dt=Math.min(elapsed/1000,.1);last=now;
       const {ui}=latest.current;
@@ -331,21 +394,38 @@ export default function Scene(props: SceneProps) {
       if(cameraMove){cameraMove.t=Math.min(1,cameraMove.t+dt/.9);const t=cameraMove.t, ease=t*t*(3-2*t);camera.position.lerpVectors(cameraMove.from,cameraMove.to,ease);controls.target.lerpVectors(cameraMove.targetFrom,cameraMove.target,ease);if(t>=1)cameraMove=null;}
       controls.update();if(latest.current.ui.view==='interior')inspectionLight.position.copy(camera.position);mainCalls=0;shadowCalls=0;mainTriangles=0;
       if(shadowsDirty&&profile.shadowSize>0&&now-lastShadowAt>120){renderer.shadowMap.needsUpdate=true;shadowsDirty=false;lastShadowAt=now;}
+      phase='render';
+      if(firstFrame)logScene('renderer.first-frame.begin',{profile:profile.label,smoothing:!!smoothing});
+      if(awaitingModelFrame)logScene('model.first-frame.begin',{attempt:loadAttempt,model:loadingKey,profile:profile.label});
       if(smoothing)smoothing.render(renderer,scene,camera);else renderer.render(scene,camera);
+      if(firstFrame){logScene('renderer.first-frame.complete',{contextLost:gl.isContextLost(),memory:{...renderer.info.memory}});firstFrame=false;}
+      if(awaitingModelFrame){logScene('model.first-frame.complete',{attempt:loadAttempt,model:loadingKey,contextLost:gl.isContextLost(),calls:mainCalls,triangles:mainTriangles,memory:{...renderer.info.memory}});awaitingModelFrame=false;}
+      phase='metrics';
       if(model&&elapsed<500)frames.push(elapsed);if(frames.length>180)frames.shift();
       if(now-metricAt>1500&&model){metricAt=now;const sorted=[...frames].sort((a,b)=>a-b),median=sorted[Math.floor(sorted.length/2)]??16.7,p95=sorted[Math.floor(sorted.length*.95)]??16.7;
         const metrics={fps:Math.round(1000/median),p95:Math.round(p95*10)/10,triangles:mainTriangles,calls:mainCalls,shadowCalls,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,jsHeapBytes:(performance as Performance & {memory?:{usedJSHeapSize:number}}).memory?.usedJSHeapSize??null,profile:profile.label,pixelRatio:renderer.getPixelRatio(),antialias:renderer.getContext().getContextAttributes()?.antialias??false,smoothing:smoothing?'FXAA':renderer.getContext().getContextAttributes()?.antialias?'MSAA':'none',depthBits:smoothing?.depthBits??renderer.getContext().getParameter(renderer.getContext().DEPTH_BITS),shadowMapSize:profile.shadowSize,shadows:renderer.shadowMap.enabled,pointLights:electrical.activePointLights+Number(windowLight.visible)+Number(inspectionLight.visible)+Number(screenLight.visible),modelFile:assetKey+(profile.compactTextures?'-mobile':''),loadedBytes,loadMs:Math.round(loadMs),elapsedSeconds:Math.round((now-started)/1000),asset:assetKey};
+        lastMetrics=metrics;setMetricsDiagnostics({sceneId,...metrics});
         latest.current.onMetrics?.(metrics);element.dataset.metrics=JSON.stringify(metrics);
         const samples=JSON.parse(element.dataset.samples??'[]');samples.push(metrics);element.dataset.samples=JSON.stringify(samples.slice(-480));
         if(ui.quality==='auto'&&!autoDegraded){slowSamples=p95>(mobileViewport?55:40)?slowSamples+1:0;if(slowSamples>=4){autoDegraded=true;applyQuality();}}
       }
+      } catch(error){
+        if(disposed||lost||renderFailed)return;
+        renderFailed=true;cancelAnimationFrame(raf);modelLoader.dispose();registryAbort.abort();
+        logScene('renderer.loop.error',{phase,error:errorDetail(error),profile:profile.label,model:loadingKey||assetKey,lastMetrics,memory:{...renderer.info.memory}},'error');
+        latest.current.onStatus?.('error','Ошибка графики остановила 3D. Скопируйте диагностику или повторите загрузку сцены. Настройки сохранены.');
+      }
     };raf=requestAnimationFrame(animate);
+    logScene('scene.ready-for-frames');
     return()=>{
+      logScene('scene.cleanup.begin',{lost,renderFailed,model:loadingKey||assetKey,memory:{...renderer.info.memory},intentionalContextRelease:true});
       disposed=true;modelLoader.dispose();registryAbort.abort();cancelAnimationFrame(raf);observer.disconnect();
       renderer.domElement.removeEventListener('webglcontextlost',contextLost);
+      renderer.domElement.removeEventListener('webglcontextrestored',contextRestored);
       renderer.domElement.removeEventListener('wheel',inspectZoom);renderer.domElement.removeEventListener('pointerdown',onDown);renderer.domElement.removeEventListener('pointerup',onClick);renderer.domElement.removeEventListener('keydown',keydown);
       controls.dispose();scene.remove(electrical.root);electrical.dispose();release(scene);sun.shadow.dispose();tvTexture.dispose();tvMaterial.dispose();
       smoothing?.dispose();renderer.dispose();renderer.forceContextLoss();renderer.domElement.remove();
+      logScene('scene.cleanup.complete',{intentionalContextRelease:true});
     };
   },[]);
   return <div className="three-scene" ref={host} style={{width:'100%',height:'100%',position:'absolute',inset:0}} />;

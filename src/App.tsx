@@ -1,5 +1,7 @@
-import { Component, useCallback, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from 'react';
+import { Component, useCallback, useEffect, useRef, useState, type CSSProperties, type ErrorInfo, type KeyboardEvent, type ReactNode } from 'react';
 import Scene from './scene/Scene';
+import DiagnosticsPanel from './DiagnosticsPanel';
+import { logDiagnostic } from './diagnostics';
 import ElectricalPanel, { LightingChannels } from './ElectricalPanel';
 import { ELECTRICAL_POINTS } from './electrical/plan';
 import { createInitialState, reduceCommand, tick, exportSummary, scenarioNames, systemNames, systemAvailable, systemUnavailableReason, systemRooms, curtainAvailable, curtainUnavailableReason, electricalControlUnavailableReason } from './state';
@@ -89,7 +91,10 @@ function initialState(): HomeState {
 class SceneBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
   state = { failed: false };
   static getDerivedStateFromError() { return { failed: true }; }
-  componentDidCatch() { this.props.onError(); }
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    logDiagnostic('app.scene-boundary', { name: error.name, message: error.message, stack: error.stack, componentStack: info.componentStack }, 'error');
+    this.props.onError();
+  }
   render() { return this.state.failed ? null : this.props.children; }
 }
 
@@ -142,15 +147,17 @@ export default function App() {
   const audioRef = useRef<{ context: AudioContext; gain: GainNode } | null>(null);
   const dispatch = useCallback((command: Command) => setState(previous => reduceCommand(previous, command)), []);
   const chooseQuality = useCallback((quality: UIState['quality']) => {
+    logDiagnostic('ui.quality-choice', { quality });
     setUI(previous => ({ ...previous, quality }));
     setGraphicsSafeMode(false);
     try { sessionStorage.setItem(graphicsQualityChoiceKey, quality); } catch { /* This choice remains active for the current page. */ }
     try { sessionStorage.removeItem(graphicsSafeModeKey); } catch { /* Explicit selection still applies even if persistence is blocked. */ }
     // A manual choice does not replenish the one automatic recovery attempt in this page.
   }, []);
-  const restartScene = useCallback(() => {
+  const restartScene = useCallback((reason: 'manual' | 'context-lost' = 'manual') => {
     // Mark the old instance stale before unmounting: async model/status callbacks may still arrive.
     const nextEpoch = ++currentSceneEpoch.current;
+    logDiagnostic('app.scene-retry', { reason, epoch: nextEpoch, quality: 'low' });
     setUI(previous => ({ ...previous, quality: 'low' }));
     setMetrics(undefined);
     setDiagnosticContextLossRequest(0);
@@ -161,12 +168,13 @@ export default function App() {
   }, []);
   const onStatus: NonNullable<SceneProps['onStatus']> = useCallback((status, detail) => {
     if (sceneEpoch !== currentSceneEpoch.current) return;
+    logDiagnostic(`app.scene.${status}`, { detail, epoch: sceneEpoch }, status === 'error' || status === 'context-lost' ? 'error' : 'info');
     if (status === 'context-lost') {
       const shouldRetry = !autoRecoveryUsed.current;
       autoRecoveryUsed.current = true;
       try { sessionStorage.setItem(graphicsSafeModeKey, '1'); } catch { /* Recovery still works in this page when storage is unavailable. */ }
       setGraphicsSafeMode(true);
-      if (shouldRetry) { restartScene(); return; }
+      if (shouldRetry) { restartScene('context-lost'); return; }
       setUI(previous => ({ ...previous, quality: 'low' }));
     }
     if (status !== 'loading') setSceneRecovering(false);
@@ -371,12 +379,13 @@ export default function App() {
       <div className="intro"><div><div className="eyebrow"><span className="tiny-line" />ТЕХНОЛОГИИ ДЛЯ ЖИЗНИ</div><h1>Дом в вашем ритме<span>.</span></h1></div><p>Представьте свой обычный день.<br />Посмотрите, что дом может взять на себя.</p></div>
       <section className="showroom" aria-label="Интерактивная модель умного дома">
         <div className="scene-column">
+          <DiagnosticsPanel />
           <nav className="room-navigation" aria-label="Помещения дома"><button className="electrical-mode-button" aria-pressed={Boolean(ui.electrical?.enabled)} onClick={openElectrical}><Icon name="lighting" size={16} />Электрика</button><span className="eyebrow">ОСМОТРИТЕ ДОМ</span><div className="room-chips"><button aria-pressed={ui.room === 'all'} onClick={() => chooseRoom('all')}>Весь этаж</button>{rooms.map(room => <button key={room.id} aria-pressed={ui.room === room.id} onClick={() => chooseRoom(room.id)}>{room.name}</button>)}</div></nav>
           <div className={`scene-wrapper ${sceneStatus.status === 'error' || sceneStatus.status === 'context-lost' ? 'scene-unavailable' : ''}`}>
-            {sceneMounted && <SceneBoundary key={sceneEpoch} onError={() => onStatus('error', 'Ошибка графического модуля. Комплектация и заявка остаются доступны.')}><Scene state={state} ui={ui} onMetrics={onMetrics} onSelect={onSelect} onElectricalSelect={onElectricalSelect} onStatus={onStatus} diagnosticContextLossRequest={localGraphicsDiagnostics ? diagnosticContextLossRequest : undefined} /></SceneBoundary>}
+            {sceneMounted && <SceneBoundary key={sceneEpoch} onError={() => { if (sceneEpoch !== currentSceneEpoch.current) return; setSceneRecovering(false); setSceneStatus({ status: 'error', detail: 'Ошибка графического модуля. Комплектация и заявка остаются доступны.' }); }}><Scene state={state} ui={ui} onMetrics={onMetrics} onSelect={onSelect} onElectricalSelect={onElectricalSelect} onStatus={onStatus} diagnosticContextLossRequest={localGraphicsDiagnostics ? diagnosticContextLossRequest : undefined} /></SceneBoundary>}
             <div className="scene-toolbar"><div className="segmented view-controls" aria-label="Режим просмотра">{([{ value: 'house', label: 'Дом' }, { value: 'floor', label: 'Этаж' }, { value: 'interior', label: 'Внутри' }, { value: 'engineering', label: 'Инженерия' }] as const).map(item => <button key={item.value} aria-pressed={!ui.electrical?.enabled && ui.view === item.value} onClick={() => chooseView(item.value)}>{item.label}</button>)}</div><button className="icon-button view-expand" title={ui.hideUI ? 'Показать управление' : 'Скрыть панели управления'} aria-label={ui.hideUI ? 'Показать управление' : 'Скрыть панели управления'} onClick={() => setUI(previous => ({ ...previous, hideUI: !previous.hideUI }))}><Icon name={ui.hideUI ? 'close' : 'expand'} /></button></div>
             {sceneStatus.status === 'loading' && <div className="scene-loading" role="status"><span className="loader" /><strong>{sceneRecovering ? 'Восстанавливаем 3D' : 'Готовим ваш дом'}</strong><span>{sceneRecovering ? 'Экономичное качество · настройки дома сохранены' : 'Загрузка 3D-модели'}</span></div>}
-            {(sceneStatus.status === 'error' || sceneStatus.status === 'context-lost') && <div className="scene-fallback" role="status"><Icon name="home" size={36} /><h3>{sceneStatus.status === 'context-lost' ? '3D приостановлено' : 'Не удалось загрузить 3D'}</h3><p>{sceneStatus.status === 'context-lost' ? 'Браузер остановил графическую сессию. Настройки дома сохранены. Комплектация и черновик заявки остаются доступны.' : sceneStatus.detail ?? 'Настройте комплектацию и сохраните проект — эти действия остаются доступны.'}</p><button className="secondary" onClick={restartScene}>Повторить 3D в экономичном режиме</button></div>}
+            {(sceneStatus.status === 'error' || sceneStatus.status === 'context-lost') && <div className="scene-fallback" role="status"><Icon name="home" size={36} /><h3>{sceneStatus.status === 'context-lost' ? '3D приостановлено' : 'Не удалось загрузить 3D'}</h3><p>{sceneStatus.status === 'context-lost' ? 'Браузер остановил графическую сессию. Настройки дома сохранены. Комплектация и черновик заявки остаются доступны.' : sceneStatus.detail ?? 'Настройте комплектацию и сохраните проект — эти действия остаются доступны.'}</p><button className="secondary" onClick={() => restartScene()}>Повторить 3D в экономичном режиме</button></div>}
             <div className="scene-bottom"><div className="scene-room"><span className="eyebrow">{ui.electrical?.enabled ? 'ЭЛЕКТРИЧЕСКИЙ ПЛАН' : ui.view === 'house' ? 'ВАШ ДОМ' : ui.view === 'engineering' ? 'СИСТЕМЫ ДОМА' : ui.view === 'interior' ? 'ВНУТРИ КОМНАТЫ' : 'ЭТАЖ 01'}</span><label className="room-select"><select aria-label="Выбрать помещение" value={ui.room} onChange={event => chooseRoom(event.target.value)}><option value="all">Весь этаж</option>{rooms.map(room => <option key={room.id} value={room.id}>{room.name}</option>)}</select><Icon name="chevron" size={15} /></label></div><div className="scene-hint"><span className="orbit-mark">↔</span><span>{ui.view === 'interior' ? 'Осмотритесь вокруг' : 'Вращайте · приближайте'}<br /><span>{ui.electrical?.enabled ? 'Нажмите на точку' : ui.view === 'interior' ? 'Поднимите взгляд к потолку' : 'Нажмите на устройство'}</span></span></div></div>
             <div className="scene-corner-note">На основе вашей IFC-модели</div>
           </div>
