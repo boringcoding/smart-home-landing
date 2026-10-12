@@ -14,11 +14,20 @@ const rooms = [
 ];
 const electricalDefaults: NonNullable<UIState['electrical']> = { enabled: false, layer: 'all', routes: false, labels: true, selectedId: null, circuit: null };
 const staticHosting = import.meta.env.VITE_STATIC_HOSTING === 'true';
-const graphicsSafeModeKey = 'smart-house.graphics-safe-mode.v1';
+// v1 belonged to the previous mobile renderer; its recovery flag must not pin this profile to low.
+const graphicsSafeModeKey = 'smart-house.graphics-safe-mode.v2';
+const graphicsQualityChoiceKey = 'smart-house.graphics-quality-choice.v2';
 const localGraphicsDiagnostics = ['127.0.0.1', 'localhost'].includes(window.location.hostname) && new URLSearchParams(window.location.search).get('diagnostics') === '1';
 function readGraphicsSafeMode() {
   try { return sessionStorage.getItem(graphicsSafeModeKey) === '1'; }
   catch { return false; }
+}
+function readGraphicsQuality(): UIState['quality'] {
+  try {
+    const value = sessionStorage.getItem(graphicsQualityChoiceKey);
+    if (value === 'auto' || value === 'high' || value === 'low') return value;
+  } catch { /* Rendering still works when session storage is unavailable. */ }
+  return 'auto';
 }
 const systems: SystemId[] = ['lighting', 'curtains', 'climate', 'water', 'security', 'media'];
 const scenarios: { id: ScenarioId; icon: string; caption: string }[] = [
@@ -106,7 +115,7 @@ function downloadJSON(value: unknown, name: string) {
 export default function App() {
   const [state, setState] = useState(initialState);
   const [graphicsSafeMode, setGraphicsSafeMode] = useState(readGraphicsSafeMode);
-  const [ui, setUI] = useState<UIState>(() => ({ view: 'floor', room: 'living', system: 'lighting', electrical: electricalDefaults, quality: graphicsSafeMode ? 'low' : 'auto', reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches, hideUI: false, cameraRevision: 0 }));
+  const [ui, setUI] = useState<UIState>(() => ({ view: 'floor', room: 'living', system: 'lighting', electrical: electricalDefaults, quality: graphicsSafeMode ? 'low' : readGraphicsQuality(), reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches, hideUI: false, cameraRevision: 0 }));
   const [modal, setModal] = useState<'config' | 'lead' | null>(null);
   const [panelOpen, setPanelOpen] = useState(true);
   const [curtainScope, setCurtainScope] = useState<'room' | 'all'>('room');
@@ -132,12 +141,16 @@ export default function App() {
   const [serverSave, setServerSave] = useState<{ busy: boolean; id?: string; error?: string }>({ busy: false });
   const audioRef = useRef<{ context: AudioContext; gain: GainNode } | null>(null);
   const dispatch = useCallback((command: Command) => setState(previous => reduceCommand(previous, command)), []);
+  const chooseQuality = useCallback((quality: UIState['quality']) => {
+    setUI(previous => ({ ...previous, quality }));
+    setGraphicsSafeMode(false);
+    try { sessionStorage.setItem(graphicsQualityChoiceKey, quality); } catch { /* This choice remains active for the current page. */ }
+    try { sessionStorage.removeItem(graphicsSafeModeKey); } catch { /* Explicit selection still applies even if persistence is blocked. */ }
+    // A manual choice does not replenish the one automatic recovery attempt in this page.
+  }, []);
   const restartScene = useCallback(() => {
     // Mark the old instance stale before unmounting: async model/status callbacks may still arrive.
     const nextEpoch = ++currentSceneEpoch.current;
-    autoRecoveryUsed.current = true;
-    try { sessionStorage.setItem(graphicsSafeModeKey, '1'); } catch { /* Recovery still works in this page when storage is unavailable. */ }
-    setGraphicsSafeMode(true);
     setUI(previous => ({ ...previous, quality: 'low' }));
     setMetrics(undefined);
     setDiagnosticContextLossRequest(0);
@@ -148,7 +161,14 @@ export default function App() {
   }, []);
   const onStatus: NonNullable<SceneProps['onStatus']> = useCallback((status, detail) => {
     if (sceneEpoch !== currentSceneEpoch.current) return;
-    if (status === 'context-lost' && !autoRecoveryUsed.current) { restartScene(); return; }
+    if (status === 'context-lost') {
+      const shouldRetry = !autoRecoveryUsed.current;
+      autoRecoveryUsed.current = true;
+      try { sessionStorage.setItem(graphicsSafeModeKey, '1'); } catch { /* Recovery still works in this page when storage is unavailable. */ }
+      setGraphicsSafeMode(true);
+      if (shouldRetry) { restartScene(); return; }
+      setUI(previous => ({ ...previous, quality: 'low' }));
+    }
     if (status !== 'loading') setSceneRecovering(false);
     setSceneStatus({ status, detail });
   }, [sceneEpoch, restartScene]);
@@ -360,7 +380,7 @@ export default function App() {
             <div className="scene-bottom"><div className="scene-room"><span className="eyebrow">{ui.electrical?.enabled ? 'ЭЛЕКТРИЧЕСКИЙ ПЛАН' : ui.view === 'house' ? 'ВАШ ДОМ' : ui.view === 'engineering' ? 'СИСТЕМЫ ДОМА' : ui.view === 'interior' ? 'ВНУТРИ КОМНАТЫ' : 'ЭТАЖ 01'}</span><label className="room-select"><select aria-label="Выбрать помещение" value={ui.room} onChange={event => chooseRoom(event.target.value)}><option value="all">Весь этаж</option>{rooms.map(room => <option key={room.id} value={room.id}>{room.name}</option>)}</select><Icon name="chevron" size={15} /></label></div><div className="scene-hint"><span className="orbit-mark">↔</span><span>{ui.view === 'interior' ? 'Осмотритесь вокруг' : 'Вращайте · приближайте'}<br /><span>{ui.electrical?.enabled ? 'Нажмите на точку' : ui.view === 'interior' ? 'Поднимите взгляд к потолку' : 'Нажмите на устройство'}</span></span></div></div>
             <div className="scene-corner-note">На основе вашей IFC-модели</div>
           </div>
-          <div className="inspection-toolbar"><div className="room-stepper"><button className="icon-button" aria-label="Предыдущая комната" onClick={() => adjacentRoom(-1)}><Icon name="arrow" size={17} className="arrow-back" /></button><span>{activeRoom.name}</span><button className="icon-button" aria-label="Следующая комната" onClick={() => adjacentRoom(1)}><Icon name="arrow" size={17} /></button></div><div className="inspection-actions"><button className="text-button" onClick={() => setUI(previous => ({ ...previous, cameraRevision: previous.cameraRevision + 1 }))}><Icon name="reset" size={15} />Вернуть ракурс</button><button className="text-button" onClick={overview}><Icon name="home" size={15} />Дом целиком</button></div></div>
+          <div className="inspection-toolbar"><div className="room-stepper"><button className="icon-button" aria-label="Предыдущая комната" onClick={() => adjacentRoom(-1)}><Icon name="arrow" size={17} className="arrow-back" /></button><span>{activeRoom.name}</span><button className="icon-button" aria-label="Следующая комната" onClick={() => adjacentRoom(1)}><Icon name="arrow" size={17} /></button></div><label className="scene-quality-control"><span>Качество</span><select aria-label="Качество 3D рядом со сценой" value={ui.quality} onChange={event => chooseQuality(event.target.value as UIState['quality'])}><option value="auto">Авто</option><option value="high">Высокое</option><option value="low">Экономичное</option></select></label><div className="inspection-actions"><button className="text-button" onClick={() => setUI(previous => ({ ...previous, cameraRevision: previous.cameraRevision + 1 }))}><Icon name="reset" size={15} />Вернуть ракурс</button><button className="text-button" onClick={overview}><Icon name="home" size={15} />Дом целиком</button></div></div>
           <div className="scenario-section"><div className="section-label"><span>ОДНО НАЖАТИЕ — ЦЕЛЫЙ СЦЕНАРИЙ</span><span className="section-line" /></div><div className="scenario-list" aria-label="Сценарии умного дома">{scenarios.map(item => <button key={item.id} className={`scenario ${state.demo.scenario === item.id ? 'active' : ''}`} aria-pressed={state.demo.scenario === item.id} disabled={Boolean(scenarioUnavailableReason)} title={scenarioUnavailableReason || undefined} aria-describedby={scenarioUnavailableReason ? 'scenario-unavailable' : undefined} onClick={() => dispatch({ type: 'scenario', scenario: item.id })}><span className="scenario-icon"><Icon name={item.icon} size={23} /></span><span className="scenario-name">{item.id === 'away' ? 'Ушёл' : scenarioNames[item.id]}</span><span className="scenario-caption">{item.caption}</span><span className="scenario-indicator" /></button>)}</div>{scenarioUnavailableReason && <p className="scenario-unavailable" id="scenario-unavailable" role="status">{scenarioUnavailableReason}</p>}</div>
         </div>
 
@@ -377,7 +397,7 @@ export default function App() {
 
       <div className="project-note"><div><span className="eyebrow">ПРОЕКТИРУЕМ ПОД ВАС</span><p>Начните с привычек.<br /><span>Технологии мы подберём.</span></p></div><div className="project-note-right"><p>Выберите комнаты и системы.<br />Сохраните конфигурацию для обсуждения проекта.</p><button className="primary" onClick={() => { setSavedLead(null); setServerSave({ busy: false }); setModal('lead'); }}>Собрать мой проект <Icon name="arrow" size={18} /></button></div></div>
 
-      <details className="technical-details"><summary><Icon name="info" size={15} />О демонстрации и 3D-сцене <Icon name="chevron" size={14} /></summary><div className="technical-grid"><div><h3>О модели</h3><p>Архитектура перенесена из предоставленного IFC. Интерьер, устройства и инженерные трассы — проектное предложение. Названия комнат назначены для демонстрации и требуют согласования.</p><p>Шторы подготовлены для пяти окон в гостиной, кабинете и спальне. В санузле — матовое стекло без штор, в прихожей нет окна. Отделка и матовые натяжные потолки предложены для всех пяти помещений. Освещение разделено на 14 каналов по всему дому; климат, защита воды и медиа демонстрируются в гостиной с кухней, охрана — также во входной зоне. Симуляция не подключена к реальным устройствам. Стоимость определяется после уточнения проекта.</p><p>Выбрано помещение: {activeRoom.name}. Камера не меняет состояние устройств. Управление системой действует на выбранную комплектацию.</p></div><div><h3>Параметры отображения</h3><label className="select-label">Качество<select aria-label="Качество сцены" value={ui.quality} onChange={event => setUI(previous => ({ ...previous, quality: event.target.value as UIState['quality'] }))}><option value="auto">Автоматически</option><option value="high">Высокое</option><option value="low">Экономичное</option></select></label>{graphicsSafeMode && ui.quality === 'low' && <p className="control-note">После сбоя 3D включено экономичное качество. При обновлении этой вкладки оно сохранится; настройки дома не сбрасываются при повторе сцены.</p>}{localGraphicsDiagnostics && <button className="secondary full-width" disabled={!sceneMounted || sceneStatus.status !== 'ready'} onClick={() => setDiagnosticContextLossRequest(value => value + 1)}>Проверить восстановление 3D</button>}<Toggle label="Уменьшенное движение" checked={ui.reducedMotion} onChange={value => setUI(previous => ({ ...previous, reducedMotion: value }))} /><Slider label="Дневной свет" value={state.demo.daylight * 100} onChange={value => dispatch({ type: 'daylight', value: value / 100 })} />{metrics && <dl className="metrics"><div><dt>FPS / p95 кадра</dt><dd>{Math.round(metrics.fps)} / {metrics.p95.toFixed(1)} мс</dd></div><div><dt>Треугольники / вызовы</dt><dd>{metrics.triangles.toLocaleString('ru-RU')} / {metrics.calls}</dd></div><div><dt>3D-ресурсы</dt><dd>{(metrics.loadedBytes / 1048576).toFixed(2)} MiB</dd></div><div><dt>Готовность сцены</dt><dd>{(metrics.loadMs / 1000).toFixed(2)} с</dd></div><div><dt>Профиль</dt><dd>{metrics.profile}</dd></div></dl>}<p className="control-note">Показатели текущей сессии. Они не подтверждают производительность на других устройствах.</p></div><div><h3>Журнал событий</h3><ol className="event-log">{state.demo.events.slice(-8).reverse().map(event => <li key={event.id}><time>{Math.floor(event.time / 60).toString().padStart(2, '0')}:{Math.floor(event.time % 60).toString().padStart(2, '0')}</time><span>{event.text}</span></li>)}</ol></div></div></details>
+      <details className="technical-details"><summary><Icon name="info" size={15} />О демонстрации и 3D-сцене <Icon name="chevron" size={14} /></summary><div className="technical-grid"><div><h3>О модели</h3><p>Архитектура перенесена из предоставленного IFC. Интерьер, устройства и инженерные трассы — проектное предложение. Названия комнат назначены для демонстрации и требуют согласования.</p><p>Шторы подготовлены для пяти окон в гостиной, кабинете и спальне. В санузле — матовое стекло без штор, в прихожей нет окна. Отделка и матовые натяжные потолки предложены для всех пяти помещений. Освещение разделено на 14 каналов по всему дому; климат, защита воды и медиа демонстрируются в гостиной с кухней, охрана — также во входной зоне. Симуляция не подключена к реальным устройствам. Стоимость определяется после уточнения проекта.</p><p>Выбрано помещение: {activeRoom.name}. Камера не меняет состояние устройств. Управление системой действует на выбранную комплектацию.</p></div><div><h3>Параметры отображения</h3><label className="select-label">Качество<select aria-label="Качество сцены" value={ui.quality} onChange={event => chooseQuality(event.target.value as UIState['quality'])}><option value="auto">Автоматически</option><option value="high">Высокое</option><option value="low">Экономичное</option></select></label>{graphicsSafeMode && ui.quality === 'low' && <p className="control-note">После потери графической сессии включено экономичное качество. Вы можете снова выбрать «Авто» или «Высокое». Настройки дома не изменятся.</p>}{localGraphicsDiagnostics && <button className="secondary full-width" disabled={!sceneMounted || sceneStatus.status !== 'ready'} onClick={() => setDiagnosticContextLossRequest(value => value + 1)}>Проверить восстановление 3D</button>}<Toggle label="Уменьшенное движение" checked={ui.reducedMotion} onChange={value => setUI(previous => ({ ...previous, reducedMotion: value }))} /><Slider label="Дневной свет" value={state.demo.daylight * 100} onChange={value => dispatch({ type: 'daylight', value: value / 100 })} />{metrics && <dl className="metrics"><div><dt>FPS / p95 кадра</dt><dd>{Math.round(metrics.fps)} / {metrics.p95.toFixed(1)} мс</dd></div><div><dt>Треугольники / вызовы</dt><dd>{metrics.triangles.toLocaleString('ru-RU')} / {metrics.calls}</dd></div><div><dt>3D-ресурсы</dt><dd>{(metrics.loadedBytes / 1048576).toFixed(2)} MiB</dd></div><div><dt>Готовность сцены</dt><dd>{(metrics.loadMs / 1000).toFixed(2)} с</dd></div><div><dt>Профиль</dt><dd>{metrics.profile}</dd></div></dl>}<p className="control-note">Показатели текущей сессии. Они не подтверждают производительность на других устройствах.</p></div><div><h3>Журнал событий</h3><ol className="event-log">{state.demo.events.slice(-8).reverse().map(event => <li key={event.id}><time>{Math.floor(event.time / 60).toString().padStart(2, '0')}:{Math.floor(event.time % 60).toString().padStart(2, '0')}</time><span>{event.text}</span></li>)}</ol></div></div></details>
     </main>
     <footer className="site-footer"><span>smarthouse. <span>Технологии, которые становятся привычкой.</span></span><span>Интерактивная демонстрация · 2026</span></footer>
 
